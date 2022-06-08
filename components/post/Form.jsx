@@ -1,16 +1,12 @@
-import { useState } from "react";
 import Layout from "../Layout";
 
-export default function Form() {
-  const [title, setTitle] = useState("");
-  const [body, setBody] = useState("");
-  const onSubmit = (e) => {
-    e.preventDefault();
-    console.log(title, body);
-
-    setTitle("");
-    setBody("");
-  };
+export default function Form({
+  title,
+  body,
+  onSubmit,
+  onChangeTitle,
+  onChangeBody,
+}) {
   return (
     <Layout>
       <form>
@@ -22,7 +18,7 @@ export default function Form() {
             name="post-title"
             id="post-title"
             value={title}
-            onChange={(e) => setTitle(e.target.value)}
+            onChange={onChangeTitle}
           />
         </div>
         <div>
@@ -33,7 +29,7 @@ export default function Form() {
             cols="30"
             rows="10"
             value={body}
-            onChange={(e) => setBody(e.target.value)}
+            onChange={onChangeBody}
           ></textarea>
         </div>
         <button type="submit" onClick={onSubmit}>

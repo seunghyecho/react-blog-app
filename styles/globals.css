@@ -9,8 +9,24 @@ body {
 a {
   color: inherit;
   text-decoration: none;
+  color: #222;
+}
+a:hover {
+  text-decoration: underline;
 }
 
 * {
   box-sizing: border-box;
+}
+ul,
+li {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+h2 {
+  font-size: 14px;
+}
+h2 span {
+  color: #ef402f;
 }
