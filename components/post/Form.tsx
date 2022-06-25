@@ -1,4 +1,4 @@
-import Layout from "../Layout";
+import Layout from "../../components/common/Layout";
 
 export default function Form({
   title,
@@ -26,8 +26,8 @@ export default function Form({
           <textarea
             name="post-body"
             id="post-body"
-            cols="30"
-            rows="10"
+            cols={30}
+            rows={10}
             value={body}
             onChange={onChangeBody}
           ></textarea>

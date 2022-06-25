@@ -1,6 +1,5 @@
 /* eslint-disable @next/next/no-title-in-document-head */
 import Document, { Html, Head, Main, NextScript } from "next/document";
-import Header from "../components/Header";
 
 class MyDocument extends Document {
   static async getInitialProps(ctx) {

@@ -1,8 +1,15 @@
+import styled from "styled-components";
 import List from "../../components/list";
 
-export default function Home() {
+const CreateHomeLayout = styled.div`
+  padding: 0 15px;
+  width: 100%;
+  box-sizing: border-box;
+`;
+
+function Home() {
   return (
-    <>
+    <CreateHomeLayout>
       <h2 style={{ borderBottom: "1px solid #efefef", padding: "30px 0" }}>
         <b>
           전체 글 <span>22</span>
@@ -21,9 +28,10 @@ export default function Home() {
           </li>
         ))}
       </ul>
-    </>
+    </CreateHomeLayout>
   );
 }
+export default Home;
 
 const LISTSAMPLE = [
   {

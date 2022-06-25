@@ -1,8 +1,8 @@
-import Header from "../components/Header";
-import Layout from "../components/Layout";
+import Header from "../components/common/Header";
+import Layout from "../components/common/Layout";
 import Home from "./home";
 
-export default function Main() {
+function Main() {
   return (
     <>
       <Header />
@@ -12,3 +12,5 @@ export default function Main() {
     </>
   );
 }
+
+export default Main;
