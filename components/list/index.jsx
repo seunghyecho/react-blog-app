@@ -9,7 +9,7 @@ font-weight: 500;
 line-height: 1.67;
 `;
 const ArticleBody = styledComponents.p`
-max-width: 620px;
+// max-width: 620px;
 max-height: 40px;
 margin-bottom: 5px;
 font-size: 13px;
@@ -38,10 +38,10 @@ const ArticleMeta = styledComponents.div`
 export default function List({ id, title, body, category, created_at }) {
   return (
     <ArticleLayout id={id}>
-      <ArticleTitle>title100자 {title}</ArticleTitle>
+      <ArticleTitle>{title}</ArticleTitle>
       <ArticleBody>{body}</ArticleBody>
       <ArticleMeta>
-        <span className="category">category {category}</span>|
+        <span className="category">{category}</span>|
         <span className="date">{created_at}</span>
       </ArticleMeta>
     </ArticleLayout>

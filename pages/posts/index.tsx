@@ -1,13 +1,10 @@
-import axios from "axios";
-import { useRouter } from "next/router";
 import { useState } from "react";
 import Form from "../../components/post/Form";
 
 export default function Posts() {
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
-  const router = useRouter();
-  const onSubmit = (e, postId) => {
+  const onSubmit = (e: any, postId: any) => {
     e.preventDefault();
     console.log(title, body);
 

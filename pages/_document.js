@@ -13,7 +13,7 @@ class MyDocument extends Document {
       // https://merrily-code.tistory.com/154
       <Html>
         <Head>
-          <title>SH Devlog</title>
+          <title>SH Blog</title>
           <meta charSet="utf-8"></meta>
         </Head>
         <body>

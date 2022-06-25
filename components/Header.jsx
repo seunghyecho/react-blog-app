@@ -1,6 +1,8 @@
 import Link from "next/link";
 import styled from "styled-components";
 import Layout from "./Layout";
+// eslint-disable-next-line import/no-unresolved
+import { BiEditAlt } from "react-icons/Bi";
 
 const HeaderLayout = styled.header`
   border-bottom: 1px solid #efefef;
@@ -17,10 +19,12 @@ export default function Header() {
       <Layout>
         <Position>
           <Link href="/">
-            <a>SH Devlog</a>
+            <a>SH Blog</a>
           </Link>
           <Link href="/posts">
-            <a>Go post!</a>
+            <a>
+              <BiEditAlt size={24} />
+            </a>
           </Link>
         </Position>
       </Layout>
