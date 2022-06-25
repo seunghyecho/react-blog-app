@@ -35,7 +35,16 @@ const ArticleMeta = styledComponents.div`
   color: #999;
 }
 `;
-export default function List({ id, title, body, category, created_at }) {
+
+interface ListProp {
+  id: any;
+  title: string;
+  body: string;
+  category?: string;
+  created_at?: string;
+}
+
+function List({ id, title, body, category, created_at }: ListProp) {
   return (
     <ArticleLayout id={id}>
       <ArticleTitle>{title}</ArticleTitle>
@@ -47,3 +56,4 @@ export default function List({ id, title, body, category, created_at }) {
     </ArticleLayout>
   );
 }
+export default List;

@@ -1,22 +1,21 @@
 // req : http.IncomingMessage의 인스턴스
-
-import { samplePostData } from "../../../utils/posts";
-
 // res : http.ServerResponse의 인스턴스
-export default function handler(req, res) {
+export default function handler(
+  req: { body: { title: string; body: string }; method: string },
+  res: any
+) {
+  const { title, body } = req.body;
+  const newPost = {
+    id: new Date().toISOString(),
+    title,
+    body,
+  };
+
   if (req.method === "POST") {
-    const { title, body } = req.body;
-    const newPost = {
-      id: new Date().toISOString(),
-      title,
-      body,
-    };
     res.status(201).json({ message: "success!", post: newPost });
+  } else if (req.method === "GET") {
+    res.json({ post: newPost });
   } else {
-    res.status(200).json({ message: "works!" });
+    res.status(200).json({ message: "Success" });
   }
 }
-
-// function handler(req, res) {
-//   res.status(200).json({ message: "Success" });
-// }
