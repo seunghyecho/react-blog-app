@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import PostForm from "../../components/post/Form";
 import Layout from "../../components/common/Layout";
-import { useMutation } from "react-query";
+import { useMutation, useQueryClient } from "react-query";
 import { fetchAddPosts } from "../api/posts";
 
 const CreatePostLayout = styled.div`
@@ -20,6 +20,7 @@ export default function Posts() {
   const router = useRouter();
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
+  const queryClient = useQueryClient();
 
   const postMutation = useMutation(fetchAddPosts);
 
@@ -34,6 +35,7 @@ export default function Posts() {
       {
         onSuccess: () => {
           window.alert("게시물이 등록되었습니다.");
+          queryClient.invalidateQueries("posts");
           router.push("/");
         },
         onError: () => {

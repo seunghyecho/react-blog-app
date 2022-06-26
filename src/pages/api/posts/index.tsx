@@ -36,3 +36,9 @@ export const fetchAddPosts = async (posts: postT) => {
     ...posts,
   });
 };
+
+export const fetchPutPosts = async (posts: postT) => {
+  return await axios.put("https://jsonplaceholder.typicode.com/posts", {
+    ...posts,
+  });
+};
