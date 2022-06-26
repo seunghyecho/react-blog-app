@@ -20,8 +20,11 @@ li {
   padding: 0;
   list-style: none;
 }
+h1{
+    font-size: 2em;
+}
 h2 {
-  font-size: 14px;
+  font-size: 1.8em;
 }
 .colorEf {
   color: #ef402f;

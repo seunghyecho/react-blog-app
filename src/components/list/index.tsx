@@ -1,4 +1,5 @@
 import styledComponents from "styled-components";
+import { postT } from "../../types/post";
 const ArticleLayout = styledComponents.article`
 margin:40px 0;
 `;
@@ -31,17 +32,9 @@ span{
 }
 `;
 
-interface ListProp {
-  id: any;
-  title: string;
-  body: string;
-  category?: string;
-  created_at?: string;
-}
-
-function List({ id, title, body, category, created_at }: ListProp) {
+function List({ id, title, body, category, created_at }: postT) {
   return (
-    <ArticleLayout id={id}>
+    <ArticleLayout>
       <ArticleTitle>{title}</ArticleTitle>
       <ArticleBody>{body}</ArticleBody>
       <ArticleMeta>

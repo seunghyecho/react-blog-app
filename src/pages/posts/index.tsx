@@ -3,7 +3,8 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import PostForm from "../../components/post/Form";
 import Layout from "../../components/common/Layout";
-import axios from "axios";
+import { useMutation } from "react-query";
+import { fetchAddPosts } from "../api/posts";
 
 const CreatePostLayout = styled.div`
   padding: 0 15px;
@@ -19,18 +20,30 @@ export default function Posts() {
   const router = useRouter();
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
+
+  const postMutation = useMutation(fetchAddPosts);
+
   const onSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log(title, body);
 
-    axios.post("/api/posts", {
-      title,
-      body,
-    });
+    postMutation.mutate(
+      {
+        title,
+        body,
+      },
+      {
+        onSuccess: () => {
+          window.alert("게시물이 등록되었습니다.");
+          router.push("/");
+        },
+        onError: () => {
+          window.alert("게시물 등록에 실패하였습니다. 다시 시도해 주세요.");
+        },
+      }
+    );
 
     setTitle("");
     setBody("");
-    router.push("/");
   };
   return (
     <Layout>

@@ -1,8 +1,10 @@
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useQuery } from "react-query";
 import styled from "styled-components";
 import Layout from "../components/common/Layout";
 import List from "../components/list";
+import { postT } from "../types/post";
+import { fetchPosts } from "./api/posts";
 
 const CreateHomeLayout = styled.div`
   padding: 0 15px;
@@ -16,24 +18,23 @@ const CreateHomeLayout = styled.div`
 `;
 
 function Home() {
-  const [post, setPost] = useState([]);
+  const postStats = useQuery("posts", fetchPosts);
 
-  useEffect(() => {
-    fetch("https://jsonplaceholder.typicode.com/posts", { method: "GET" })
-      .then((response) => response.json())
-      .then((response) => setPost(response));
-  }, []);
+  if (postStats.isLoading) {
+    return "";
+  }
 
   return (
     <Layout>
       <CreateHomeLayout>
         <h2>
           <b>
-            전체 글 <span className="color61">{post.length}</span>
+            전체 글
+            <span className="color61">{postStats?.data?.data.length}</span>
           </b>
         </h2>
         <ul>
-          {post.map(({ id, title, body, userId }) => (
+          {postStats?.data?.data.map(({ id, title, body, userId }: postT) => (
             <li key={id}>
               <Link href={`posts/${id}`}>
                 <a>

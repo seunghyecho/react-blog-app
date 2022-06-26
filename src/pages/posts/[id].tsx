@@ -1,44 +1,46 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { useRouter } from "next/router";
 import styled from "styled-components";
 import Layout from "../../components/common/Layout";
-import { postT } from "../../types/post";
+import { useQuery } from "react-query";
+import { fetchDetailPosts } from "../api/posts";
 
 const CreateIdLayout = styled.div`
   padding: 0 15px;
   width: 100%;
   box-sizing: border-box;
-
+`;
+const Title = styled.div`
+  height: 100px;
+  line-height: 100px;
+  border-bottom: 1px solid #efefef;
   h1 {
-    display: block;
-    height: 100px;
-    line-height: 1.53;
     color: #619ffb;
   }
 `;
-const Position = styled.div`
-  border-bottom: 1px solid #efefef;
+const Body = styled.div`
+  padding: 15px 0;
 `;
 function PostById() {
   const router = useRouter();
   const { id } = router.query;
-  // id에는 위에 url에서 넣은 12345678이 string으로 들어가있다.
 
-  const [post, setPost] = useState<Array<postT>>([]);
+  const detailPostStats = useQuery(["detail", id], () => fetchDetailPosts(id));
+  console.log(detailPostStats);
 
-  useEffect(() => {
-    fetch(`https://jsonplaceholder.typicode.com/posts/${id}`, { method: "GET" })
-      .then((response) => response.json())
-      .then((response) => setPost(response));
-  }, [id]);
+  if (detailPostStats.isLoading) {
+    return "";
+  }
 
   return (
     <Layout>
       <CreateIdLayout>
-        <Position>
-          <h1>{post.title}</h1>
-        </Position>
-        <div>{post.body}</div>
+        <Title>
+          <h1>{detailPostStats.data.data.title}</h1>
+        </Title>
+        <Body>
+          <p>{detailPostStats.data.data.body}</p>
+        </Body>
       </CreateIdLayout>
     </Layout>
   );

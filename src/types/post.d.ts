@@ -1,8 +1,10 @@
 interface postT {
-  id: number;
+  id?: number | string;
   title: string;
   body: string;
-  userId: number;
+  userId?: number;
+  category?: string;
+  created_at?: string;
 }
 
 export { postT };

@@ -1,4 +1,5 @@
 import axios from "axios";
+import { postT } from "../../../types/post";
 
 // req : http.IncomingMessage의 인스턴스
 // res : http.ServerResponse의 인스턴스
@@ -22,8 +23,16 @@ import axios from "axios";
 //   }
 // }
 
-const fetchPosts = () => {
-  const data = axios.get("/api/posts");
-  return data;
+export const fetchPosts = async () => {
+  return await axios.get("https://jsonplaceholder.typicode.com/posts");
 };
-export { fetchPosts };
+
+export const fetchDetailPosts = async (id: number) => {
+  return await axios.get(`https://jsonplaceholder.typicode.com/posts/${id}`);
+};
+
+export const fetchAddPosts = async (posts: postT) => {
+  return await axios.post("https://jsonplaceholder.typicode.com/posts", {
+    ...posts,
+  });
+};
