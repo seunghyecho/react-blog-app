@@ -22,16 +22,11 @@ display: -webkit-box;
 word-break: break-word;
 `;
 const ArticleMeta = styledComponents.div`
-.category{
-  margin-right: 14px;
+span{
   font-size: 12px;
   line-height: 1.67;
 }
 .date{
-  margin-left: 15px;
-  margin-right: 15px;
-  font-size: 12px;
-  line-height: 1.67;
   color: #999;
 }
 `;
@@ -50,8 +45,10 @@ function List({ id, title, body, category, created_at }: ListProp) {
       <ArticleTitle>{title}</ArticleTitle>
       <ArticleBody>{body}</ArticleBody>
       <ArticleMeta>
-        <span className="category">{category}</span>|
-        <span className="date">{created_at}</span>
+        <span className="category">
+          {id} | {category}
+        </span>
+        <span className="date"> | {created_at}</span>
       </ArticleMeta>
     </ArticleLayout>
   );

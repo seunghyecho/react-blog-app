@@ -26,7 +26,6 @@ function Header() {
             <a>SH Blog</a>
           </Link>
         </h1>
-
         <Link href="/posts">
           <a>
             <BiEditAlt size={24} />
