@@ -34,17 +34,11 @@ function Home() {
           </b>
         </h2>
         <ul>
-          {postStats?.data?.data.map(({ id, title, body, userId }: postT) => (
+          {postStats?.data?.data.map(({ id, title, body }: postT) => (
             <li key={id}>
               <Link href={`posts/${id}`}>
                 <a>
-                  <List
-                    id={id}
-                    title={title}
-                    body={body}
-                    category={userId}
-                    created_at={userId}
-                  />
+                  <List id={id} title={title} body={body} />
                 </a>
               </Link>
             </li>

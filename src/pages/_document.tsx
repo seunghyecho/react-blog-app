@@ -1,4 +1,3 @@
-/* eslint-disable @next/next/no-title-in-document-head */
 import Document, { Html, Head, Main, NextScript } from "next/document";
 
 class MyDocument extends Document {
@@ -9,12 +8,8 @@ class MyDocument extends Document {
 
   render() {
     return (
-      // https://merrily-code.tistory.com/154
       <Html>
-        <Head>
-          <title>SH Blog</title>
-          <meta charSet="utf-8"></meta>
-        </Head>
+        <Head />
         <body>
           <Main />
           <NextScript />

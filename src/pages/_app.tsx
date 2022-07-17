@@ -1,10 +1,9 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Head from "next/head";
+import { QueryClient, QueryClientProvider } from "react-query";
 import { ThemeProvider } from "styled-components";
 import { GlobalStyle } from "../styles/globals";
 import { media } from "../styles/theme";
-import { QueryClient, QueryClientProvider } from "react-query";
-import { useState, useEffect } from "react";
 
 function MyApp({ Component, pageProps }) {
   const queryClient = new QueryClient({

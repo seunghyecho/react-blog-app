@@ -25,7 +25,9 @@ function PostById() {
   const router = useRouter();
   const { id } = router.query;
 
-  const detailPostStats = useQuery(["detail", id], () => fetchDetailPosts(id));
+  const detailPostStats = useQuery(["detail", id], () =>
+    fetchDetailPosts(Number(id))
+  );
   console.log(detailPostStats);
 
   if (detailPostStats.isLoading) {
