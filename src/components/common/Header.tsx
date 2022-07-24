@@ -18,6 +18,13 @@ const Position = styled.div`
   justify-content: space-between;
   height: 100%;
 
+  span {
+    &.userName {
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+  }
+
   ul {
     display: flex;
     li {
@@ -31,12 +38,14 @@ const Position = styled.div`
 
 function Header() {
   const router = useRouter();
-  const [user, setUser] = useState("");
+  const [user, setUser] = useState({
+    lastName: "",
+  });
   const getSessionStorage = window.sessionStorage;
 
   useEffect(() => {
     if (getSessionStorage) {
-      setUser(getSessionStorage.getItem("lastName"));
+      setUser({ lastName: getSessionStorage.getItem("lastName") });
     } else {
       router.push("/login");
     }
@@ -47,7 +56,9 @@ function Header() {
       <Position>
         <h1>
           <Link href="/">
-            <a>{user}Blog</a>
+            <a>
+              <span className="userName">{user.lastName}</span>Blog
+            </a>
           </Link>
         </h1>
         <ul>
@@ -58,13 +69,24 @@ function Header() {
               </a>
             </Link>
           </li>
-          <li>
-            <Link href="/login">
-              <a>
-                <BiUser size={24} />
-              </a>
-            </Link>
-          </li>
+          {getSessionStorage.length === 0 && (
+            <li>
+              <Link href="/login">
+                <a>
+                  <BiUser size={24} />
+                </a>
+              </Link>
+            </li>
+          )}
+          {getSessionStorage.length !== 0 && (
+            <li>
+              <Link href="/mypage">
+                <a>
+                  <BiUser size={24} />
+                </a>
+              </Link>
+            </li>
+          )}
         </ul>
       </Position>
     </CreateHeaderWrapper>

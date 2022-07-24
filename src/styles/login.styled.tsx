@@ -87,6 +87,7 @@ const Login = styled.form`
 
   input:disabled {
     opacity: 0.4;
+    color: #619ffb;
   }
 
   input[type="button"]:hover {
@@ -99,6 +100,7 @@ const Login = styled.form`
     -webkit-appearance: none;
   }
 
+  input[type="button"],
   button[type="button"] {
     display: block;
     appearance: none;
@@ -115,14 +117,17 @@ const Login = styled.form`
   }
 
   button {
-    display: block;
-    appearance: none;
     margin-top: 40px;
-    border: 1px solid #333;
     margin-bottom: 20px;
-    text-transform: uppercase;
     padding: 10px 20px;
+    width: 100%;
+    display: block;
+    background-color: #333;
+    border: 1px solid #333;
     border-radius: 4px;
+    color: #eee;
+    text-transform: uppercase;
+    appearance: none;
   }
 `;
 
