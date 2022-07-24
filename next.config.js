@@ -4,11 +4,6 @@ const nextConfig = {
   compiler: {
     styledComponents: true,
   },
-  webpack: (config) => {
-    config.resolve.alias["@"] = path.join(__dirname, "src");
-    return config;
-  },
-  distDir: "build",
   eslint: {
     ignoreDuringBuilds: true,
   },

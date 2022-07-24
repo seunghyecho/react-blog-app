@@ -2,6 +2,8 @@
 import Link from "next/link";
 import styled from "styled-components";
 import { BiEditAlt, BiUser } from "react-icons/Bi";
+import { useEffect, useState } from "react";
+import { useRouter } from "next/router";
 
 const CreateHeaderWrapper = styled.header`
   padding: 0 15px;
@@ -28,12 +30,24 @@ const Position = styled.div`
 `;
 
 function Header() {
+  const router = useRouter();
+  const [user, setUser] = useState("");
+  const getSessionStorage = window.sessionStorage;
+
+  useEffect(() => {
+    if (getSessionStorage) {
+      setUser(getSessionStorage.getItem("lastName"));
+    } else {
+      router.push("/login");
+    }
+  }, [getSessionStorage, router]);
+
   return (
     <CreateHeaderWrapper>
       <Position>
         <h1>
           <Link href="/">
-            <a>SH Blog</a>
+            <a>{user}Blog</a>
           </Link>
         </h1>
         <ul>

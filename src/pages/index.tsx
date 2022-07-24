@@ -20,10 +20,6 @@ const CreateHomeLayout = styled.div`
 function Home() {
   const postStats = useQuery("posts", fetchPosts);
 
-  if (postStats.isLoading) {
-    return "";
-  }
-
   return (
     <Layout>
       <CreateHomeLayout>
@@ -34,15 +30,21 @@ function Home() {
           </b>
         </h2>
         <ul>
-          {postStats?.data?.data.map(({ id, title, body }: postT) => (
-            <li key={id}>
-              <Link href={`posts/${id}`}>
-                <a>
-                  <List id={id} title={title} body={body} />
-                </a>
-              </Link>
+          {postStats.isLoading && (
+            <li>
+              <div>내역이 없습니다.</div>
             </li>
-          ))}
+          )}
+          {!postStats.isLoading &&
+            postStats?.data?.data.map(({ id, title, body }: postT) => (
+              <li key={id}>
+                <Link href={`posts/${id}`}>
+                  <a>
+                    <List id={id} title={title} body={body} />
+                  </a>
+                </Link>
+              </li>
+            ))}
         </ul>
       </CreateHomeLayout>
     </Layout>
