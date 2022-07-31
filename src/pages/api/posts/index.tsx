@@ -1,5 +1,5 @@
 import axios from "axios";
-import { postT } from "../../../types/post";
+import { postT } from "@/types/post";
 
 // req : http.IncomingMessage의 인스턴스
 // res : http.ServerResponse의 인스턴스
@@ -37,8 +37,12 @@ export const fetchAddPosts = async (posts: postT) => {
   });
 };
 
-export const fetchPutPosts = async (posts: postT) => {
-  return await axios.put("https://jsonplaceholder.typicode.com/posts", {
+export const fetchPutPosts = async (posts: postT, id: number) => {
+  return await axios.put(`https://jsonplaceholder.typicode.com/posts/${id}`, {
     ...posts,
   });
+};
+
+export const fetchDeletePosts = async (id: number) => {
+  return await axios.delete(`https://jsonplaceholder.typicode.com/posts/${id}`);
 };

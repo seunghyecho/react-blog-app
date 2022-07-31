@@ -1,12 +1,16 @@
-import Pagination from "@/components/common/pagination/Pagination";
-import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import { useQuery } from "react-query";
+import Link from "next/link";
+
+import List from "@/components/list";
+import Layout from "@/components/common/Layout";
+import Pagination from "@/components/common/pagination/Pagination";
+
 import styled from "styled-components";
-import Layout from "../components/common/Layout";
-import List from "../components/list";
-import { postT } from "../types/post";
-import { fetchPosts } from "./api/posts";
+import { Select, FlexLayout } from "@/styles/Common.styled";
+
+import { postT } from "@/types/post";
+import { fetchPosts } from "@/pages/api/posts";
 
 const CreateHomeLayout = styled.div`
   padding: 0 15px;
@@ -38,7 +42,7 @@ function Home() {
       <CreateHomeLayout>
         <h2>
           <b>
-            전체 글<span className="color61">{posts.length}</span>
+            All <span className="color61">{posts.length}</span>
           </b>
         </h2>
         {/* list contents */}
@@ -62,26 +66,28 @@ function Home() {
               ))}
         </ul>
 
-        {/* page select option */}
-        <select
-          name="pageLimit"
-          id="pageLimit"
-          value={limit}
-          onChange={(e: React.ChangeEvent<HTMLSelectElement>) => {
-            setLimit(Number(e.currentTarget.value));
-          }}
-        >
-          <option value="10">10</option>
-          <option value="20">20</option>
-        </select>
+        <FlexLayout>
+          {/* pagination */}
+          <Pagination
+            total={posts.length}
+            limit={limit}
+            page={page}
+            setPage={setPage}
+          />
 
-        {/* pagination */}
-        <Pagination
-          total={posts.length}
-          limit={limit}
-          page={page}
-          setPage={setPage}
-        />
+          {/* page select option */}
+          <Select
+            name="pageLimit"
+            id="pageLimit"
+            value={limit}
+            onChange={(e: React.ChangeEvent<HTMLSelectElement>) => {
+              setLimit(Number(e.currentTarget.value));
+            }}
+          >
+            <option value="10">10</option>
+            <option value="20">20</option>
+          </Select>
+        </FlexLayout>
       </CreateHomeLayout>
     </Layout>
   );
