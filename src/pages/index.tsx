@@ -1,6 +1,6 @@
 import Pagination from "@/components/common/pagination/Pagination";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useQuery } from "react-query";
 import styled from "styled-components";
 import Layout from "../components/common/Layout";
@@ -41,6 +41,7 @@ function Home() {
             전체 글<span className="color61">{posts.length}</span>
           </b>
         </h2>
+        {/* list contents */}
         <ul>
           {postStats.isLoading && (
             <li>
@@ -60,6 +61,21 @@ function Home() {
                 </li>
               ))}
         </ul>
+
+        {/* page select option */}
+        <select
+          name="pageLimit"
+          id="pageLimit"
+          value={limit}
+          onChange={(e: React.ChangeEvent<HTMLSelectElement>) => {
+            setLimit(Number(e.currentTarget.value));
+          }}
+        >
+          <option value="10">10</option>
+          <option value="20">20</option>
+        </select>
+
+        {/* pagination */}
         <Pagination
           total={posts.length}
           limit={limit}
