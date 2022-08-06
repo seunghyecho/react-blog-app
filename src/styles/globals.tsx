@@ -54,9 +54,6 @@ a:hover {
         -webkit-text-size-adjust: none;
         font-family: -apple-system,BlinkMacSystemFont,helvetica,Apple SD Gothic Neo,sans-serif;       
         font-display: fallback;
-        ${media.tablet}{
-            font-size: 10px;
-        }
         -ms-overflow-style: none;
         scrollbar-width: none;
     }
@@ -68,25 +65,6 @@ a:hover {
         &:disabled {
             cursor: default;
             fill: #f2f3f4;
-        }
-    }
-
-    .pc-tablet-only {
-        display: block;
-        ${media.mobile} {
-            display: none;
-        }
-    }
-    .tablet-mobile-only{
-        display: none;
-        ${media.tablet}{
-            display:block;
-        }
-    }
-    .mobile-only {
-        display: none;
-        ${media.mobile} {
-            display: block;
         }
     }
 `;

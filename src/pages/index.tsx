@@ -7,7 +7,7 @@ import Layout from "@/components/common/Layout";
 import Pagination from "@/components/common/pagination/Pagination";
 
 import styled from "styled-components";
-import { Select, FlexLayout } from "@/styles/Common.styled";
+import { Select, FlexLayout } from "@/styles/common.styled";
 
 import { postT } from "@/types/post";
 import { fetchPosts } from "@/pages/api/posts";

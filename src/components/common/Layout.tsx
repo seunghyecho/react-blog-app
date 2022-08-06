@@ -4,6 +4,7 @@ import Header from "@/components/common/Header";
 
 const CreateLayout = styled.div`
   margin: 0 auto 100px;
+  width: 600px;
 `;
 
 function Layout({ children }) {

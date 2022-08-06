@@ -8,7 +8,7 @@ import {
   fetchDetailPosts,
   fetchPutPosts,
 } from "../api/posts";
-import { FlexLayout, Label, Input, Textarea } from "@/styles/Common.styled";
+import { FlexLayout, Label, Input, Textarea } from "@/styles/common.styled";
 import Button from "@/components/common/Button";
 
 const CreateIdLayout = styled.div`
