@@ -4,6 +4,7 @@ import { QueryClient, QueryClientProvider } from "react-query";
 import { ThemeProvider } from "styled-components";
 import { GlobalStyle } from "../styles/globals";
 import { media } from "../styles/theme";
+import { UsersProvider } from "@/hooks/usersContext";
 
 function MyApp({ Component, pageProps }) {
   const queryClient = new QueryClient({
@@ -32,8 +33,10 @@ function MyApp({ Component, pageProps }) {
       </Head>
       <QueryClientProvider client={queryClient}>
         <ThemeProvider theme={media}>
-          <GlobalStyle />
-          <Component {...pageProps} />
+          <UsersProvider>
+            <GlobalStyle />
+            <Component {...pageProps} />
+          </UsersProvider>
         </ThemeProvider>
       </QueryClientProvider>
     </>

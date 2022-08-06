@@ -1,7 +1,11 @@
-import axios from "axios";
-import useAsync from "@/hooks/useAsync";
 import { useState } from "react";
 import User from "./user";
+import {
+  getUsers,
+  useUsersDispatch,
+  useUsersState,
+} from "@/hooks/usersContext";
+
 interface StateT {
   loading: any;
   data: DataT[];
@@ -13,14 +17,15 @@ interface DataT {
   name: string;
 }
 
-async function getUsers() {
-  const res = await axios.get("http://jsonplaceholder.typicode.com/users/");
-  return res.data;
-}
 function Users() {
-  const [state, refetch] = useAsync(getUsers, [], false);
   const [userId, setUserId] = useState(null);
-  const { loading, data: users, error } = state as StateT;
+
+  const state = useUsersState();
+  const dispatch = useUsersDispatch();
+  const { loading, data: users, error } = state.users;
+  const fetchData = () => {
+    getUsers(dispatch);
+  };
 
   if (loading) return <div>loading...</div>;
   if (error) return <div>error...</div>;
@@ -28,7 +33,7 @@ function Users() {
 
   return (
     <>
-      <button onClick={() => refetch}>fetch Button</button>
+      <button onClick={() => fetchData}>fetch Button</button>
       <ul>
         {users.map(({ id, username, name }) => {
           return (
