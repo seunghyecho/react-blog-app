@@ -1,27 +1,26 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import useAsync from "@/hooks/useAsync";
+import { useState } from "react";
+import User from "./user";
+interface StateT {
+  loading: any;
+  data: DataT[];
+  error: any;
+}
+interface DataT {
+  id: number;
+  username: string;
+  name: string;
+}
 
+async function getUsers() {
+  const res = await axios.get("http://jsonplaceholder.typicode.com/users/");
+  return res.data;
+}
 function Users() {
-  const [users, setUsers] = useState(null);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
-
-  const fetchUsers = async () => {
-    try {
-      setUsers(null);
-      setError(null);
-      setLoading(true);
-      const res = await axios.get("http://jsonplaceholder.typicode.com/users/");
-      setUsers(res.data);
-    } catch (e) {
-      setError(e);
-    }
-    setLoading(false);
-  };
-
-  useEffect(() => {
-    fetchUsers();
-  }, []);
+  const [state, refetch] = useAsync(getUsers, [], false);
+  const [userId, setUserId] = useState(null);
+  const { loading, data: users, error } = state as StateT;
 
   if (loading) return <div>loading...</div>;
   if (error) return <div>error...</div>;
@@ -29,16 +28,17 @@ function Users() {
 
   return (
     <>
-      <button onClick={() => fetchUsers()}>fetch Button</button>
+      <button onClick={() => refetch}>fetch Button</button>
       <ul>
         {users.map(({ id, username, name }) => {
           return (
-            <li key={id}>
+            <li key={id} onClick={() => setUserId(id)}>
               {username}({name})
             </li>
           );
         })}
       </ul>
+      {userId && <User id={userId} />}
     </>
   );
 }
