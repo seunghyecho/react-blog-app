@@ -1,21 +1,6 @@
 import { useState } from "react";
 import User from "./user";
-import {
-  getUsers,
-  useUsersDispatch,
-  useUsersState,
-} from "@/hooks/usersContext";
-
-interface StateT {
-  loading: any;
-  data: DataT[];
-  error: any;
-}
-interface DataT {
-  id: number;
-  username: string;
-  name: string;
-}
+import { getUsers, useUsersDispatch, useUsersState } from "@/util/usersContext";
 
 function Users() {
   const [userId, setUserId] = useState(null);

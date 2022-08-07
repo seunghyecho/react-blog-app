@@ -1,16 +1,7 @@
 import { useEffect } from "react";
-import { getUser, useUsersDispatch, useUsersState } from "@/hooks/usersContext";
-interface StateT {
-  loading: any;
-  data: DataT;
-  error: any;
-}
-interface DataT {
-  username: string;
-  email: string;
-}
+import { getUser, useUsersDispatch, useUsersState } from "@/util/usersContext";
 
-function User({ id }: any) {
+function User({ id }) {
   const state = useUsersState();
   const dispatch = useUsersDispatch();
 
