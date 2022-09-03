@@ -10,6 +10,11 @@ class MyDocument extends Document {
     return (
       <Html>
         <Head />
+        <link
+          rel="stylesheet"
+          type="text/css"
+          href="https://cdn.jsdelivr.net/gh/moonspam/NanumSquare@1.0/nanumsquare.css"
+        />
         <body>
           <Main />
           <NextScript />

@@ -1,94 +1,75 @@
-import React, { useEffect, useState } from "react";
-import { useQuery } from "react-query";
-import Link from "next/link";
-
-import List from "@/components/list";
+import React, { useState } from "react";
 import Layout from "@/components/common/Layout";
-import Pagination from "@/components/common/pagination/Pagination";
-
 import styled from "styled-components";
-import { Select, FlexLayout } from "@/styles/common.styled";
+import About from "@/components/about";
+import MainPost from "@/components/post";
 
-import { postT } from "@/types/post";
-import { fetchPosts } from "@/pages/api/posts";
-
-const CreateHomeLayout = styled.div`
+const HomeLayout = styled.div`
   padding: 0 15px;
   width: 100%;
   box-sizing: border-box;
 
-  h2 {
-    padding: 30px 0;
-    border-bottom: 1px solid #efefef;
+  > ul {
+    margin-top: 4.5rem;
+    margin-bottom: 4.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    li {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 10px 0;
+      width: 100px;
+      height: 50px;
+      line-height: 50px;
+      transition: all 0.25s ease-in-out 0s;
+      font-weight: 600;
+      box-sizing: border-box;
+      cursor: pointer;
+      &.active {
+        color: #619ffb;
+        border-bottom: 2px solid #619ffb;
+      }
+    }
   }
 `;
 
 function Home() {
-  const [posts, setPosts] = useState([]);
-  const [limit, setLimit] = useState(10);
-  const [page, setPage] = useState(1);
-  const offset = (page - 1) * limit;
+  const [activeIndex, setActiveIndex] = useState(0);
 
-  const postStats = useQuery("posts", fetchPosts);
-
-  useEffect(() => {
-    if (!postStats.isLoading) {
-      setPosts(postStats?.data?.data);
-    }
-  }, [postStats.isLoading, postStats]);
+  const tabArr = [
+    {
+      tab: (
+        <li
+          className={activeIndex === 0 ? "active" : ""}
+          onClick={() => setActiveIndex(0)}
+        >
+          <h2>글</h2>
+        </li>
+      ),
+      content: <MainPost />,
+    },
+    {
+      tab: (
+        <li
+          className={activeIndex === 1 ? "active" : ""}
+          onClick={() => setActiveIndex(1)}
+        >
+          <h2>소개</h2>
+        </li>
+      ),
+      content: <About />,
+    },
+  ];
 
   return (
     <Layout>
-      <CreateHomeLayout>
-        <h2>
-          <b>
-            All <span className="color61">{posts.length}</span>
-          </b>
-        </h2>
-        {/* list contents */}
-        <ul>
-          {postStats.isLoading && (
-            <li>
-              <div>내역이 없습니다.</div>
-            </li>
-          )}
-          {!postStats.isLoading &&
-            posts
-              .slice(offset, offset + limit)
-              .map(({ id, title, body }: postT) => (
-                <li key={id}>
-                  <Link href={`posts/${id}`}>
-                    <a>
-                      <List id={id} title={title} body={body} />
-                    </a>
-                  </Link>
-                </li>
-              ))}
-        </ul>
-
-        <FlexLayout>
-          {/* pagination */}
-          <Pagination
-            total={posts.length}
-            limit={limit}
-            page={page}
-            setPage={setPage}
-          />
-
-          {/* page select option */}
-          <Select
-            name="pageLimit"
-            id="pageLimit"
-            value={limit}
-            onChange={(e: React.ChangeEvent<HTMLSelectElement>) => {
-              setLimit(Number(e.currentTarget.value));
-            }}
-          >
-            <option value="10">10</option>
-            <option value="20">20</option>
-          </Select>
-        </FlexLayout>
-      </CreateHomeLayout>
+      <HomeLayout>
+        <ul>{tabArr.map(({ tab }) => tab)}</ul>
+        <div>{tabArr[activeIndex].content}</div>
+      </HomeLayout>
     </Layout>
   );
 }
