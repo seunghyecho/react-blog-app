@@ -2,7 +2,7 @@ import { CreateFormLayout, Login } from "@/styles/login.styled";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 
-function Mypage() {
+function Accounts() {
   const router = useRouter();
   const getSessionStorage = window.sessionStorage;
 
@@ -47,4 +47,4 @@ function Mypage() {
     </CreateFormLayout>
   );
 }
-export default Mypage;
+export default Accounts;

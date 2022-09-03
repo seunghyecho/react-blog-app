@@ -1,7 +1,7 @@
 /* eslint-disable import/no-unresolved */
 import Link from "next/link";
 import styled from "styled-components";
-import { BiEditAlt, BiUser } from "react-icons/Bi";
+import { BiEditAlt, BiSearchAlt, BiUser } from "react-icons/Bi";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 
@@ -63,6 +63,13 @@ function Header() {
         </h1>
         <ul>
           <li>
+            <Link href="/search">
+              <a>
+                <BiSearchAlt size={24} />
+              </a>
+            </Link>
+          </li>
+          <li>
             <Link href="/posts">
               <a>
                 <BiEditAlt size={24} />
@@ -80,7 +87,7 @@ function Header() {
           )}
           {getSessionStorage.length !== 0 && (
             <li>
-              <Link href="/mypage">
+              <Link href="/accounts">
                 <a>
                   <BiUser size={24} />
                 </a>

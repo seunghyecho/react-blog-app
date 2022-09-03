@@ -29,7 +29,7 @@ function MyApp({ Component, pageProps }) {
   return (
     <>
       <Head>
-        <title>My blog app</title>
+        <title>next-blog</title>
       </Head>
       <QueryClientProvider client={queryClient}>
         <ThemeProvider theme={media}>
