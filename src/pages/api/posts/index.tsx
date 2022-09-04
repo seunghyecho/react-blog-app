@@ -23,8 +23,10 @@ import { postT } from "@/types/post";
 //   }
 // }
 
-export const fetchPosts = async () => {
-  return await axios.get("https://jsonplaceholder.typicode.com/posts");
+export const fetchPosts = async (params: any) => {
+  return await axios.get("https://jsonplaceholder.typicode.com/posts", {
+    params,
+  });
 };
 
 export const fetchDetailPosts = async (id: number) => {

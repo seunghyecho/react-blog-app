@@ -10,7 +10,6 @@ font-weight: 500;
 line-height: 1.67;
 `;
 const ArticleBody = styledComponents.p`
-// max-width: 620px;
 max-height: 40px;
 margin-bottom: 5px;
 font-size: 13px;
@@ -32,16 +31,15 @@ span{
 }
 `;
 
-function List({ id, title, body, category, created_at }: postT) {
+function List({ userId, id, title, body }: postT) {
   return (
     <ArticleLayout>
       <ArticleTitle>{title}</ArticleTitle>
       <ArticleBody>{body}</ArticleBody>
       <ArticleMeta>
         <span className="category">
-          {id} | {category}
+          {id} | {userId} | {title}
         </span>
-        <span className="date"> | {created_at}</span>
       </ArticleMeta>
     </ArticleLayout>
   );

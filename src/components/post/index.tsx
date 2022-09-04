@@ -7,11 +7,12 @@ import Pagination from "@/components/common/pagination/Pagination";
 
 import { Select, FlexLayout } from "@/styles/common.styled";
 
-import { postT } from "@/types/post";
 import { fetchPosts } from "@/pages/api/posts";
 import styled from "styled-components";
 
-const Layout = styled.div``;
+const Layout = styled.div`
+position;relative;
+`;
 
 function MainPost() {
   const [posts, setPosts] = useState([]);
@@ -19,30 +20,30 @@ function MainPost() {
   const [page, setPage] = useState(1);
   const offset = (page - 1) * limit;
 
-  const postStats = useQuery("posts", fetchPosts);
+  const { data, isLoading } = useQuery("posts", fetchPosts);
 
   useEffect(() => {
-    if (!postStats.isLoading) {
-      setPosts(postStats?.data?.data);
+    if (!isLoading) {
+      setPosts(data?.data);
     }
-  }, [postStats.isLoading, postStats]);
+  }, [isLoading, data?.data]);
 
   return (
     <Layout>
       <ul>
-        {postStats.isLoading && (
+        {isLoading && (
           <li>
             <div>내역이 없습니다.</div>
           </li>
         )}
-        {!postStats.isLoading &&
+        {!isLoading &&
           posts
             .slice(offset, offset + limit)
-            .map(({ id, title, body }: postT) => (
+            .map(({ userId, id, title, body }) => (
               <li key={id}>
                 <Link href={`posts/${id}`}>
                   <a>
-                    <List id={id} title={title} body={body} />
+                    <List userId={userId} id={id} title={title} body={body} />
                   </a>
                 </Link>
               </li>
