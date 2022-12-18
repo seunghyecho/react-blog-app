@@ -4,7 +4,7 @@ import styled from "styled-components";
 import PostForm from "../../components/post/Form";
 import Layout from "../../components/common/Layout";
 import { useMutation, useQueryClient } from "react-query";
-import { fetchAddPosts } from "../api/posts";
+import { fetchAddPosts } from "../../api/posts";
 
 const CreatePostLayout = styled.div`
   padding: 0 15px;
