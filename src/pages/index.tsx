@@ -3,8 +3,8 @@ import PageLayout from "@/components/common/Layout";
 import styled from "styled-components";
 import About from "@/components/Main/About";
 import Post from "@/components/Main/Post";
-import { useQuery } from "react-query";
 import { fetchPosts } from "@/api/posts";
+import { useQuery } from "@tanstack/react-query";
 
 const Layout = styled.div`
   padding: 0 15px;
@@ -39,9 +39,14 @@ const Layout = styled.div`
 `;
 
 function Home() {
+  const [page, setPage] = useState(1);
   const [activeIndex, setActiveIndex] = useState(0);
 
-  const { data, isLoading } = useQuery("posts", fetchPosts);
+  const { data, isLoading } = useQuery(["posts", { page }], () =>
+    fetchPosts({
+      page: Number(page),
+    })
+  );
 
   const posts = data?.data || [];
 

@@ -1,10 +1,10 @@
-import PageLayout from "@/components/common/Layout";
 import React, { useMemo, useState } from "react";
-import { useQuery } from "react-query";
-import { fetchPosts } from "@/api/posts";
 import _ from "lodash";
+import PageLayout from "@/components/common/Layout";
 import Post from "@/components/Main/Post";
 import SearchBar from "@/components/common/searchBar";
+import { useQuery } from "@tanstack/react-query";
+import { fetchPosts } from "@/api/posts";
 
 function Search() {
   const [query, setQuery] = useState("");

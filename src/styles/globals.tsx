@@ -9,7 +9,7 @@ export const GlobalStyle = createGlobalStyle`
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-    font-size:16px;
+    font-size:14px;
     font-family: 나눔스퀘어, 'NanumSquare', sans-serif; 
   }
 

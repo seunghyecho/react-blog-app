@@ -18,7 +18,7 @@ const fetchDetailPosts = async (id: number) => {
 /**
  * 게시글 리스트 생성 api
  */
-const fetchAddPosts = async (params: any) => {
+const fetchCreatePosts = async (params: any) => {
   return await axios.post("https://jsonplaceholder.typicode.com/posts", params);
 };
 
@@ -34,14 +34,14 @@ const fetchPutPosts = async ({ id, ...params }: any) => {
 /**
  * 게시글 리스트 삭제 api
  */
-const fetchDeletePosts = async (id: number) => {
+const fetchDeletePosts = async (id: any) => {
   return await axios.delete(`https://jsonplaceholder.typicode.com/posts/${id}`);
 };
 
 export {
   fetchPosts,
   fetchDetailPosts,
-  fetchAddPosts,
+  fetchCreatePosts,
   fetchPutPosts,
   fetchDeletePosts,
 };

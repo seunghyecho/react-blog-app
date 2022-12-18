@@ -70,7 +70,7 @@ function Header() {
             </Link>
           </li>
           <li>
-            <Link href="/posts">
+            <Link href="/posts/create">
               <a>
                 <BiEditAlt size={24} />
               </a>

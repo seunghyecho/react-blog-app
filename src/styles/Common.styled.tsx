@@ -1,5 +1,15 @@
 import styled from "styled-components";
 
+const Layout = styled.div`
+  padding: 0 15px;
+  width: 100%;
+  box-sizing: border-box;
+  h1 {
+    height: 100px;
+    line-height: 100px;
+  }
+`;
+
 const FlexLayout = styled.div`
   margin: 20px auto;
   display: flex;
@@ -46,4 +56,4 @@ const Label = styled.label`
   padding-left: 5px;
   width: 10%;
 `;
-export { Select, FlexLayout, Label, Input, Textarea };
+export { Layout, Select, FlexLayout, Label, Input, Textarea };
