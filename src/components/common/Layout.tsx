@@ -1,4 +1,3 @@
-/* eslint-disable import/no-unresolved */
 import styled from "styled-components";
 import Header from "@/components/common/Header";
 

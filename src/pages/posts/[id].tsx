@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 import styled from "styled-components";
 import Layout from "../../components/common/Layout";
 import { useMutation, useQuery, useQueryClient } from "react-query";
-import { fetchDeletePosts, fetchDetailPosts } from "../api/posts";
+import { fetchDeletePosts, fetchDetailPosts } from "../../api/posts";
 import { FlexLayout, Label } from "@/styles/common.styled";
 import Button from "@/components/common/Button";
 

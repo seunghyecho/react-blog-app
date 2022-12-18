@@ -2,12 +2,8 @@ import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import styled from "styled-components";
 import Layout from "../../components/common/Layout";
-import { useMutation, useQuery, useQueryClient } from "react-query";
-import {
-  fetchDeletePosts,
-  fetchDetailPosts,
-  fetchPutPosts,
-} from "../api/posts";
+import { useMutation, useQuery } from "react-query";
+import { fetchDetailPosts, fetchPutPosts } from "../../api/posts";
 import { FlexLayout, Label, Input, Textarea } from "@/styles/common.styled";
 import Button from "@/components/common/Button";
 
@@ -50,7 +46,11 @@ function PostEditById() {
     fetchDetailPosts(Number(id))
   );
   const saveMutation = useMutation(["save", id], () =>
-    fetchPutPosts({ title: title, body: body }, Number(id))
+    fetchPutPosts({
+      title,
+      body,
+      id,
+    })
   );
 
   useEffect(() => {
@@ -64,13 +64,14 @@ function PostEditById() {
     router.push("/");
   };
 
-  const handleSave = () => {
-    saveMutation.mutate(id, {
-      onSuccess: (data) => {
-        console.log(data);
-        window.alert("저장이 완료되었습니다");
-      },
-    });
+  const handleSave = (params) => {
+    saveMutation.mutate(params),
+      {
+        onSuccess: (data) => {
+          console.log(data);
+          window.alert("저장이 완료되었습니다");
+        },
+      };
   };
 
   return (

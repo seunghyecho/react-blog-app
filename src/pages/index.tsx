@@ -1,10 +1,12 @@
 import React, { useState } from "react";
-import Layout from "@/components/common/Layout";
+import PageLayout from "@/components/common/Layout";
 import styled from "styled-components";
-import About from "@/components/about";
-import MainPost from "@/components/post";
+import About from "@/components/Main/About";
+import Post from "@/components/Main/Post";
+import { useQuery } from "react-query";
+import { fetchPosts } from "@/api/posts";
 
-const HomeLayout = styled.div`
+const Layout = styled.div`
   padding: 0 15px;
   width: 100%;
   box-sizing: border-box;
@@ -39,6 +41,10 @@ const HomeLayout = styled.div`
 function Home() {
   const [activeIndex, setActiveIndex] = useState(0);
 
+  const { data, isLoading } = useQuery("posts", fetchPosts);
+
+  const posts = data?.data || [];
+
   const tabArr = [
     {
       tab: (
@@ -49,7 +55,7 @@ function Home() {
           <h2>글</h2>
         </li>
       ),
-      content: <MainPost />,
+      content: <Post data={posts} isLoading={isLoading} />,
     },
     {
       tab: (
@@ -65,28 +71,12 @@ function Home() {
   ];
 
   return (
-    <Layout>
-      <HomeLayout>
+    <PageLayout>
+      <Layout>
         <ul>{tabArr.map(({ tab }) => tab)}</ul>
         <div>{tabArr[activeIndex].content}</div>
-      </HomeLayout>
-    </Layout>
+      </Layout>
+    </PageLayout>
   );
 }
 export default Home;
-
-// export async function getStaticProps() {
-//   const postStats = await axios.get(
-//     "https://jsonplaceholder.typicode.com/posts"
-//   );
-
-//   if (!postStats) {
-//     return {
-//       notFound: true,
-//     };
-//   }
-
-//   return {
-//     props: { ...postStats },
-//   };
-// }

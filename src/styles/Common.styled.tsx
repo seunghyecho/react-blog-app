@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 const FlexLayout = styled.div`
+  margin: 20px auto;
   display: flex;
 
   &.alignItemsC {
