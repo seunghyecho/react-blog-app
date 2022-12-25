@@ -1,12 +1,12 @@
 import styled from "styled-components";
 
-const CreateFormLayout = styled.div`
+const Layout = styled.div`
   width: 100%;
   height: 100%;
   background: #222748;
   position: fixed;
 `;
-const Login = styled.form`
+const Form = styled.form`
   position: absolute;
   min-width: 372px;
   top: 50%;
@@ -131,4 +131,4 @@ const Login = styled.form`
   }
 `;
 
-export { Login, CreateFormLayout };
+export { Form, Layout };

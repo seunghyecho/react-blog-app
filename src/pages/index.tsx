@@ -30,6 +30,7 @@ const Layout = styled.div`
       font-weight: 600;
       box-sizing: border-box;
       cursor: pointer;
+
       &.active {
         color: #619ffb;
         border-bottom: 2px solid #619ffb;
@@ -44,7 +45,7 @@ function Home() {
 
   const { data, isLoading } = useQuery(["posts", { page }], () =>
     fetchPosts({
-      page: Number(page),
+      page: Number(page)
     })
   );
 
@@ -79,9 +80,10 @@ function Home() {
     <PageLayout>
       <Layout>
         <ul>{tabArr.map(({ tab }) => tab)}</ul>
-        <div>{tabArr[activeIndex].content}</div>
+        <>{tabArr[activeIndex].content}</>
       </Layout>
     </PageLayout>
   );
 }
+
 export default Home;
