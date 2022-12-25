@@ -3,7 +3,7 @@ import { Form } from "@/styles/login.styled";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
 
-interface Props{
+interface Props {
   data?: any;
 }
 interface CreateProps {
@@ -12,7 +12,7 @@ interface CreateProps {
   password: string;
 }
 
-function FormLogin({data}:Props) {
+function FormLogin({ data }: Props) {
   const router = useRouter();
   const {
     register,
