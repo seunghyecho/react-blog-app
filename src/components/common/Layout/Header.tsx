@@ -55,7 +55,7 @@ function Header() {
     <CreateHeaderWrapper>
       <Position>
         <h1>
-          <Link href="/">
+          <Link href="/src/pages">
             <a>
               <span className="userName">{user.lastName}</span>Blog
             </a>

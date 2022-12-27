@@ -2,7 +2,7 @@ import React from "react";
 import { useRouter } from "next/router";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { fetchDetailPosts, fetchPutPosts } from "@/api/posts";
-import Layout from "@/components/common/Layout";
+import Index from "@/components/common/Layout";
 import Form from "@/components/post/Form";
 
 function Detail() {
@@ -32,11 +32,11 @@ function Detail() {
   );
 
   return (
-    <Layout>
+    <Index>
       {!isLoading && (
         <Form data={data?.data || ""} formMutation={updateMutation} />
       )}
-    </Layout>
+    </Index>
   );
 }
 export default Detail;

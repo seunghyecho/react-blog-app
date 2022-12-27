@@ -1,8 +1,9 @@
-import { CreatePaginationLayout } from "./Pagination.styled";
+import { Layout } from "@/components/common/Pagination/Pagination.styled";
+
 function Pagination({ total = 100, limit, setPage, page }) {
   const numPages = Math.ceil(total / limit);
   return (
-    <CreatePaginationLayout>
+    <Layout>
       <button onClick={() => setPage(page - 1)} disabled={page === 1}>
         {"<"}
       </button>
@@ -21,7 +22,7 @@ function Pagination({ total = 100, limit, setPage, page }) {
       <button onClick={() => setPage(page + 1)} disabled={page === numPages}>
         {">"}
       </button>
-    </CreatePaginationLayout>
+    </Layout>
   );
 }
 export default Pagination;

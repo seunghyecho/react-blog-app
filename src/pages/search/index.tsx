@@ -2,7 +2,7 @@ import React, { useMemo, useState } from "react";
 import _ from "lodash";
 import PageLayout from "@/components/common/Layout";
 import Post from "@/components/Main/Post";
-import SearchBar from "@/components/common/searchBar";
+import SearchBar from "@/components/common/SearchBar";
 import { useQuery } from "@tanstack/react-query";
 import { fetchPosts } from "@/api/posts";
 

@@ -1,10 +1,9 @@
-const media = {
-  mobile: "320px",
-  mobileM: "375px",
-  mobileL: "450px",
-  tablet: "768px",
-  tabletL: "1024px",
-  desktop: "1260px",
+export const sizes = {
+  desktop: 1024,
+  tablet: 768,
 };
 
-export { media };
+export const media = (key: keyof typeof sizes) => {
+  return (style: any) =>
+    `@media (max-width: ${sizes[key] / 16}em) { ${style} }`;
+};

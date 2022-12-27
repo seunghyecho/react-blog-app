@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const CreatePaginationLayout = styled.div`
+const Layout = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -33,4 +33,4 @@ const CreatePaginationLayout = styled.div`
   }
 `;
 
-export { CreatePaginationLayout };
+export { Layout };

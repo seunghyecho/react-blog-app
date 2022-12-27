@@ -1,9 +1,9 @@
-import Pagination from "@/components/common/pagination/Pagination";
+import Pagination from "@/components/common/Pagination";
 import { Select, FlexLayout } from "@/styles/common.styled";
 function Paginate({ total, limit, page, setPage, onChange }) {
   return (
     <FlexLayout>
-      {/* pagination */}
+      {/* Pagination */}
       <Pagination total={total} limit={limit} page={page} setPage={setPage} />
 
       {/* page select option */}

@@ -18,11 +18,11 @@ export const GlobalStyle = createGlobalStyle`
     list-style: none;
   }
 
-  .colorEf {
+  .primary_red {
     color: #ef402f;
   }
 
-  .color61 {
+  .primary_blue {
     color: #619ffb;
   }
 

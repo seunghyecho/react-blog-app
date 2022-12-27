@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ThemeProvider } from "styled-components";
 import { GlobalStyle } from "@/styles/globals";
-import { media } from "@/styles/theme";
+import { sizes } from "@/styles/theme";
 import { UsersProvider } from "@/util/usersContext";
 
 function MyApp({ Component, pageProps }) {
@@ -20,7 +20,7 @@ function MyApp({ Component, pageProps }) {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <ThemeProvider theme={media}>
+      <ThemeProvider theme={sizes}>
         <UsersProvider>
           <GlobalStyle />
           <Component {...pageProps} />

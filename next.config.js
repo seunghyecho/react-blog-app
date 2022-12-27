@@ -1,3 +1,4 @@
+const paths = require;
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
@@ -15,6 +16,11 @@ const nextConfig = {
   typescript: {
     ignoreBuildErrors: true,
   },
+  sassOptions: {
+    includePaths: [paths.appSrc + "/styles/utils"],
+  },
+  additionalData: `@import 'utils';`,
+  sideEffects: true,
 };
 
 module.exports = { nextConfig };

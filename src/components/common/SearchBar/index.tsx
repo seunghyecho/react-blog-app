@@ -1,24 +1,11 @@
 import { BiSearchAlt } from "react-icons/bi";
-import styled from "styled-components";
-const Layout = styled.div`
-  margin-top: 2rem;
-  padding: 0 1.5rem;
-  display: flex;
-  align-items: center;
-  width: 100%;
-  height: 4rem;
-  border: 1px solid lightgrey;
-  cursor: text;
+import Layout from "@/components/common/SearchBar/SearchBar.styled";
 
-  input {
-    padding: 0 1.5rem;
-    width: 100%;
-  }
-`;
 interface Props {
   query: string;
   onChange: (e: React.KeyboardEvent<HTMLInputElement>) => void;
 }
+
 function SearchBar({ query, onChange }: Props) {
   return (
     <Layout>
