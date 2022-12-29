@@ -5,4 +5,4 @@ interface postT {
   body: string;
 }
 
-export { postT };
+export type { postT };

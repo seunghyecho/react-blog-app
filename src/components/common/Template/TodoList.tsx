@@ -1,8 +1,8 @@
 import TodoListItem from '@/components/common/Template/TodoListItem';
-import { Todo } from '@/components/common/Template/index';
+import { TodoT } from '@/types/todo';
 
 interface Props {
-  todos: Array<Todo>;
+  todos: Array<TodoT>;
   handleRemove: (id: number) => void;
   handleToggle: (id: number) => void;
 }
