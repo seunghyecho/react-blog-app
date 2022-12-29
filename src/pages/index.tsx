@@ -5,6 +5,8 @@ import About from "@/components/Main/About";
 import Post from "@/components/Main/Post";
 import { fetchPosts } from "@/api/posts";
 import Layout from "@/styles/main.styled";
+import { FlexLayout } from "@/styles/common.styled";
+import Side from "@/components/common/Layout/Side";
 
 function Main() {
   const [page] = useState(1);
@@ -45,10 +47,13 @@ function Main() {
 
   return (
     <PageLayout>
-      <Layout>
-        <ul>{tabArr.map(({ tab }) => tab)}</ul>
-        <div>{tabArr[activeIndex].content}</div>
-      </Layout>
+      <FlexLayout>
+        <Layout>
+          <ul>{tabArr.map(({ tab }) => tab)}</ul>
+          <div>{tabArr[activeIndex].content}</div>
+        </Layout>
+        <Side />
+      </FlexLayout>
     </PageLayout>
   );
 }

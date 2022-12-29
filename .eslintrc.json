@@ -11,11 +11,9 @@
   "plugins": ["@typescript-eslint", "import", "react-hooks"],
   "extends": [
     "next",
-    "prettier",
+    "eslint:recommended",
     "plugin:@typescript-eslint/recommended",
-    "plugin:prettier/recommended",
-    "plugin:import/errors",
-    "plugin:import/warnings"
+    "prettier"
   ],
   "parserOptions": {
     "ecmaVersion": 2020,
@@ -31,9 +29,9 @@
     "react-hooks/exhaustive-deps": "warn"
   },
   "settings": {
-    "import/parsers": {
-      "@typescript-eslint/parser": [".ts", ".tsx"]
-    },
+    "import/parsers":
+      "@typescript-eslint/parser"
+    ,
     "import/resolver": {
       "typescript": "./tsconfig.json"
     }
