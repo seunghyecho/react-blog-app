@@ -7,13 +7,14 @@ interface Props {
   todo: TodoT;
   handleRemove: (id: number) => void;
   handleToggle: (id: number) => void;
+  style:any;
 }
 
-function TodoListItem({ todo, handleRemove, handleToggle }: Props) {
+function TodoListItem({ todo, handleRemove, handleToggle,style }: Props) {
   const { id, text, checked } = todo;
 
   return (
-    <ListItem>
+    <ListItem className="TodoListItem-virtualized" style={style}>
       <CheckBox
         className={checked && 'checked'}
         onClick={() => handleToggle(id)}
