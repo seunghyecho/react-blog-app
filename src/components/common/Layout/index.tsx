@@ -1,6 +1,5 @@
-import styled from "styled-components";
-import { media } from "@/styles/theme";
-import Header from "@/components/common/Layout/Header";
+import styled from 'styled-components';
+import { media } from '@/styles/theme';
 
 interface Props {
   children?: React.ReactNode;
@@ -9,12 +8,13 @@ interface Props {
 const Layout = styled.div`
   padding-bottom: 10em;
   margin: 0 auto;
+  width: 1024px;
 
-  ${media("desktop")`
+  ${media('desktop')`
     width:768px;
   `};
 
-  ${media("tablet")`
+  ${media('tablet')`
     width:100%;
   `};
 `;
@@ -22,7 +22,6 @@ const Layout = styled.div`
 function Index({ children }: Props) {
   return (
     <Layout>
-      <Header />
       {children}
     </Layout>
   );

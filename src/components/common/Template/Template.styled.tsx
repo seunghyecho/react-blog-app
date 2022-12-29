@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 const Layout = styled.div`
+  margin-top: 3.5rem;
   border-radius: 4px;
   overflow: hidden;
 

@@ -13,14 +13,6 @@ const Layout = styled.div`
 const FlexLayout = styled.div`
   margin: 20px auto;
   display: flex;
-
-  &.alignItemsC {
-    align-items: center;
-  }
-
-  &.justifyContentB {
-    justify-content: space-between;
-  }
 `;
 
 const Select = styled.select`

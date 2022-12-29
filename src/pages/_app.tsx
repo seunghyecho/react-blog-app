@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from "react";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { ThemeProvider } from "styled-components";
-import { GlobalStyle } from "@/styles/globals";
-import { sizes } from "@/styles/theme";
-import { UsersProvider } from "@/util/usersContext";
+import React, { useState, useEffect } from 'react';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { ThemeProvider } from 'styled-components';
+import { GlobalStyle } from '@/styles/globals';
+import { sizes } from '@/styles/theme';
+import { UsersProvider } from '@/util/usersContext';
+import Header from '@/components/common/Layout/Header';
 
 function MyApp({ Component, pageProps }) {
   const [showChild, setShowChild] = useState(false);
@@ -14,7 +15,7 @@ function MyApp({ Component, pageProps }) {
   if (!showChild) {
     return null;
   }
-  if (typeof window === "undefined") {
+  if (typeof window === 'undefined') {
     return <></>;
   }
 
@@ -23,6 +24,7 @@ function MyApp({ Component, pageProps }) {
       <ThemeProvider theme={sizes}>
         <UsersProvider>
           <GlobalStyle />
+          <Header />
           <Component {...pageProps} />
         </UsersProvider>
       </ThemeProvider>

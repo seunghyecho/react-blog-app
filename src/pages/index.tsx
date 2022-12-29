@@ -3,10 +3,10 @@ import { useQuery } from "@tanstack/react-query";
 import PageLayout from "@/components/common/Layout";
 import About from "@/components/Main/About";
 import Post from "@/components/Main/Post";
-import { fetchPosts } from "@/api/posts";
-import Layout from "@/styles/main.styled";
-import { FlexLayout } from "@/styles/common.styled";
 import Side from "@/components/common/Layout/Side";
+import { Layout } from "@/styles/main.styled";
+import { FlexLayout } from "@/styles/common.styled";
+import { fetchPosts } from "@/api/posts";
 
 function Main() {
   const [page] = useState(1);
