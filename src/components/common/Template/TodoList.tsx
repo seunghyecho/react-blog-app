@@ -1,5 +1,6 @@
 import TodoListItem from '@/components/common/Template/TodoListItem';
 import { TodoT } from '@/types/todo';
+import React from 'react';
 
 interface Props {
   todos: Array<TodoT>;
@@ -22,4 +23,4 @@ function TodoList({ todos, handleRemove, handleToggle }: Props) {
   );
 }
 
-export default TodoList;
+export default React.memo(TodoList);
