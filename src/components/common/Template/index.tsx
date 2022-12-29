@@ -1,8 +1,9 @@
-import React, { useCallback, useRef, useState } from 'react';
+import React, { useCallback, useReducer, useRef, useState } from 'react';
 import { Layout, Content } from '@/components/common/Template/Template.styled';
 import TodoInsert from '@/components/common/Template/TodoInsert';
 import TodoList from '@/components/common/Template/TodoList';
 import { TodoT } from '@/types/todo';
+import TodoReducer from '@/hooks/useTodos';
 
 interface Props {
   title: string;
@@ -11,7 +12,7 @@ interface Props {
 function createBulkTodos() {
   const array: Array<TodoT> = [];
 
-  for (let i = 1; i <= 2500; i++) {
+  for (let i = 1; i <= 30; i++) {
     array.push({
       id: i,
       text: `todo ${i}`,
@@ -23,10 +24,11 @@ function createBulkTodos() {
 
 function Template({ title }: Props) {
 
-  const [todos, setTodos] = useState(createBulkTodos);
+  // const [todos, setTodos] = useState(createBulkTodos);
+  const [todos, dispatch] = useReducer(TodoReducer, undefined, createBulkTodos);
 
   //TODO 고유값 id, ref에 변수 담기
-  const createId = useRef(2501);
+  const createId = useRef(31);
 
   const handleInsert = useCallback(
     text => {
@@ -36,8 +38,13 @@ function Template({ title }: Props) {
         checked: false,
       };
 
+      /*
       // useState의 함수형 업데이트로 성능 최적화
       setTodos(todos => todos.concat(newTodo));
+       */
+
+      // useReducer
+      dispatch({ type: 'INSERT', newTodo });
       createId.current += 1;
     }, [todos],
   );
@@ -45,21 +52,31 @@ function Template({ title }: Props) {
   const handleRemove = useCallback(
     id => {
 
+      /*
       // useState의 함수형 업데이트로 성능 최적화
       setTodos(todos => todos.filter(todo =>
         todo.id != id,
       ));
+       */
+
+      // useReducer
+      dispatch({ type: 'REMOVE', id });
     }, [todos]);
 
   const handleToggle = useCallback(
     id => {
-      
+
+      /*
       // useState의 함수형 업데이트로 성능 최적화
       setTodos(todos =>
         todos.map(todo =>
           todo.id === id ? { ...todo, checked: !todo.checked } : todo,
         ),
       );
+       */
+
+      // useReducer
+      dispatch({ type: 'TOGGLE', id });
     }, [todos],
   );
 
