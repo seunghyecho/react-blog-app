@@ -10,7 +10,7 @@ export default function TodoReducer(todos, action) {
     case 'TOGGLE':
       return todos.map(todo => todo.id === action.id ? {
         ...todo,
-        checked: !todo.checked,
+        completed: !todo.completed,
       } : todo);
 
     default:

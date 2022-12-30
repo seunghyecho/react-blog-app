@@ -1,7 +1,8 @@
 interface TodoT {
+  userId?: number;
   id: number;
-  text: string;
-  checked: boolean;
+  title: string;
+  completed: boolean;
 }
 
 export type { TodoT };

@@ -1,7 +1,7 @@
+import { List } from 'react-virtualized';
+import React, { useCallback } from 'react';
 import TodoListItem from '@/components/common/Template/TodoListItem';
 import { TodoT } from '@/types/todo';
-import React, { useCallback } from 'react';
-import { List } from 'react-virtualized';
 
 
 interface Props {
@@ -32,7 +32,7 @@ function TodoList({ todos, handleRemove, handleToggle }: Props) {
       width={213}
       height={230}
       rowCount={todos.length}
-      rowHeight={42}
+      rowHeight={50}
       rowRenderer={rowRenderer}
       list={todos}
       style={{outline:'none'}}

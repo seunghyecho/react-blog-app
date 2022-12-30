@@ -1,41 +1,44 @@
 import React, { useCallback, useReducer, useRef, useState } from 'react';
-import { Layout, Content } from '@/components/common/Template/Template.styled';
 import TodoInsert from '@/components/common/Template/TodoInsert';
 import TodoList from '@/components/common/Template/TodoList';
+import { Layout, Content } from '@/components/common/Template/Template.styled';
 import { TodoT } from '@/types/todo';
 import TodoReducer from '@/hooks/useTodos';
 
 interface Props {
   title: string;
+  data: Array<TodoT>;
 }
 
+/*
 function createBulkTodos() {
   const array: Array<TodoT> = [];
 
   for (let i = 1; i <= 30; i++) {
     array.push({
       id: i,
-      text: `todo ${i}`,
-      checked: false,
+      title: `todo ${i}`,
+      completed: false,
     });
   }
   return array; //TODO 배열 리턴 !!
 }
+ */
 
-function Template({ title }: Props) {
+function Template({ title, data }: Props) {
 
   // const [todos, setTodos] = useState(createBulkTodos);
-  const [todos, dispatch] = useReducer(TodoReducer, undefined, createBulkTodos);
+  const [todos, dispatch] = useReducer(TodoReducer, data);
 
   //TODO 고유값 id, ref에 변수 담기
   const createId = useRef(31);
 
   const handleInsert = useCallback(
-    text => {
+    title => {
       const newTodo = {
         id: createId.current,
-        text,
-        checked: false,
+        title,
+        completed: false,
       };
 
       /*

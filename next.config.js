@@ -1,4 +1,4 @@
-const paths = require;
+const path = require;
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
@@ -17,7 +17,7 @@ const nextConfig = {
     ignoreBuildErrors: true,
   },
   sassOptions: {
-    includePaths: [paths.appSrc + "/styles/utils"],
+    includePaths: [path.appSrc + "/styles/utils"],
   },
   additionalData: `@import 'utils';`,
   sideEffects: true,

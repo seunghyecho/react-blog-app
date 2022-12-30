@@ -69,13 +69,13 @@ const CheckBox = styled.button`
   display: inline-flex;
   align-items: center;
 
-  &.checked {
+  &.completed {
     svg {
       color: #22b8cf;
     }
   }
 
-  &.checked + p {
+  &.completed + p {
     color: #adb5bd;
     text-decoration: line-through;
   }

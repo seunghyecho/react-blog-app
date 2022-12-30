@@ -11,17 +11,17 @@ interface Props {
 }
 
 function TodoListItem({ todo, handleRemove, handleToggle,style }: Props) {
-  const { id, text, checked } = todo;
+  const { id, title, completed } = todo;
 
   return (
     <ListItem className="TodoListItem-virtualized" style={style}>
       <CheckBox
-        className={checked && 'checked'}
+        className={completed && 'completed'}
         onClick={() => handleToggle(id)}
       >
-        {checked ? <MdCheckBox /> : <MdCheckBoxOutlineBlank />}
+        {completed ? <MdCheckBox /> : <MdCheckBoxOutlineBlank />}
       </CheckBox>
-      <p>{text}</p>
+      <p>{title}</p>
       <RemoveBox onClick={() => handleRemove(id)}><MdRemoveCircleOutline /></RemoveBox>
     </ListItem>
   );
