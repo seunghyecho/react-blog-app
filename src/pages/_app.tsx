@@ -8,6 +8,7 @@ import Header from '@/components/common/Layout/Header';
 
 function MyApp({ Component, pageProps }) {
   const [showChild, setShowChild] = useState(false);
+
   useEffect(() => {
     setShowChild(true);
   }, []);

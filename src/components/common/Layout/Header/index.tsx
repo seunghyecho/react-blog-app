@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import { BiEditAlt, BiSearchAlt, BiUser } from 'react-icons/Bi';
-import { Layout, Position } from '@/components/common/Layout/Header/Header.styled';
+import { Layout, Position, Title, Utils } from '@/components/common/Layout/Header/Header.styled';
 
 function Header() {
   const router = useRouter();
@@ -12,7 +12,7 @@ function Header() {
   const getSessionStorage = window.sessionStorage;
 
   useEffect(() => {
-    if (getSessionStorage) {
+    if (getSessionStorage.length > 1) {
       setUser({ lastName: getSessionStorage.getItem('lastName') });
     } else {
       router.push('/login');
@@ -22,14 +22,26 @@ function Header() {
   return (
     <Layout>
       <Position>
-        <h1>
-          <Link href='/src/pages'>
-            <a>
-              <span className='userName'>{user.lastName}</span>Blog
-            </a>
-          </Link>
-        </h1>
-        <ul>
+        {user.lastName ? (
+          <Title>
+            <Link href='/'>
+              <a>
+                <strong>{user.lastName}</strong>Blog
+              </a>
+            </Link>
+          </Title>
+        ) : (
+          <Title>
+            <Link href='/login'>
+              <a>
+                <strong>로그인 해주세요.</strong>
+              </a>
+            </Link>
+          </Title>
+        )}
+
+
+        <Utils>
           <li>
             <Link href='/search'>
               <a>
@@ -64,7 +76,7 @@ function Header() {
               </Link>
             </li>
           )}
-        </ul>
+        </Utils>
       </Position>
     </Layout>
   );

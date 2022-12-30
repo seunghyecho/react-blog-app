@@ -23,25 +23,24 @@ const Position = styled.div`
   ${media('tablet')`
     width:100%;
   `};
+`;
 
-  span {
-    &.userName {
-      text-transform: uppercase;
-      font-weight: 600;
-    }
+const Title = styled.h1`
+  strong {
+    text-transform: uppercase;
   }
+`;
 
-  ul {
-    display: flex;
+const Utils = styled.ul`
+  display: flex;
 
-    li {
-      padding: 0 12px;
+  li {
+    padding: 0 12px;
 
-      &:last-child {
-        padding-right: 0;
-      }
+    &:last-child {
+      padding-right: 0;
     }
   }
 `;
 
-export { Layout, Position };
+export { Layout, Position, Title, Utils };

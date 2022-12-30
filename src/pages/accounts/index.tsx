@@ -1,13 +1,24 @@
-import { Layout } from "@/styles/login.styled";
-import FormLogin from "@/components/common/Form/Login";
+import { Position } from '@/components/common/Form/Login.styled';
+import Form from '@/components/common/Form/Login';
+import { useEffect } from 'react';
+import { useRouter } from 'next/router';
 
 function Accounts() {
+  const router = useRouter();
   const getSessionStorage = window.sessionStorage;
 
+  useEffect(() => {
+    if (getSessionStorage.length === 1) {
+      alert('로그인 해주세요');
+
+      router.push('/login');
+    }
+  }, [getSessionStorage, router]);
+
   return (
-    <Layout>
-      {getSessionStorage && <FormLogin data={getSessionStorage} />}
-    </Layout>
+    <Position>
+      {getSessionStorage && <Form data={getSessionStorage} />}
+    </Position>
   );
 }
 

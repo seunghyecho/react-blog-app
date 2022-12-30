@@ -1,11 +1,11 @@
-import { Layout } from "@/styles/login.styled";
+import { Position } from "@/components/common/Form/Login.styled";
 import FormLogin from "@/components/common/Form/Login";
 
 function Login() {
   return (
-    <Layout>
+    <Position>
       <FormLogin />
-    </Layout>
+    </Position>
   );
 }
 

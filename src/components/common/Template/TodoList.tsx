@@ -30,7 +30,7 @@ function TodoList({ todos, handleRemove, handleToggle }: Props) {
     <List
       clssName="TodoList"
       width={213}
-      height={213}
+      height={230}
       rowCount={todos.length}
       rowHeight={42}
       rowRenderer={rowRenderer}
