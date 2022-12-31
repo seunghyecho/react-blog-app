@@ -1,7 +1,11 @@
 const path = require;
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+
   reactStrictMode: true,
+  images: {
+    domains: ['yonhapnewstv-prod.s3.ap-northeast-2.amazonaws.com'],
+  },
   compiler: {
     styledComponents: true,
   },
@@ -21,6 +25,9 @@ const nextConfig = {
   },
   additionalData: `@import 'utils';`,
   sideEffects: true,
+  env: {
+    NEXT_PUBLIC_API_KEY: process.env.NEXT_PUBLIC_API_KEY,
+  },
 };
 
 module.exports = { nextConfig };

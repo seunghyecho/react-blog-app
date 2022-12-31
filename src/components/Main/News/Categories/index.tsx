@@ -1,24 +1,4 @@
-import styled from 'styled-components';
-
-const Layout = styled.ul`
-  display: flex;
-
-  @media screen and(max-width: 768px) {
-    width: 100%;
-    overflow-x: auto;
-  }
-`;
-
-const Category = styled.li`
-  margin: 0 1rem;
-  padding: 0.25rem 0;
-  cursor: pointer;
-  white-space: pre;
-
-  &:hover {
-    color: #495057;
-  }
-`;
+import { Category, Layout } from '@/components/Main/News/Categories/Categories.styled';
 
 const categories = [
   {
@@ -51,11 +31,17 @@ const categories = [
   },
 ];
 
-function Categories() {
+function Categories({ category, handleSelect }) {
   return (
     <Layout>
       {categories.map((c) => (
-        <Category key={c.name}>{c.text}</Category>
+        <Category
+          key={c.name}
+          active={category === c.name}
+          onClick={() => handleSelect(c.name)}
+        >
+          {c.text}
+        </Category>
       ))}
     </Layout>
   );
