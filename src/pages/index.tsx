@@ -9,9 +9,9 @@ import { Layout } from '@/styles/main.styled';
 import { FlexLayout } from '@/styles/common.styled';
 import { fetchPosts } from '@/api/posts';
 import { fetchNews } from '@/api/news';
-import ColorBox from '@/components/common/ColorBox';
+import ColorBox from '@/components/common/Color/ColorBox';
 import { ColorProvider } from '@/util/colorContext';
-import SelectColors from '@/components/common/SelectColors';
+import SelectColors from '@/components/common/Color/SelectColors';
 
 function Main() {
   const [page] = useState(1);
@@ -79,11 +79,13 @@ function Main() {
     <PageLayout>
       <FlexLayout>
         <Layout>
-          <ColorProvider>
-            <SelectColors />
-            <ColorBox />
-          </ColorProvider>
-
+          {/*
+            <ColorProvider>
+              <SelectColors />
+              <ColorBox />
+            </ColorProvider>
+          */}
+          
           <ul>{tabArr.map(({ tab }) => tab)}</ul>
           <div>{tabArr[activeIndex].content}</div>
         </Layout>

@@ -8,8 +8,8 @@ const ColorContext = createContext({
     subcolor: 'gray',
   },
   actions: {
-    setColor: () => {},
-    setSubcolor: () => {},
+    setColor: undefined,
+    setSubcolor: undefined,
   },
 });
 
