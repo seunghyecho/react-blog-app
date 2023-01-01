@@ -85,7 +85,7 @@ function Main() {
               <ColorBox />
             </ColorProvider>
           */}
-          
+
           <ul>{tabArr.map(({ tab }) => tab)}</ul>
           <div>{tabArr[activeIndex].content}</div>
         </Layout>
