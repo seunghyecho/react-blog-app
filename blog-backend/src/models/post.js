@@ -13,4 +13,4 @@ const PostSchema = new Schema({
 });
 
 const Post = mongoose.model('Post', PostSchema); // 모델 생성
-export default Post;
+export default Post;``
