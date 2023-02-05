@@ -21,7 +21,7 @@ export const write = async ctx => {
   });
 
   const result = schema.validate(ctx.request.body);
-  if(result.error){
+  if (result.error) {
     ctx.status = 400;
     ctx.body = result.error;
     return;
@@ -40,9 +40,28 @@ export const write = async ctx => {
 };
 
 export const list = async ctx => {
+  const page = parseInt(ctx.query.page || '1', 10);
+
+  if (page < 1) {
+    ctx.status = 400;
+    return;
+  }
+
   try {
-    const posts = await Post.find().exec();
-    ctx.body = posts;
+    const posts = await Post.find()
+      .sort({ _id: -1 })
+      .limit(10)
+      .skip((page - 1) * 10)
+      .lean()
+      .exec();
+    const postCount = await Post.countDocuments().exec();
+    ctx.set('Last-Page', Math.ceil(postCount / 10));
+
+    ctx.body = posts
+      .map(post => ({
+        ...post,
+        body: post.body.length < 200 ? post.body : `${post.body.slice(0, 200)}...`,
+      }));
   } catch (e) {
     ctx.throw(500, e);
   }
@@ -82,7 +101,7 @@ export const update = async ctx => {
   });
 
   const result = schema.validate(ctx.request.body);
-  if(result.error){
+  if (result.error) {
     ctx.status = 400;
     ctx.body = result.error;
     return;
