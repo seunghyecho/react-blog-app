@@ -1,16 +1,26 @@
-import { createGlobalStyle } from "styled-components";
-import { reset } from "styled-reset";
+import { createGlobalStyle } from 'styled-components';
+import { reset } from 'styled-reset';
 
 export const GlobalStyle = createGlobalStyle`
   ${reset}
-  *,
   html,
   body {
-    padding: 0;
     margin: 0;
+    padding: 0;
+    min-height: 100%;
     box-sizing: border-box;
-    font-size:14px;
-    font-family: 나눔스퀘어, 'NanumSquare', sans-serif; 
+    font-size: 14px;
+    font-family: 나눔스퀘어, 'NanumSquare', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  * {
+    box-sizing: inherit;
+  }
+
+  html {
+    height: 100%;
   }
 
   ul,
@@ -29,7 +39,6 @@ export const GlobalStyle = createGlobalStyle`
   a {
     color: inherit;
     text-decoration: none;
-    color: #222;
   }
 
   a:hover {
@@ -40,7 +49,7 @@ export const GlobalStyle = createGlobalStyle`
     outline: none;
     border: none;
   }
-    
+
   button {
     background: none;
     padding: 0;
@@ -52,10 +61,12 @@ export const GlobalStyle = createGlobalStyle`
     cursor: default;
     fill: #f2f3f4;
   }
-  input{
+
+  input {
     border: none;
     outline: none;
   }
+
   input:-webkit-autofill,
   input:-webkit-autofill:hover,
   input:-webkit-autofill:focus,

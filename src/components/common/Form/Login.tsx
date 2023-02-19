@@ -29,9 +29,9 @@ function Login({ data }: Props) {
       },
     } : {
       defaultValues: {
-        firstName: data.firstName,
-        lastName: data.lastName,
-        password: data.password,
+        firstName: data?.firstName,
+        lastName: data?.lastName,
+        password: data?.password,
       },
     },
   );

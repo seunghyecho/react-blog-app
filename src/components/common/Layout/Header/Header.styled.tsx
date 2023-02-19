@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { media } from '@/styles/theme';
+import { media } from '@/lib/styles/theme';
 
 const Layout = styled.header`
   width: 100%;

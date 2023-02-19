@@ -21,7 +21,7 @@ const nextConfig = {
     ignoreBuildErrors: true,
   },
   sassOptions: {
-    includePaths: [path.appSrc + "/styles/utils"],
+    includePaths: [path.appSrc + "/styles/lib"],
   },
   additionalData: `@import 'utils';`,
   sideEffects: true,

@@ -1,5 +1,5 @@
 import Pagination from "@/components/common/Pagination";
-import { Select, FlexLayout } from "@/styles/common.styled";
+import { Select, FlexLayout } from "@/lib/styles/common.styled";
 function Paginate({ total, limit, page, setPage, onChange }) {
   return (
     <FlexLayout>
