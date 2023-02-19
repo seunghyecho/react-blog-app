@@ -20,14 +20,14 @@ function Main() {
 
   const postData = useQuery(['posts', { page }], () =>
     fetchPosts({
-      page: Number(page),
-    }),
+      page: Number(page)
+    })
   );
 
   const newsData = useQuery(['news', { page, category }], () =>
     fetchNews({
       params: { page: Number(page) },
-      category: category === 'all' ? '' : category,
+      category: category === 'all' ? '' : category
     }))
   ;
 
@@ -49,7 +49,7 @@ function Main() {
           <h2>NEWS</h2>
         </li>
       ),
-      content: <News data={news} category={category} handleSelect={handleSelect} />,
+      content: <News data={news} category={category} handleSelect={handleSelect} />
     },
     {
       tab: (
@@ -60,7 +60,7 @@ function Main() {
           <h2>POST</h2>
         </li>
       ),
-      content: <Post data={posts} isLoading={postData.isLoading} />,
+      content: <Post data={posts} isLoading={postData.isLoading} />
     },
     {
       tab: (
@@ -71,8 +71,8 @@ function Main() {
           <h2>ABOUT</h2>
         </li>
       ),
-      content: <About />,
-    },
+      content: <About />
+    }
   ];
 
   return (
