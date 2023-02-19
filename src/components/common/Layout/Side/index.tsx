@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import Template from '@/components/common/Template';
 import { useQuery } from '@tanstack/react-query';
-import { fetchTodos } from '@/api/todos';
+import { fetchTodos } from '@/lib/api/todos';
 import { useState } from 'react';
 
 const Layout = styled.div`

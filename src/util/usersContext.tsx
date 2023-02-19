@@ -1,5 +1,5 @@
 import React, { createContext, useReducer, useContext } from "react";
-import * as api from "@/api/users";
+import * as api from "@/lib/api/users";
 import {
   createAsyncDispatcher,
   createAsyncHandler,

@@ -11,7 +11,7 @@ import {
   UseMutationResult,
   useQueryClient,
 } from "@tanstack/react-query";
-import { fetchDeletePosts } from "@/api/posts";
+import { fetchDeletePosts } from "@/lib/api/posts";
 
 interface Props {
   data?: any;

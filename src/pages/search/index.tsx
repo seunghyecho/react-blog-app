@@ -4,7 +4,7 @@ import PageLayout from "@/components/common/Layout";
 import Post from "@/components/Main/Post";
 import SearchBar from "@/components/common/SearchBar";
 import { useQuery } from "@tanstack/react-query";
-import { fetchPosts } from "@/api/posts";
+import { fetchPosts } from "@/lib/api/posts";
 
 function Search() {
   const [query, setQuery] = useState("");

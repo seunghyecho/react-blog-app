@@ -1,7 +1,7 @@
 import React from "react";
 import { useRouter } from "next/router";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import { fetchDetailPosts, fetchPutPosts } from "@/api/posts";
+import { fetchDetailPosts, fetchPutPosts } from "@/lib/api/posts";
 import Index from "@/components/common/Layout";
 import Form from "@/components/post/Form";
 
