@@ -1,20 +1,12 @@
-import { useForm } from 'react-hook-form';
-import { useRouter } from 'next/router';
-import { useEffect } from 'react';
 import { AuthFormBlock, Footer, StyledInput } from '@/components/auth/AuthForm.styled';
 import Link from 'next/link';
 import Button from '@/components/common/Button';
 
 interface Props {
-  data?: any;
-  type?: string;
-}
-
-interface CreateProps {
-  firstName: string;
-  lastName: string;
-  password: string;
-  passwordConfirm: string;
+  type: string;
+  form: any;
+  onChange: any;
+  onSubmit: any;
 }
 
 const textMap = {
@@ -23,91 +15,41 @@ const textMap = {
   accounts: '회원정보'
 };
 
-function AuthForm({ data, type }: Props) {
+function AuthForm({ type, form, onChange, onSubmit }: Props) {
   const text = textMap[type];
-  const isUpdate = !!data;
-  const router = useRouter();
-  const {
-    register,
-    handleSubmit,
-    setValue,
-    formState: { errors }
-  } = useForm<CreateProps>(data ? {
-      defaultValues: {
-        firstName: '',
-        lastName: '',
-        password: '',
-        passwordConfirm: ''
-      }
-    } : {
-      defaultValues: {
-        firstName: data?.firstName,
-        lastName: data?.lastName,
-        password: data?.password,
-        passwordConfirm: data?.password
-      }
-    }
-  );
-
-
-  const sessionStorage = window.sessionStorage;
-
-  const onSubmit = (data: CreateProps) => {
-    alert(JSON.stringify(data));
-
-    sessionStorage.setItem('firstName', data.firstName);
-    sessionStorage.setItem('lastName', data.lastName);
-    sessionStorage.setItem('password', data.password);
-
-    router.push('/');
-  };
-
-  useEffect(() => {
-    const firstName = data?.getItem('firstName');
-    const lastName = data?.getItem('lastName');
-    const password = data?.getItem('password');
-
-    setValue('firstName', firstName);
-    setValue('lastName', lastName);
-    setValue('password', password);
-  }, [data]);
-
 
   return (
     <AuthFormBlock>
       <h3>{text}</h3>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <label>First Name</label>
+      <form onSubmit={onSubmit}>
+        <label>User Name</label>
         <StyledInput
-          {...register('firstName', {
-            required: true,
-            maxLength: 20,
-            pattern: /^[A-Za-z]+$/i
-          })}
+          name='username'
+          value={form.username}
+          onChange={onChange}
         />
-        {errors.firstName && <p>This field is required, string</p>}
-
-        <label>Last Name</label>
-        <StyledInput {...register('lastName', {
-          required: true,
-          maxLength: 20,
-          pattern: /^[A-Za-z]+$/i
-        })} />
-        {errors.lastName && <p>This field is required, string</p>}
 
         <label>Password</label>
-        <StyledInput {...register('password', { required: true })} />
-        {errors.password && <p>This field is required</p>}
+        <StyledInput
+          type='password'
+          name='password'
+          value={form.password}
+          onChange={onChange}
+        />
 
         {type === 'register' && (
           <>
             <label>Password Check</label>
-            <StyledInput {...register('passwordConfirm', { required: true })} />
-            {errors.passwordConfirm && <p>This field is required</p>}
+            <StyledInput
+              type='password'
+              name='passwordConfirm'
+              value={form.passwordConfirm}
+              onChange={onChange}
+            />
           </>
         )}
 
-        <Button fullWidth cyan type='submit' label={isUpdate ? '저장' : `${text}`} />
+        <Button fullWidth cyan type='submit' label={text} />
       </form>
 
       <Footer>
