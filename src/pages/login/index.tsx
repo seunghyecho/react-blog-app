@@ -1,11 +1,11 @@
-import { Position } from "@/components/common/Form/Login.styled";
-import FormLogin from "@/components/common/Form/Login";
+import AuthForm from "@/components/auth/AuthForm";
+import AuthTemplate from '@/components/auth/AuthTemplate';
 
 function Login() {
   return (
-    <Position>
-      <FormLogin />
-    </Position>
+    <AuthTemplate>
+      <AuthForm type='login'/>
+    </AuthTemplate>
   );
 }
 

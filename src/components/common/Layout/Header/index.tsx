@@ -69,7 +69,7 @@ function Header() {
 
           {getSessionStorage.length !== 0 && (
             <li>
-              <Link href='/accounts'>
+              <Link href='/register'>
                 <a>
                   <BiUser size={24} />
                 </a>

@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import { useRouter } from 'next/router';
 import AuthTemplate from '@/components/auth/AuthTemplate';
 
-function Accounts() {
+function Register() {
   const router = useRouter();
   const getSessionStorage = window.sessionStorage;
 
@@ -17,9 +17,9 @@ function Accounts() {
 
   return (
     <AuthTemplate>
-      {getSessionStorage && <AuthForm data={getSessionStorage} type='accounts'/>}
+      {getSessionStorage && <AuthForm data={getSessionStorage} type='register'/>}
     </AuthTemplate>
   );
 }
 
-export default Accounts;
+export default Register;
