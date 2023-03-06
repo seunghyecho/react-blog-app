@@ -1,6 +1,6 @@
-import { AuthFormBlock, Footer, StyledInput } from '@/components/auth/AuthForm.styled';
 import Link from 'next/link';
 import Button from '@/components/common/Button';
+import { AuthFormBlock, Footer, StyledInput } from '@/components/auth/AuthForm.styled';
 
 interface Props {
   type: string;
@@ -25,16 +25,18 @@ function AuthForm({ type, form, onChange, onSubmit }: Props) {
         <label>User Name</label>
         <StyledInput
           name='username'
-          value={form.username}
+          placeholder="아이디"
           onChange={onChange}
+          value={form.username}
         />
 
         <label>Password</label>
         <StyledInput
           type='password'
           name='password'
-          value={form.password}
+          placeholder="비밀번호"
           onChange={onChange}
+          value={form.password}
         />
 
         {type === 'register' && (
@@ -43,8 +45,9 @@ function AuthForm({ type, form, onChange, onSubmit }: Props) {
             <StyledInput
               type='password'
               name='passwordConfirm'
-              value={form.passwordConfirm}
+              placeholder="비밀번호 확인"
               onChange={onChange}
+              value={form.passwordConfirm}
             />
           </>
         )}

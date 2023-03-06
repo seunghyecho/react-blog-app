@@ -1,7 +1,7 @@
-import { changeField, initializeForm } from '@/modules/auth';
+import React,{ useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useEffect } from 'react';
 import AuthForm from '@/components/auth/AuthForm';
+import { changeField, initializeForm } from '@/modules/auth';
 
 const LoginForm = () => {
   const dispatch = useDispatch();
@@ -11,7 +11,6 @@ const LoginForm = () => {
 
   const onChange = e => {
     const { value, name } = e.target;
-    console.log(value, name)
     dispatch(changeField({
       form: 'login',
       key: name,
@@ -23,6 +22,7 @@ const LoginForm = () => {
     e.preventDefault();
   };
 
+  // 컴포넌트 처음 렌더링 시 form 초기화
   useEffect(() => {
     dispatch(initializeForm('login'));
   }, [dispatch]);

@@ -1,19 +1,31 @@
 import React, { useState, useEffect } from 'react';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import { Provider as ReduxProvider } from 'react-redux';
-import { legacy_createStore as createStore  } from 'redux';
+import { Provider } from 'react-redux';
+import { legacy_createStore as createStore, applyMiddleware } from 'redux';
+import { composeWithDevTools } from 'redux-devtools-extension';
+import createSagaMiddleware from '@redux-saga/core';
+import rootReducer, { rootSaga } from '@/modules';
+
 import { ThemeProvider } from 'styled-components';
 import { GlobalStyle } from '@/lib/styles/globals';
 import { sizes } from '@/lib/styles/theme';
-import { composeWithDevTools } from 'redux-devtools-extension';
-import rootReducer from '@/modules';
 
 import Header from '@/components/common/Layout/Header';
 
 function MyApp({ Component, pageProps }) {
   const [showChild, setShowChild] = useState(false);
 
-  const reduxCreateStore = createStore(rootReducer, composeWithDevTools())
+  /**
+   * redux-saga middleware 적용
+   */
+  const sagaMiddleware = createSagaMiddleware();
+  const store = createStore(
+    rootReducer,
+    composeWithDevTools(applyMiddleware(sagaMiddleware))
+  );
+
+  sagaMiddleware.run(rootSaga);
+
   useEffect(() => {
     setShowChild(true);
   }, []);
@@ -26,7 +38,7 @@ function MyApp({ Component, pageProps }) {
   }
 
   return (
-    <ReduxProvider store={reduxCreateStore}>
+    <Provider store={store}>
       <QueryClientProvider client={queryClient}>
         <ThemeProvider theme={sizes}>
           <GlobalStyle />
@@ -34,7 +46,7 @@ function MyApp({ Component, pageProps }) {
           <Component {...pageProps} />
         </ThemeProvider>
       </QueryClientProvider>
-    </ReduxProvider>
+    </Provider>
   );
 }
 
