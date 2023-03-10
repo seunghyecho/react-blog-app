@@ -87,7 +87,13 @@ const Footer = styled.div`
       color: ${palette.gray[9]};
     }
   }
-
 `;
 
-export { AuthFormBlock, StyledInput, Footer };
+const ErrorMessage = styled.div`
+  color: palevioletred;
+  text-align: center;
+  font-size: 0.875rem;
+  margin-top: 1rem;
+`;
+
+export { AuthFormBlock, StyledInput, Footer,ErrorMessage };

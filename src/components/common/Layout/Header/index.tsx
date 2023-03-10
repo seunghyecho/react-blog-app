@@ -14,8 +14,6 @@ function Header() {
   useEffect(() => {
     if (getSessionStorage.length > 1) {
       setUser({ lastName: getSessionStorage.getItem('lastName') });
-    } else {
-      router.push('/login');
     }
   }, [getSessionStorage, router]);
 

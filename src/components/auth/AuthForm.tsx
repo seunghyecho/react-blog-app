@@ -1,12 +1,14 @@
+import React from 'react';
 import Link from 'next/link';
 import Button from '@/components/common/Button';
-import { AuthFormBlock, Footer, StyledInput } from '@/components/auth/AuthForm.styled';
+import { AuthFormBlock, Footer, StyledInput, ErrorMessage } from '@/components/auth/AuthForm.styled';
 
 interface Props {
   type: string;
   form: any;
-  onChange: any;
-  onSubmit: any;
+  onChange: React.ChangeEventHandler;
+  onSubmit: React.EventHandler<any>;
+  error: string;
 }
 
 const textMap = {
@@ -15,7 +17,7 @@ const textMap = {
   accounts: '회원정보'
 };
 
-function AuthForm({ type, form, onChange, onSubmit }: Props) {
+function AuthForm({ type, form, onChange, onSubmit, error }: Props) {
   const text = textMap[type];
 
   return (
@@ -25,7 +27,7 @@ function AuthForm({ type, form, onChange, onSubmit }: Props) {
         <label>User Name</label>
         <StyledInput
           name='username'
-          placeholder="아이디"
+          placeholder='아이디'
           onChange={onChange}
           value={form.username}
         />
@@ -34,7 +36,7 @@ function AuthForm({ type, form, onChange, onSubmit }: Props) {
         <StyledInput
           type='password'
           name='password'
-          placeholder="비밀번호"
+          placeholder='비밀번호'
           onChange={onChange}
           value={form.password}
         />
@@ -45,13 +47,16 @@ function AuthForm({ type, form, onChange, onSubmit }: Props) {
             <StyledInput
               type='password'
               name='passwordConfirm'
-              placeholder="비밀번호 확인"
+              placeholder='비밀번호 확인'
               onChange={onChange}
               value={form.passwordConfirm}
             />
           </>
         )}
 
+        {error && (
+          <ErrorMessage>{error}</ErrorMessage>
+        )}
         <Button fullWidth cyan type='submit' label={text} />
       </form>
 

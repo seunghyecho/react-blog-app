@@ -10,4 +10,4 @@ export const register = ({ username, password }) => client.post('/api/auth/regis
   password
 });
 
-export const check = () => client.get('api/auth/check');
+export const check = () => client.get('/api/auth/check');

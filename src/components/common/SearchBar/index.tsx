@@ -1,4 +1,3 @@
-import { BiSearchAlt } from "react-icons/bi";
 import Layout from "@/components/common/SearchBar/SearchBar.styled";
 
 interface Props {
@@ -9,7 +8,6 @@ interface Props {
 function SearchBar({ query, onChange }: Props) {
   return (
     <Layout>
-      <BiSearchAlt size={24} />
       <input
         type="text"
         name="search"
