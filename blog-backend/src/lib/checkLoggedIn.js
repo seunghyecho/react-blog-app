@@ -1,7 +1,6 @@
-// checkLoggedIn 미들웨어
 const checkLoggedIn = (ctx, next) => {
   if (!ctx.state.user) {
-    ctx.status = 401;
+    ctx.status = 401; // Unauthorized
     return;
   }
   return next();
