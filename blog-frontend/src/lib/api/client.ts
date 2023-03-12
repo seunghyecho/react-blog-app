@@ -1,23 +1,6 @@
 import axios from 'axios';
-import { getCookie } from 'cookies-next';
+const client = axios.create();
 
-const token = getCookie('token');
-const baseURL = process.env.APP_USER_API_URL;
-
-const client = axios.create({
-  baseURL
-});
-
-client.defaults.baseURL = baseURL;
-client.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-axios.interceptors.response.use(
-  response => {
-    return response;
-  },
-  error => {
-    return Promise.reject(error);
-  }
-);
 
 /*
   글로벌 설정 예시:

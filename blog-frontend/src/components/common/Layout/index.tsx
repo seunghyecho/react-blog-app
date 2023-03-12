@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { media } from '../../../lib/styles/theme';
+import HeaderContainer from '../../../containers/common/HeaderContainer';
 
 interface Props {
   children?: React.ReactNode;
@@ -22,6 +23,7 @@ const Layout = styled.div`
 function Index({ children }: Props) {
   return (
     <Layout>
+
       {children}
     </Layout>
   );

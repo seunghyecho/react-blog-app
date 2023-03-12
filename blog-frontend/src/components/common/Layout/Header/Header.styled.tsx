@@ -1,28 +1,16 @@
 import styled from 'styled-components';
-import { media } from '../../../../lib/styles/theme';
-
-const Layout = styled.header`
-  width: 100%;
-  border-bottom: 1px solid #efefef;
-`;
+import Responsive from '../../Responsive';
 
 const Position = styled.div`
+  position: fixed;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 15px;
-  margin: 0 auto;
-  width: 1024px;
-  height: 100px;
-  box-sizing: border-box;
-
-  ${media('desktop')`
-    width:768px;
-  `};
-
-  ${media('tablet')`
-    width:100%;
-  `};
+  width: 100%;
+  height: 6rem;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.08);
+  background-color: #ffffff;
+  z-index: 999;
 `;
 
 const Title = styled.h1`
@@ -43,4 +31,28 @@ const Utils = styled.ul`
   }
 `;
 
-export { Layout, Position, Title, Utils };
+const Wrapper = styled(Responsive)`
+  height: 6rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  .logo {
+    font-size: 1.128rem;
+    font-weight: 800;
+    letter-spacing: 2px;
+
+  }
+
+  .right {
+    display: flex;
+    align-items: center;
+  }
+`;
+
+const Spacer = styled.div`
+  height: 6rem;
+`;
+
+
+export { Position, Title, Utils, Wrapper, Spacer };

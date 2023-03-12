@@ -40,7 +40,8 @@ const RegisterForm = () => {
       dispatch(changeField({ form: 'register', key: 'passwordConfirm', value: '' }));
       return;
     }
-    console.log(dispatch(register({ username, password })))
+    console.log(register({ username, password }), '------------');
+
     dispatch(register({ username, password }));
   };
 
@@ -52,6 +53,7 @@ const RegisterForm = () => {
   // 회원가입 성공, 실패 처리
   useEffect(() => {
     if (authError) {
+      console.log('오류 발생');
       // 계정이 이미 존재할 경우
       if (authError.response.status === 409) {
         setError('이미 존재하는 계정입니다.');
@@ -70,10 +72,17 @@ const RegisterForm = () => {
   }, [auth, authError, dispatch]);
 
   useEffect(() => {
+    console.log(user, '===============');
+
     if (user) {
       console.log('check API 성공');
       console.log(user);
       router.push('/');
+      try {
+        localStorage.setItem('user', JSON.stringify(user));
+      } catch (e) {
+        console.log('localStorage is not working');
+      }
     }
   }, [user]);
 

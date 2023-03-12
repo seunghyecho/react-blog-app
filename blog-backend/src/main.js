@@ -10,14 +10,13 @@ import jwtMiddleware from './lib/jwtMiddleware';
 // 비구조화 할당을 통하여 process.env 내부 값에 대한 레퍼런스 만들기
 const { PORT, MONGO_URI } = process.env;
 
-mongoose
-  .connect(MONGO_URI, { useNewUrlParser: true })
-  .then(() => {
+mongoose.connect(MONGO_URI, { useNewUrlParser: true }, () => {
+  try {
     console.log('Connected to MongoDB');
-  })
-  .catch(e => {
+  } catch (e) {
     console.error(e);
-  });
+  }
+});
 
 const app = new Koa();
 const router = new Router();

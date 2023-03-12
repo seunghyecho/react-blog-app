@@ -12,7 +12,7 @@ function NewsItem({ data }: Props) {
     <Layout key={url}>
       <Link href={url}>
         <Thumbnail target='_blank'>
-          <img src={urlToImage && urlToImage} alt='thumbnail' />
+          <img src={urlToImage} alt='thumbnail' />
         </Thumbnail>
       </Link>
       <Content>
