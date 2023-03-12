@@ -3,7 +3,7 @@ import { BiEditAlt, BiSearchAlt, BiUser } from 'react-icons/Bi';
 import { Position, Wrapper, Spacer, Title, Utils } from './Header.styled';
 import Button from '../../Button';
 
-function Header({ user }) {
+function Header({ user ,onLogout}) {
   return (
     <>
       <Position>
@@ -15,7 +15,7 @@ function Header({ user }) {
                   <strong>{user.username}</strong>Blog
                 </a>
               </Link>
-              <Button label='로그아웃' />
+              <Button label='로그아웃' onClick={onLogout}/>
             </Title>
           ) : (
             <Title>

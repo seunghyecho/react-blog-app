@@ -1,33 +1,33 @@
-const path = require;
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-
   reactStrictMode: true,
-  images: {
-    domains: ['yonhapnewstv-prod.s3.ap-northeast-2.amazonaws.com'],
-  },
   compiler: {
-    styledComponents: true,
+    styledComponents: true
   },
-  webpack: (config) => {
-    config.resolve.alias["@"] = path.join(__dirname, "src");
-    return config;
-  },
-  distDir: "build",
+  distDir: 'build',
   eslint: {
-    ignoreDuringBuilds: true,
+    ignoreDuringBuilds: true
   },
   typescript: {
-    ignoreBuildErrors: true,
+    ignoreBuildErrors: true
   },
-  sassOptions: {
-    includePaths: [path.appSrc + "/styles/lib"],
-  },
+
   additionalData: `@import 'utils';`,
   sideEffects: true,
   env: {
-    NEXT_PUBLIC_API_KEY: process.env.NEXT_PUBLIC_API_KEY,
-  },
+    NEXT_PUBLIC_API_KEY: process.env.NEXT_PUBLIC_API_KEY
+  }
 };
 
-module.exports = { nextConfig };
+/** TODO proxy 설정 */
+const rewrites = () => {
+  return [
+    {
+      source: '/:path*',
+      destination: `http://localhost:4000/:path*`
+    }
+  ];
+};
+
+
+module.exports = { nextConfig, rewrites };

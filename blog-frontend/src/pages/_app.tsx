@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { Provider } from 'react-redux';
 import { legacy_createStore as createStore, applyMiddleware } from 'redux';
@@ -12,6 +12,10 @@ import HeaderContainer from '../containers/common/HeaderContainer';
 import { tempSetUser, check } from '../modules/user';
 
 function MyApp({ Component, pageProps }) {
+  /**
+   * TODO react-hydration-error
+   */
+  const [showChild, setShowChild] = useState(false);
   const sagaMiddleware = createSagaMiddleware();
   const store = createStore(
     rootReducer,
@@ -33,6 +37,18 @@ function MyApp({ Component, pageProps }) {
   sagaMiddleware.run(rootSaga);
   loadUser();
 
+  useEffect(() => {
+    setShowChild(true);
+  }, []);
+
+  if (!showChild) {
+    return null;
+  }
+
+  if (typeof window === 'undefined') {
+    return <></>;
+  }
+
   return (
     <Provider store={store}>
       <QueryClientProvider client={queryClient}>
@@ -51,7 +67,8 @@ export default MyApp;
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
-      retry: false
+      retry: false,
+      refetchOnWindowFocus: false
     }
   }
 });
