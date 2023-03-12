@@ -14,9 +14,8 @@ const Position = styled.div`
 `;
 
 const Title = styled.h1`
-  strong {
-    text-transform: uppercase;
-  }
+  font-weight: 600;
+  text-transform: uppercase;
 `;
 
 const Utils = styled.ul`

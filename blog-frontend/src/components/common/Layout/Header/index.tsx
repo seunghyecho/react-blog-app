@@ -1,31 +1,23 @@
 import Link from 'next/link';
 import { BiEditAlt, BiSearchAlt, BiUser } from 'react-icons/Bi';
 import { Position, Wrapper, Spacer, Title, Utils } from './Header.styled';
-import Button from '../../Button';
 
-function Header({ user ,onLogout}) {
+function Header({ user }) {
   return (
     <>
       <Position>
         <Wrapper>
-          {user ? (
-            <Title>
-              <Link href='/'>
-                <a>
-                  <strong>{user.username}</strong>Blog
-                </a>
-              </Link>
-              <Button label='로그아웃' onClick={onLogout}/>
-            </Title>
-          ) : (
-            <Title>
-              <Link href='/login'>
-                <a>
-                  <strong>로그인 해주세요.</strong>
-                </a>
-              </Link>
-            </Title>
-          )}
+          <Title>
+            <Link href={user ? '/' : '/login'}>
+              <a>
+                {user ? (
+                  <h1>{user.username} Blog</h1>
+                ) : (
+                  <h1>로그인 해주세요.</h1>
+                )}
+              </a>
+            </Link>
+          </Title>
 
           <Utils>
             <li>
@@ -43,7 +35,7 @@ function Header({ user ,onLogout}) {
               </Link>
             </li>
             <li>
-              <Link href={user ? '/login' : '/register'}>
+              <Link href={user ? '/accounts' : '/register'}>
                 <a>
                   <BiUser size={24} />
                 </a>

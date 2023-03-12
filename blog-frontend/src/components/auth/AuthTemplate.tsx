@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import palette from '../../lib/styles/palette';
 import Link from 'next/link';
+import palette from '../../lib/styles/palette';
 
 const AuthTemplateBlock = styled.div`
   position: absolute;
@@ -12,32 +12,32 @@ const AuthTemplateBlock = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  //width: 100%;
-  //height: 100%;
-  background: ${palette.gray[2]};
+  background-color: ${palette.gray[2]};
 `;
 
 const WhiteBox = styled.div`
   .logo-area {
-    display: block;
     padding-bottom: 2rem;
-    text-align: center;
+    display: block;
     font-weight: 600;
-    letter-spacing: 2px;
+    letter-spacing: 0.2rem;
   }
 
-  box-shadow: 0 0 8px rgba(0, 0, 0, 0.025);
   padding: 2rem;
-  width: 360px;
-  background: white;
-  border-radius: 2px;
+  width: 50%;
+  border-radius: 3px;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.025);
+  background-color: ${palette.gray[0]};
+  text-align: center;
 `;
+
+
 const AuthTemplate = ({ children }) => {
   return (
     <AuthTemplateBlock>
       <WhiteBox>
         <div className='logo-area'>
-          <Link href='/blog-frontend/src/pages'>
+          <Link href='/'>
             <a>BLOG</a>
           </Link>
         </div>
