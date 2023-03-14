@@ -36,10 +36,15 @@ function Main() {
       setCategory(category)
     , [category]);
 
+  /**
+   * TODO tab 개선 필요
+   */
+
   const tabArr = [
     {
       tab: (
         <li
+          key='0'
           className={activeIndex === 0 ? 'active' : ''}
           onClick={() => setActiveIndex(0)}
         >
@@ -51,6 +56,7 @@ function Main() {
     {
       tab: (
         <li
+          key='1'
           className={activeIndex === 1 ? 'active' : ''}
           onClick={() => setActiveIndex(1)}
         >
@@ -62,6 +68,7 @@ function Main() {
     {
       tab: (
         <li
+          key='2'
           className={activeIndex === 2 ? 'active' : ''}
           onClick={() => setActiveIndex(2)}
         >
