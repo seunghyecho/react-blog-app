@@ -1,10 +1,9 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 const FormGroup = styled.div`
-  padding: 15px 0;
+  margin: 15px 0;
   display: flex;
   flex-direction: column;
-  border-bottom: 1px solid #efefef;
 
   h1 {
     color: #619ffb;
@@ -36,19 +35,6 @@ const FormGroup = styled.div`
     }
   }
 
-  textarea {
-    padding: 0;
-    width: 100%;
-    box-sizing: border-box;
-    outline: none;
-    border: none;
-    border-radius: 4px;
-
-    &:focus,
-    &:active {
-      border-bottom: 2px solid #619ffb;
-    }
-  }
 `;
 
 const FormLabel = styled.label`
@@ -57,9 +43,6 @@ const FormLabel = styled.label`
   color: #c1c1c1;
   white-space: nowrap;
 
-  & + * {
-    padding-left: 20px;
-  }
 `;
 
 const FormButtonWrap = styled.div`
