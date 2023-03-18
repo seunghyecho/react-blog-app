@@ -12,13 +12,12 @@ interface ButtonProp {
 }
 
 const StyledButton = styled.button<{ fullWidth?: boolean; cyan?: boolean; }>`
-  margin: 1rem 0;
-  padding: 0.75rem 0;
+  padding: 0.75rem;
   border-radius: 3px;
   border: 1px solid ${palette.gray[0]};;
   color: ${palette.gray[0]};
   font-size: 1.125rem;
-
+  box-sizing: border-box;
   background: ${palette.gray[8]};
 
   &:hover {

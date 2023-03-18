@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import Button from '../common/Button';
 import {
   FormGroup,
   FormLabel,
-  FormButtonWrap
+  FormButtonWrap,
+  FormButton
 } from './Form.styled';
 import { useRouter } from 'next/router';
 import {
@@ -46,13 +46,13 @@ function Form({ data, formMutation }: Props) {
     router.push(`/posts/${id}`);
   };
 
-  const handleDelete = () => {
+  const onCancel = () => {
     if (deleteMutation.isLoading) return;
     const check = window.confirm('삭제하시겠습니까?');
     if (check) deleteMutation.mutate();
   };
 
-  const handleCreate = () => {
+  const onPublish = () => {
     const params = {
       title,
       body,
@@ -71,7 +71,7 @@ function Form({ data, formMutation }: Props) {
   };
 
   return (
-    <form onSubmit={handleCreate}>
+    <form onSubmit={onPublish}>
       <FormGroup>
         <FormLabel htmlFor='post-title'>제목</FormLabel>
         <input
@@ -95,15 +95,15 @@ function Form({ data, formMutation }: Props) {
       {/* 게시글 하단 버튼 */}
       {!isUpdate && (
         <FormButtonWrap>
-          <Button type='button' label='목록' onClick={handleGoList} />
-          <Button type='button' label='등록' onClick={handleCreate} />
+          <FormButton type='button' label='목록' onClick={handleGoList} />
+          <FormButton type='button' label='게시물 등록' onClick={onPublish} cyan={true} />
         </FormButtonWrap>
       )}
 
       {isUpdate && (
         <FormButtonWrap>
-          <Button type='submit' label='수정' onClick={handleGoEdit} />
-          <Button type='button' label='삭제' onClick={handleDelete} />
+          <FormButton type='submit' label='수정' onClick={handleGoEdit} />
+          <FormButton type='button' label='삭제' onClick={onCancel} />
         </FormButtonWrap>
       )}
     </form>

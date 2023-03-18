@@ -1,8 +1,7 @@
 import styled from 'styled-components';
-import Responsive from '../common/Responsive';
 import palette from '../../lib/styles/palette';
 
-const TagBoxBlock = styled(Responsive)`
+const TagBoxBlock = styled.div`
   width: 100%;
   border-top: 1px solid ${palette.gray[2]};
   padding-top: 2rem;
@@ -40,6 +39,7 @@ const TagForm = styled.form`
     background-color: ${palette.gray[8]};
     color: ${palette.gray[0]};
     font-weight: 600;
+    border-radius: 0;
 
     &:hover {
       background-color: ${palette.gray[6]};

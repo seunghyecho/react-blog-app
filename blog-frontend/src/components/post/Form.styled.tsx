@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import Button from '../common/Button';
 
 const FormGroup = styled.div`
   margin: 15px 0;
@@ -46,10 +47,13 @@ const FormLabel = styled.label`
 `;
 
 const FormButtonWrap = styled.div`
-  padding: 15px 0;
   display: flex;
   justify-content: space-between;
+  margin-top: 1rem;
+  margin-bottom: 3rem;
 `;
+
+const FormButton = styled(Button)``;
 
 const FormContent = styled.div`
   padding: 10px;
@@ -65,4 +69,4 @@ const FormContent = styled.div`
   }
 `;
 
-export { FormGroup, FormLabel, FormButtonWrap, FormContent };
+export { FormGroup, FormLabel, FormButtonWrap,FormButton, FormContent };
