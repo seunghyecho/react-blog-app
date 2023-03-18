@@ -8,23 +8,20 @@ import {
 import { useRouter } from 'next/router';
 import {
   useMutation,
-  UseMutationResult,
   useQueryClient
 } from '@tanstack/react-query';
 import { fetchDeletePosts } from '../../lib/api/posts';
-import TagBox from '../write/TagBox';
 import EditorContainer from '../../containers/write/EditorContainer';
 import TagBoxContainer from '../../containers/write/TagBoxContainer';
+import ActionButtonsContainer from '../../containers/write/ActionButtonsContainer';
 
 interface Props {
   data?: any;
-  formMutation: UseMutationResult<any, unknown, any, unknown>;
 }
 
-function Form({ data, formMutation }: Props) {
+function Form({ data }: Props) {
   const router = useRouter();
   const { id } = router.query;
-  const queryClient = useQueryClient();
   const isUpdate = !!data;
 
   const [title] = useState('');
@@ -59,16 +56,7 @@ function Form({ data, formMutation }: Props) {
       body,
       userId: 1
     };
-    formMutation.mutate(params, {
-      onSuccess: ({ message }) => {
-        alert(message);
-        queryClient.invalidateQueries(['posts']);
-        router.push('/');
-      },
-      onError: () => {
-        alert('오류');
-      }
-    });
+   console.log(params)
   };
 
   return (
@@ -77,6 +65,7 @@ function Form({ data, formMutation }: Props) {
         <EditorContainer />
         <TagBoxContainer />
       </FormGroup>
+      <ActionButtonsContainer/>
 
       {/* 게시글 하단 버튼 */}
       {!isUpdate && (

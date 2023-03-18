@@ -34,7 +34,7 @@ function Detail() {
   return (
     <Index>
       {!isLoading && (
-        <Form data={data?.data || ""} formMutation={updateMutation} />
+        <Form data={data?.data} />
       )}
     </Index>
   );
