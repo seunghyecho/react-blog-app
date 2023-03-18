@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { TagBoxBlock, TagForm, Tag, TagListBlock } from './TagBox.styled';
 
 /**
@@ -22,7 +22,7 @@ const TagList = React.memo(({ tags, onRemove }: { tags: Array<string>; onRemove:
   );
 });
 
-function TagBox() {
+function TagBox({ tags, onChangeTags }) {
   const [input, setInput] = useState('');
   const [localTags, setLocalTags] = useState([]);
 
@@ -30,14 +30,18 @@ function TagBox() {
     tag => {
       if (!tag) return;
       if (localTags.includes(tag)) return;
-      setLocalTags([...localTags, tag]);
-    }, [localTags]
+      const nextTags = [...localTags, tag];
+      setLocalTags(nextTags);
+      onChangeTags(nextTags);
+    }, [localTags, onChangeTags]
   );
 
   const onRemove = useCallback(
     tag => {
-      setLocalTags(localTags.filter(t => t !== tag));
-    }, [localTags]
+      const nextTags = localTags.filter(t => t !== tag);
+      setLocalTags(nextTags);
+      onChangeTags(nextTags);
+    }, [localTags, onChangeTags]
   );
 
   const onChange = useCallback(e => {
@@ -51,6 +55,10 @@ function TagBox() {
       setInput('');
     }, [input, insertTags]
   );
+
+  useEffect(() => {
+    setLocalTags(tags);
+  }, [tags]);
 
   return (
     <TagBoxBlock>

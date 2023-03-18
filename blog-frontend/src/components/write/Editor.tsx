@@ -6,7 +6,7 @@ import dynamic from 'next/dynamic';
 
 const ReactQuill = dynamic(() => import('react-quill'), {
   ssr: false,
-  loading: () => <p>Loading ...</p>,
+  loading: () => <p>Loading ...</p>
 });
 
 const EditorBlock = styled(Responsive)`
@@ -25,9 +25,7 @@ const QuillWrapper = styled.div`
   }
 `;
 
-function Editor() {
-  const [value, setValue] = useState({});
-
+function Editor({ title, body, onChangeField }) {
   const modules = {
     toolbar: {
       container: [
@@ -60,17 +58,29 @@ function Editor() {
   ];
 
   const onChange = (event) => {
-    setValue({ ...value, content: event });
+    onChangeField({ key: 'body', value: event });
+  };
+  const onChangeTitle = (event) => {
+    onChangeField({ key: 'title', value: event.currentTarget.value });
   };
 
   return (
     <EditorBlock>
       <QuillWrapper>
+        <input
+          type='text'
+          name='post-title'
+          id='post-title'
+          value={title}
+          onChange={onChangeTitle}
+          placeholder='제목을 입력해주세요.'
+        />
         <ReactQuill
           theme='snow'
           onChange={onChange}
           modules={modules}
-          formats={formats} />
+          formats={formats}
+        />
       </QuillWrapper>
     </EditorBlock>
   );

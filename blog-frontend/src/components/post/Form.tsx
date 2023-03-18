@@ -12,8 +12,9 @@ import {
   useQueryClient
 } from '@tanstack/react-query';
 import { fetchDeletePosts } from '../../lib/api/posts';
-import Editor from '../write/Editor';
 import TagBox from '../write/TagBox';
+import EditorContainer from '../../containers/write/EditorContainer';
+import TagBoxContainer from '../../containers/write/TagBoxContainer';
 
 interface Props {
   data?: any;
@@ -26,8 +27,8 @@ function Form({ data, formMutation }: Props) {
   const queryClient = useQueryClient();
   const isUpdate = !!data;
 
-  const [title, setTitle] = useState('');
-  const [body, setBody] = useState('');
+  const [title] = useState('');
+  const [body] = useState('');
 
   const deleteMutation = useMutation(() => fetchDeletePosts(id), {
     onSuccess: (data) => {
@@ -73,23 +74,8 @@ function Form({ data, formMutation }: Props) {
   return (
     <form onSubmit={onPublish}>
       <FormGroup>
-        <FormLabel htmlFor='post-title'>제목</FormLabel>
-        <input
-          type='text'
-          name='post-title'
-          id='post-title'
-          value={isUpdate ? data.title : title}
-          onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-            setTitle(e.currentTarget.value)
-          }
-          placeholder='제목을 입력해주세요.'
-        />
-      </FormGroup>
-
-      <FormGroup>
-        <FormLabel htmlFor='post-body'>내용</FormLabel>
-        <Editor />
-        <TagBox />
+        <EditorContainer />
+        <TagBoxContainer />
       </FormGroup>
 
       {/* 게시글 하단 버튼 */}
