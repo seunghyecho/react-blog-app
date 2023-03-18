@@ -1,74 +1,22 @@
 import React, { useCallback, useState } from 'react';
-import styled from 'styled-components';
-import Responsive from '../common/Responsive';
-import palette from '../../lib/styles/palette';
+import { TagBoxBlock, TagForm, Tag, TagListBlock } from './TagBox.styled';
 
-const TagBoxBlock = styled(Responsive)`
-  width: 100%;
-  border-top: 1px solid ${palette.gray[2]};
-  padding-top: 2rem;
-
-  h4 {
-    color: ${palette.gray[8]};
-    margin-top: 0;
-    margin-bottom: 0.5rem;
+/**
+ * TODO React.memo -> useMemo
+ */
+const TagItem = React.memo(({ tag, onRemove }: { tag: string; onRemove: any; }) => {
+    console.log(tag);
+    return (
+      <Tag onClick={() => onRemove(tag)}>#{tag}</Tag>
+    );
   }
-`;
-const TagForm = styled.form`
-  border-radius: 6px;
-  overflow: hidden;
-  display: flex;
-  width: 256px;
-  border: 1px solid ${palette.gray[9]};
+);
 
-  input, button {
-    ouline: none;
-    border: none;
-    font-size: 1rem;
-  }
-
-  input {
-    padding: 0.5rem;
-    flex: 1;
-    min-width: 0;
-  }
-
-  button {
-    width: auto;
-    padding-right: 1rem;
-    padding-left: 1rem;
-    border: none;
-    background-color: ${palette.gray[8]};
-    color: ${palette.gray[0]};
-    font-weight: 600;
-
-    &:hover {
-      background-color: ${palette.gray[6]};
-    }
-  }
-`;
-
-const Tag = styled.div`
-  margin-right: 0.5rem;
-  color: ${palette.gray[6]};
-
-  &:hover {
-    opacity: 0.5;
-  }
-`;
-
-const TagListBlock = styled.div`
-  display: flex;
-  margin-top: 0.5rem;
-`;
-
-const TagItem = React.memo(({ tag, onRemove }: { tag: string; onRemove: any; }) => <Tag
-  onClick={() => onRemove(tag)}>#{tag}</Tag>);
 const TagList = React.memo(({ tags, onRemove }: { tags: Array<string>; onRemove: any; }) => {
   return (
     <TagListBlock>
       {tags.map((tag) => (
-        <TagItem tag={tag} onRemove={onRemove} />
+        <TagItem key={tag} tag={tag} onRemove={onRemove} />
       ))}
     </TagListBlock>
   );
@@ -78,7 +26,7 @@ function TagBox() {
   const [input, setInput] = useState('');
   const [localTags, setLocalTags] = useState([]);
 
-  const onCreate = useCallback(
+  const insertTags = useCallback(
     tag => {
       if (!tag) return;
       if (localTags.includes(tag)) return;
@@ -98,23 +46,23 @@ function TagBox() {
 
   const onSubmit = useCallback(
     e => {
-      e.stopPropagation();
-      onCreate(input);
+      e.preventDefault();
+      insertTags(input.trim());
       setInput('');
-    }, [input, onCreate]
+    }, [input, insertTags]
   );
 
   return (
     <TagBoxBlock>
       <h4>TAG</h4>
-      <TagForm onSubmit={onSubmit}>
+      <TagForm>
         <input
           type='text'
           placeholder='태그를 입력하세요'
           defaultValue={input}
           onChange={onChange}
         />
-        <button type='submit'>추가</button>
+        <button type='submit' onClick={onSubmit}>추가</button>
       </TagForm>
       <TagList tags={localTags} onRemove={onRemove} />
     </TagBoxBlock>
