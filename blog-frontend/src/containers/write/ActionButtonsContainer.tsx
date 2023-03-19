@@ -23,18 +23,18 @@ const ActionButtonsContainer = () => {
         tags
       }));
   };
+
   const onCancel = () => {
     router.back();
   };
 
   useEffect(() => {
-    console.log(post)
     if (post) {
       const { _id, user } = post;
       router.push(`/@${user.username}/${_id}`);
     }
     if (postError) {
-      console.log("postError",postError);
+      console.log('postError', postError);
     }
   }, [router, post, postError]);
 

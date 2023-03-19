@@ -2,14 +2,6 @@ import styled from 'styled-components';
 import Button from '../common/Button';
 
 const FormGroup = styled.div`
-  margin: 15px 0;
-  display: flex;
-  flex-direction: column;
-
-  h1 {
-    color: #619ffb;
-  }
-
   button {
     width: 100%;
     height: 35px;
@@ -69,4 +61,4 @@ const FormContent = styled.div`
   }
 `;
 
-export { FormGroup, FormLabel, FormButtonWrap,FormButton, FormContent };
+export { FormGroup, FormLabel, FormButtonWrap, FormButton, FormContent };
