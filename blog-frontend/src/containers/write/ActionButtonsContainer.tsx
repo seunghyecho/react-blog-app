@@ -31,7 +31,7 @@ const ActionButtonsContainer = () => {
   useEffect(() => {
     if (post) {
       const { _id, user } = post;
-      router.push(`/@${user.username}/${_id}`);
+      router.push(`/post/@${user.username}/${_id}`);
     }
     if (postError) {
       console.log('postError', postError);

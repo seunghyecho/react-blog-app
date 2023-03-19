@@ -5,7 +5,6 @@ import { TagBoxBlock, TagForm, Tag, TagListBlock } from './TagBox.styled';
  * TODO React.memo -> useMemo
  */
 const TagItem = React.memo(({ tag, onRemove }: { tag: string; onRemove: any; }) => {
-    console.log(tag);
     return (
       <Tag onClick={() => onRemove(tag)}>#{tag}</Tag>
     );

@@ -1,12 +1,13 @@
-import React, { useState } from "react";
-import Link from "next/link";
-import List from "../../list";
-import Paginate from "../../paginate";
+import React, { useState } from 'react';
+import Link from 'next/link';
+import Paginate from '../../paginate';
+import ListItem from '../../listItem';
 
 interface Props {
   data?: Array<any>;
   isLoading: boolean;
 }
+
 function Post({ data, isLoading }: Props) {
   const [limit, setLimit] = useState(10);
   const [page, setPage] = useState(1);
@@ -14,24 +15,15 @@ function Post({ data, isLoading }: Props) {
 
   return (
     <div>
+      <Link href='/posts/create'>
+        <a>새 글 작성하기</a>
+      </Link>
       <ul>
-        {isLoading && (
-          <li>
-            <div>내역이 없습니다.</div>
-          </li>
-        )}
-
         {!isLoading &&
           data
             .slice(offset, offset + limit)
             .map(({ userId, id, title, body }) => (
-              <li key={id}>
-                <Link href={`posts/${id}`}>
-                  <a>
-                    <List userId={userId} id={id} title={title} body={body} />
-                  </a>
-                </Link>
-              </li>
+              <ListItem userId={userId} id={id} title={title} body={body} />
             ))}
       </ul>
 
@@ -47,4 +39,5 @@ function Post({ data, isLoading }: Props) {
     </div>
   );
 }
+
 export default Post;

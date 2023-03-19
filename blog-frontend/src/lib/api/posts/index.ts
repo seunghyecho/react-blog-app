@@ -10,20 +10,7 @@ const fetchPosts = async (params: any) => {
   });
 };
 
-/**
- * 게시글 리스트 상세 api
- */
-const fetchDetailPosts = async (id: number) => {
-  return await axios.get(`https://jsonplaceholder.typicode.com/posts/${id}`);
-};
-
-
-/**
- * 게시글 리스트 생성 api
- * const fetchCreatePosts = async ({ title, body, tags }) => {
- *   await client.post('/api/posts', { title, body, tags });
- * };
- */
+const fetchDetailPosts = id => client.get(`/api/posts/${id}`);
 
 const fetchCreatePosts = ({ title, body, tags }) =>
   client.post('/api/posts', { title, body, tags });
