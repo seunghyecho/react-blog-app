@@ -15,7 +15,7 @@ const FlexLayout = styled.div`
   display: flex;
 `;
 
-const Select = styled.select`
+const StyledSelect = styled.select`
   padding-left: 5px;
   width: 10%;
   border-radius: 30px;
@@ -48,4 +48,4 @@ const Label = styled.label`
   padding-left: 5px;
   width: 10%;
 `;
-export { Layout, Select, FlexLayout, Label, Input, Textarea };
+export { Layout, StyledSelect, FlexLayout, Label, Input, Textarea };
