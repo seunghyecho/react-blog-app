@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import Link from 'next/link';
 import { useDispatch, useSelector } from 'react-redux';
 import PostList from '../../components/posts/PostList';
 import Paginate from '../../components/paginate';
@@ -22,26 +21,18 @@ const PostListContainer = () => {
 
   useEffect(() => {
     dispatch(listPosts({ page }));
-  }, [dispatch]);
+  }, [dispatch, page]);
 
   return (
     <>
-      {user && (
-        <Link href='/posts/create'>
-          <a>새 글 작성하기</a>
-        </Link>
-      )}
-      <PostList
-        loading={loading}
-        error={error}
-        posts={posts}
-      />
+      {user && <PostList loading={loading} error={error} posts={posts} />}
+
       <Paginate
         total={posts?.length}
         limit={limit}
         page={page}
         setPage={setPage}
-        onChange={(e) => {
+        onChange={e => {
           setLimit(Number(e.currentTarget.value));
         }}
       />

@@ -5,17 +5,17 @@ import palette from '../../../lib/styles/palette';
 const TagsBlock = styled.div`
   margin-top: 0.5rem;
 
-  .tag {
+  a {
     margin-right: 0.5rem;
     display: inline-block;
     text-decoration: none;
     color: ${palette.cyan[7]};
+    font-weight: 600;
 
     &:hover {
       color: ${palette.cyan[6]};
     }
   }
-
 `;
 
 function Tags({ tags }) {
@@ -23,9 +23,7 @@ function Tags({ tags }) {
     <TagsBlock>
       {tags.map(tag => (
         <Link href={`/?tag=${tag}`} key={tag}>
-          <a className='tag'>
-            {tag}
-          </a>
+          <a>#{tag}</a>
         </Link>
       ))}
     </TagsBlock>

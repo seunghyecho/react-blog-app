@@ -1,56 +1,49 @@
 import React from 'react';
 import Link from 'next/link';
-import styled from 'styled-components';
-import Tags from '../common/Tags';
+import Button from '../common/Button';
 import SubInfo from '../common/SubInfo';
+import Tags from '../common/Tags';
+import {
+  PostListBlock,
+  PostListButtonWrapper,
+  PostItemBlock,
+  PostItemTitle,
+  PostItemContent
+} from './PostList.styled';
 import { postT } from '../../types/post';
-
-const ListItemBlock = styled.li`
-  margin: 3rem 0;
-`;
-const Title = styled.strong`
-  margin: 1rem 0;
-  font-size: 16px;
-  font-weight: 500;
-  line-height: 1.67;
-`;
-const Body = styled.p`
-  margin: 1rem 0;
-  max-height: 40px;
-  font-size: 13px;
-  font-weight: 400;
-  line-height: 1.53;
-  -webkit-line-clamp: 2;
-  overflow: hidden;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  word-break: break-word;
-`;
 
 function ListItem({ post }) {
   const { title, body, user, publishedDate, tags, _id }: postT = post;
   return (
-    <ListItemBlock>
-      <Title>
+    <PostItemBlock>
+      <PostItemTitle>
         <Link href={`/@${user.username}/${_id}`}>{title}</Link>
-      </Title>
+      </PostItemTitle>
       <SubInfo
         isMarginTop
         username={user.username}
         publishedDate={new Date(publishedDate)}
       />
       <Tags tags={tags} />
-      <Body dangerouslySetInnerHTML={{ __html: body }}/>
-    </ListItemBlock>
+      <PostItemContent dangerouslySetInnerHTML={{ __html: body }} />
+    </PostItemBlock>
   );
 }
 
-function PostList({ posts, loading, error }) {
+function PostList({ posts, loading, error, showWriteButton }) {
   if (error) {
-    return <ListItemBlock>오류 발생!</ListItemBlock>;
+    return <PostItemBlock>오류 발생!</PostItemBlock>;
   }
   return (
-    <>
+    <PostListBlock>
+      <PostListButtonWrapper>
+        {showWriteButton && (
+          <Link href="/posts/create">
+            <Button label="새 글 작성하기" cyan />
+          </Link>
+        )}
+      </PostListButtonWrapper>
+
       {!loading && posts && (
         <ul>
           {posts.map(post => (
@@ -58,8 +51,8 @@ function PostList({ posts, loading, error }) {
           ))}
         </ul>
       )}
-    </>
+    </PostListBlock>
   );
-};
+}
 
 export default PostList;

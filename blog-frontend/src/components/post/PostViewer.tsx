@@ -6,10 +6,33 @@ import SubInfo from '../common/SubInfo';
 
 const PostViewerBlock = styled(Responsive)`
   margin-top: 4rem;
-`;
-const ContentBlock = styled.div`
-  font-size: 1.3125rem;
-  color: ${palette.gray[8]};
+
+  h2 {
+    font-weight: 600;
+
+    a {
+      margin: 0;
+      font-size: 2rem;
+    }
+
+    &:hover {
+      color: ${palette.gray[6]};
+    }
+  }
+
+  p {
+    margin: 2rem 0 0;
+
+    max-height: 40px;
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 1.53;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    word-break: break-word;
+  }
 `;
 
 const PostViewer = ({ post, error, loading }) => {
@@ -28,14 +51,14 @@ const PostViewer = ({ post, error, loading }) => {
   const { title, body, user, publishedDate, tags } = post;
   return (
     <PostViewerBlock>
-      <h1>{title}</h1>
+      <h2>{title}</h2>
       <SubInfo
         isMarginTop
         username={user.username}
         publishedDate={publishedDate}
       />
       <Tags tags={tags} />
-      <ContentBlock dangerouslySetInnerHTML={{ __html: body }}></ContentBlock>
+      <p dangerouslySetInnerHTML={{ __html: body }}></p>
     </PostViewerBlock>
   );
 };
