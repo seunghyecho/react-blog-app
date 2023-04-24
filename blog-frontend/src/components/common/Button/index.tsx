@@ -9,12 +9,13 @@ interface ButtonProp {
   onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
   fullWidth?: boolean;
   cyan?: boolean;
+  disabled?: boolean;
 }
 
-const StyledButton = styled.button<{ fullWidth?: boolean; cyan?: boolean; }>`
+const StyledButton = styled.button<{ fullWidth?: boolean; cyan?: boolean }>`
   padding: 0.75rem;
   border-radius: 3px;
-  border: 1px solid ${palette.gray[0]};;
+  border: 1px solid ${palette.gray[0]};
   color: ${palette.gray[0]};
   font-size: 1.125rem;
   box-sizing: border-box;
@@ -28,17 +29,27 @@ const StyledButton = styled.button<{ fullWidth?: boolean; cyan?: boolean; }>`
     opacity: 0.8;
   }
 
-  ${props => props.fullWidth && css`
-    width: 100%;
-  `}
+  &:disabled {
+    background: ${palette.gray[3]};
+    color: ${palette.gray[5]};
+    cursor: not-allowed;
+  }
 
-  ${props => props.cyan && css`
-    background: ${palette.cyan[5]};
+  ${props =>
+    props.fullWidth &&
+    css`
+      width: 100%;
+    `}
 
-    &:hover {
-      background: ${palette.cyan[4]};
-    }
-  `}
+  ${props =>
+    props.cyan &&
+    css`
+      background: ${palette.cyan[5]};
+
+      &:hover {
+        background: ${palette.cyan[4]};
+      }
+    `}
 `;
 
 function Button({ type, label, className, onClick, ...props }: ButtonProp) {

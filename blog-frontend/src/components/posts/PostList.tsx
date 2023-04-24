@@ -17,11 +17,13 @@ function ListItem({ post }) {
   return (
     <PostItemBlock>
       <PostItemTitle>
-        <Link href={`/@${user.username}/${_id}`}>{title}</Link>
+        <Link href={`/@${user?.username || ''}/${_id}`}>
+          <a>{title}</a>
+        </Link>
       </PostItemTitle>
       <SubInfo
         isMarginTop
-        username={user.username}
+        username={user?.username}
         publishedDate={new Date(publishedDate)}
       />
       <Tags tags={tags} />

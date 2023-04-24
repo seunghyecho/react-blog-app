@@ -20,9 +20,7 @@ const PostViewerContainer = () => {
       dispatch(unloadPost());
     };
   }, [dispatch, postId]);
-  return (
-    <PostViewer post={post} loading={loading} error={error}></PostViewer>
-  );
+  return <PostViewer post={post} loading={loading} error={error}></PostViewer>;
 };
 
 export default PostViewerContainer;

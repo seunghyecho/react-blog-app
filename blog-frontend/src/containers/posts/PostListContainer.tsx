@@ -1,14 +1,13 @@
-import React, { useEffect, useState } from 'react';
+import { useRouter } from 'next/router';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import PostList from '../../components/posts/PostList';
-import Paginate from '../../components/paginate';
 import { listPosts } from '../../modules/posts';
 
 const PostListContainer = () => {
-  // TODO pagination
-  const [limit, setLimit] = useState<number>(10);
-  const [page, setPage] = useState(1);
   const dispatch = useDispatch();
+  const router = useRouter();
+  const { username, tag, page } = router.query;
 
   const { posts, error, loading, user } = useSelector(
     ({ posts, loading, user }) => ({
@@ -20,23 +19,17 @@ const PostListContainer = () => {
   );
 
   useEffect(() => {
-    dispatch(listPosts({ page }));
-  }, [dispatch, page]);
+    // TODO page가 없으면 1을 기본값으로 사용
+    dispatch(listPosts({ tag, username, page }));
+  }, [dispatch, tag, username, page]);
 
   return (
-    <>
-      {user && <PostList loading={loading} error={error} posts={posts} />}
-
-      <Paginate
-        total={posts?.length}
-        limit={limit}
-        page={page}
-        setPage={setPage}
-        onChange={e => {
-          setLimit(Number(e.currentTarget.value));
-        }}
-      />
-    </>
+    <PostList
+      loading={loading}
+      error={error}
+      posts={posts}
+      showWriteButton={user}
+    />
   );
 };
 export default PostListContainer;

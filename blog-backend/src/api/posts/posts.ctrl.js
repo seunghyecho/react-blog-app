@@ -1,9 +1,33 @@
 import Post from '../../models/post';
 import mongoose from 'mongoose';
 import Joi from 'joi';
+import sanitize from 'sanitize-html';
 
 const { ObjectId } = mongoose.Types;
 
+const sanitizeOption = {
+  allowedTags: [
+    'h1',
+    'h2',
+    'b',
+    'i',
+    'u',
+    's',
+    'p',
+    'ul',
+    'ol',
+    'li',
+    'blockquote',
+    'a',
+    'img',
+  ],
+  allowedAttributes: {
+    a: ['href', 'name', 'target'],
+    img: ['src'],
+    li: ['class'],
+  },
+  allowedSchemes: ['data', 'http'],
+};
 export const getPostById = async (ctx, next) => {
   const { id } = ctx.params;
   if (!ObjectId.isValid(id)) {
@@ -33,7 +57,7 @@ export const checkOwnPost = (ctx, next) => {
   return next();
 };
 
-export const write = async ctx => {
+export const write = async (ctx) => {
   const schema = Joi.object().keys({
     title: Joi.string().required(),
     body: Joi.string().required(),
@@ -49,7 +73,7 @@ export const write = async ctx => {
   const { title, body, tags } = ctx.request.body;
   const post = new Post({
     title,
-    body,
+    body: sanitize(body, sanitizeOption),
     tags,
     user: ctx.state.user,
   });
@@ -62,10 +86,17 @@ export const write = async ctx => {
   }
 };
 
+const removeHtmlAndShorten = (body) => {
+  const filtered = sanitize(body, {
+    allowedTags: [],
+  });
+  return filtered.length < 200 ? filtered : `${filtered.slice(0, 200)}...`;
+};
+
 /*
 GET /api/posts?username=&tag=&page=
  */
-export const list = async ctx => {
+export const list = async (ctx) => {
   const page = parseInt(ctx.query.page || '1', 10);
 
   if (page < 1) {
@@ -88,21 +119,20 @@ export const list = async ctx => {
     const postCount = await Post.countDocuments(query).exec();
     ctx.set('Last-Page', Math.ceil(postCount / 10));
 
-    ctx.body = posts
-      .map(post => ({
-        ...post,
-        body: post.body.length < 200 ? post.body : `${post.body.slice(0, 200)}...`,
-      }));
+    ctx.body = posts.map((post) => ({
+      ...post,
+      body: removeHtmlAndShorten(post.body),
+    }));
   } catch (e) {
     ctx.throw(500, e);
   }
 };
 
-export const read = ctx => {
+export const read = (ctx) => {
   ctx.body = ctx.state.post;
 };
 
-export const remove = async ctx => {
+export const remove = async (ctx) => {
   const { id } = ctx.params;
   try {
     await Post.findByIdAndRemove(id).exec();
@@ -112,7 +142,7 @@ export const remove = async ctx => {
   }
 };
 
-export const update = async ctx => {
+export const update = async (ctx) => {
   const { id } = ctx.params;
 
   const schema = Joi.object().keys({
@@ -128,8 +158,13 @@ export const update = async ctx => {
     return;
   }
 
+  const nextData = { ...ctx.request.body };
+  if (nextData.body) {
+    nextData.body = sanitize(nextData.body, sanitizeOption);
+  }
+
   try {
-    const post = await Post.findByIdAndUpdate(id, ctx.request.body, {
+    const post = await Post.findByIdAndUpdate(id, nextData, {
       new: true,
     }).exec();
 

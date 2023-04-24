@@ -3,9 +3,11 @@ import styled, { css } from 'styled-components';
 import palette from '../../../lib/styles/palette';
 
 const SubInfoBlock = styled.div<{ isMarginTop: boolean }>`
-  ${props => props.isMarginTop && css`
-    margin-top: 1rem;
-  `}
+  ${props =>
+    props.isMarginTop &&
+    css`
+      margin-top: 1rem;
+    `}
   color: ${palette.gray[6]};
 
   span + span:before {
@@ -20,7 +22,9 @@ function SubInfo({ username, publishedDate, isMarginTop }) {
     <SubInfoBlock isMarginTop={isMarginTop}>
       <span>
         <b>
-          <Link href={`/@${username}`}>{username}</Link>
+          <Link href={`@/${username || ''}`}>
+            <a>{username || ''}</a>
+          </Link>
         </b>
       </span>
       <span>{new Date(publishedDate).toLocaleDateString()}</span>
