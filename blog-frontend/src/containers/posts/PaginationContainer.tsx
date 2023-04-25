@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { useRouter } from 'next/router';
 import { useSelector } from 'react-redux';
 import Pagination from '../../components/posts/Pagination';
@@ -14,10 +14,11 @@ function PaginationContainer() {
   }));
 
   if (!posts || loading) return null;
+
   return (
     <Pagination
-      tag={tag}
-      username={username}
+      tag={tag || ''}
+      username={username|| ''}
       page={Number(page)}
       lastPage={lastPage}
     />

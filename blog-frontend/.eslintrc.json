@@ -11,16 +11,16 @@
   "plugins": ["@typescript-eslint", "import", "react-hooks"],
   "extends": [
     "next",
-    "eslint:recommended",
-    "plugin:@typescript-eslint/recommended",
-    "prettier"
+    "plugin:prettier/recommended", 
+    "prettier/@typescript-eslint"
   ],
   "parserOptions": {
     "ecmaVersion": 2020,
     "sourceType": "module",
     "ecmaFeatures": {
       "jsx": true
-    }
+    },
+    "project": "./tsconfig.json"
   },
   "rules": {
     "react/no-unescaped-entities": "off",
@@ -29,9 +29,7 @@
     "react-hooks/exhaustive-deps": "warn"
   },
   "settings": {
-    "import/parsers":
-      "@typescript-eslint/parser"
-    ,
+    "import/parsers": "@typescript-eslint/parser",
     "import/resolver": {
       "typescript": "./tsconfig.json"
     }

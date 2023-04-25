@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import palette from '../../lib/styles/palette';
 import Responsive from '../common/Responsive';
 
-const PostListBlock = styled(Responsive)`
+const PostListBlock = styled.div`
   margin-top: 3rem;
 `;
 const PostListButtonWrapper = styled.div`

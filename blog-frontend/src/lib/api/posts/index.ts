@@ -2,7 +2,7 @@ import axios from 'axios';
 import client from '../client';
 
 /**
- * 게시글 리스트 조회 api
+ * 게시글 조회 api
  */
 const fetchPosts = ({ page, username, tag }) => {
   return client.get(`/api/posts`, {
@@ -14,22 +14,29 @@ const fetchPosts = ({ page, username, tag }) => {
   });
 };
 /**
- * 게시글 리스트 상세 api
+ * 게시글 상세 api
  */
-const fetchDetailPosts = id => client.get(`/api/posts/${id}`);
+const fetchReadPost = (id:number) => {
+  return client.get(`/api/posts/${id}`)
+};
+
 /**
- * 게시글 리스트 생성 api
+ * 게시글 생성 api
  */
-const fetchCreatePosts = ({ title, body, tags }) =>
-  client.post('/api/posts', { title, body, tags });
+const fetchCreatePosts = ({ title, body, tags }) =>{
+  return client.post('/api/posts', { title, body, tags });
+}
 
 
 /**
- * 게시글 리스트 상세 수정 api
+ * 게시글 수정 api
  */
-const fetchPutPosts = async ({ id, ...params }: any) => {
-  return await axios.put(`https://jsonplaceholder.typicode.com/posts/${id}`, {
-    ...params
+const fetchUpdatePost = ({ id, title, body, tags }) => {
+  return client.patch(`api/posts/${id}`, {
+    id, 
+    title, 
+    body, 
+    tags
   });
 };
 
@@ -43,8 +50,8 @@ const fetchDeletePosts = async (id: any) => {
 
 export {
   fetchPosts,
-  fetchDetailPosts,
+  fetchReadPost,
   fetchCreatePosts,
-  fetchPutPosts,
+  fetchUpdatePost,
   fetchDeletePosts
 };

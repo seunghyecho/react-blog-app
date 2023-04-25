@@ -17,7 +17,7 @@ function ListItem({ post }) {
   return (
     <PostItemBlock>
       <PostItemTitle>
-        <Link href={`/@${user?.username || ''}/${_id}`}>
+        <Link href={`/posts/${_id}`}>
           <a>{title}</a>
         </Link>
       </PostItemTitle>

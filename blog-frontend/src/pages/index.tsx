@@ -33,24 +33,13 @@ function Main() {
    */
 
   const tabArr = [
+    
     {
       tab: (
         <li
-          key='0'
+          key={0}
           className={activeIndex === 0 ? 'active' : ''}
           onClick={() => setActiveIndex(0)}
-        >
-          <h2>NEWS</h2>
-        </li>
-      ),
-      content: <News data={news} category={category} handleSelect={handleSelect} />
-    },
-    {
-      tab: (
-        <li
-          key='1'
-          className={activeIndex === 1 ? 'active' : ''}
-          onClick={() => setActiveIndex(1)}
         >
           <h2>POST</h2>
         </li>
@@ -60,7 +49,19 @@ function Main() {
     {
       tab: (
         <li
-          key='2'
+        key={1}
+          className={activeIndex === 1 ? 'active' : ''}
+          onClick={() => setActiveIndex(1)}
+        >
+          <h2>NEWS</h2>
+        </li>
+      ),
+      content: <News data={news} category={category} handleSelect={handleSelect} />
+    },
+    {
+      tab: (
+        <li
+        key={2}
           className={activeIndex === 2 ? 'active' : ''}
           onClick={() => setActiveIndex(2)}
         >

@@ -22,7 +22,7 @@ function SubInfo({ username, publishedDate, isMarginTop }) {
     <SubInfoBlock isMarginTop={isMarginTop}>
       <span>
         <b>
-          <Link href={`@/${username || ''}`}>
+          <Link href={`/${username || ''}`}>
             <a>{username || ''}</a>
           </Link>
         </b>
