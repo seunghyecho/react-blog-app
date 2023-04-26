@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import styled from 'styled-components';
-import palette from '../../../lib/styles/palette';
+import palette from '@/lib/styles/palette';
 
 const TagsBlock = styled.div`
   margin-top: 0.5rem;
@@ -23,7 +23,7 @@ function Tags({ tags }) {
     <TagsBlock>
       {tags.map(tag => (
         <Link href={`/?tag=${tag}`} key={tag}>
-          <a>#{tag}</a>
+          #{tag}
         </Link>
       ))}
     </TagsBlock>

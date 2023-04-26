@@ -22,7 +22,7 @@ function ListItem({ post }) {
     <PostItemBlock>
       <PostItemTitle>
         <Link href={`/posts/${_id}`}>
-          <a>{title}</a>
+          {title}
         </Link>
       </PostItemTitle>
       <SubInfo

@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import styled, { css } from 'styled-components';
-import palette from '../../../lib/styles/palette';
+import palette from '@/lib/styles/palette';
 
 const SubInfoBlock = styled.div<{ isMarginTop: boolean }>`
   ${props =>
@@ -23,7 +23,7 @@ function SubInfo({ username, publishedDate, isMarginTop }) {
       <span>
         <b>
           <Link href={`/${username || ''}`}>
-            <a>{username || ''}</a>
+            {username || ''}
           </Link>
         </b>
       </span>

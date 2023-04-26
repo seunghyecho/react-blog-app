@@ -1,7 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
-import Button from '../common/Button';
-import { AuthFormBlock, Footer, StyledInput, ErrorMessage } from './AuthForm.styled';
+import Button from '@/components/common/Button';
+import { AuthFormBlock, Footer, StyledInput, ErrorMessage } from '@/components/auth/AuthForm.styled';
 
 interface Props {
   type: string;
@@ -63,11 +63,11 @@ function AuthForm({ type, form, onChange, onSubmit, error }: Props) {
       <Footer>
         {type === 'login' ? (
           <Link href='/register'>
-            <a href='/register'>회원가입</a>
+            회원가입
           </Link>
         ) : (
           <Link href='/login'>
-            <a href='/login'>로그인</a>
+            로그인
           </Link>
         )}
 

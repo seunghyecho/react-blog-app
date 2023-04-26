@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import Link from 'next/link';
-import palette from '../../lib/styles/palette';
+import palette from '@/lib/styles/palette';
 
 const AuthTemplateBlock = styled.div`
   position: absolute;
@@ -38,7 +38,7 @@ const AuthTemplate = ({ children }) => {
       <WhiteBox>
         <div className='logo-area'>
           <Link href='/'>
-            <a>BLOG</a>
+            BLOG
           </Link>
         </div>
         {children}

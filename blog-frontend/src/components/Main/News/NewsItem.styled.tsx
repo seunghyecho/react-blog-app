@@ -3,10 +3,9 @@ import styled from 'styled-components';
 const Layout = styled.li`
   margin: 20px 0;
   display: flex;
-`;
 
-const Thumbnail = styled.a`
-  display: block;
+  .thumbnail{
+    display: block;
   width: 160px;
   height: 100px;
   overflow: hidden;
@@ -18,7 +17,9 @@ const Thumbnail = styled.a`
     height: 100%;
     object-fit: cover;
   }
+  }
 `;
+
 
 const Content = styled.div`
   padding: 0 10px;
@@ -49,4 +50,4 @@ const Content = styled.div`
   }
 `;
 
-export { Layout, Thumbnail, Content };
+export { Layout, Content };
