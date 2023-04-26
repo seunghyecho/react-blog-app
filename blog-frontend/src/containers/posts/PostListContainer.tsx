@@ -1,8 +1,8 @@
 import { useRouter } from 'next/router';
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import PostList from '../../components/posts/PostList';
-import { listPosts } from '../../modules/posts';
+import PostList from '@/components/posts/PostList';
+import { listPosts } from '@/modules/posts';
 
 const PostListContainer = () => {
   const dispatch = useDispatch();

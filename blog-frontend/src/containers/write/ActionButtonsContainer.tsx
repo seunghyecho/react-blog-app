@@ -1,8 +1,8 @@
 import { useEffect } from 'react';
-import ActionButtons from '../../components/post/ActionButtons';
-import { useDispatch, useSelector } from 'react-redux';
 import { useRouter } from 'next/router';
-import { updatePost, writePost } from '../../modules/write';
+import { useDispatch, useSelector } from 'react-redux';
+import ActionButtons from '@/components/post/ActionButtons';
+import { updatePost, writePost } from '@/modules/write';
 
 const ActionButtonsContainer = () => {
   const dispatch = useDispatch();

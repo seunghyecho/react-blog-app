@@ -1,5 +1,5 @@
-import { FormButton, FormButtonWrap } from './Form.styled';
 import React from 'react';
+import { FormButton, FormButtonWrap } from '@/components/post/Form.styled';
 
 const ActionButtons = ({ onPublish, onCancel, isEdit }) => {
   return (

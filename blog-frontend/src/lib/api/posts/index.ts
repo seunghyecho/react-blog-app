@@ -1,4 +1,3 @@
-import axios from 'axios';
 import client from '../client';
 
 /**
@@ -13,6 +12,7 @@ const fetchPosts = ({ page, username, tag }) => {
     }
   });
 };
+
 /**
  * 게시글 상세 api
  */
@@ -27,7 +27,6 @@ const fetchCreatePosts = ({ title, body, tags }) =>{
   return client.post('/api/posts', { title, body, tags });
 }
 
-
 /**
  * 게시글 수정 api
  */
@@ -41,17 +40,16 @@ const fetchUpdatePost = ({ id, title, body, tags }) => {
 };
 
 /**
- * 게시글 리스트 삭제 api
+ * 게시글 삭제 api
  */
-const fetchDeletePosts = async (id: any) => {
-  return await axios.delete(`https://jsonplaceholder.typicode.com/posts/${id}`);
+const fetchDeletePost = (id:number) => {
+  return client.delete(`api/posts/${id}`);
 };
-
 
 export {
   fetchPosts,
   fetchReadPost,
   fetchCreatePosts,
   fetchUpdatePost,
-  fetchDeletePosts
+  fetchDeletePost
 };

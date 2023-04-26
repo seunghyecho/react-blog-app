@@ -1,6 +1,7 @@
-import palette from 'blog-frontend/src/lib/styles/palette';
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
+import RemoveModal from '@/components/post/RemoveModal';
+import palette from '@/lib/styles/palette';
 
 const PostActionButtonsBlock = styled.div`
   display: flex;
@@ -29,11 +30,31 @@ const ActionButton = styled.button`
   }
 `;
 function PostActionButtons({onEdit,onRemove}) {
+  const [modal, setModal] = useState(false);
+
+  const onRemoveClick = ()=>{
+    setModal(true);
+  };
+
+  const onCancel = ()=>{
+    setModal(false);
+  }
+  const onConfirm = ()=>{
+    setModal(false);
+    onRemove();
+  }
   return (
+    <>
     <PostActionButtonsBlock>
       <ActionButton onClick={onEdit}>수정</ActionButton>
-      <ActionButton onClick={onRemove}>삭제</ActionButton>
+      <ActionButton onClick={onRemoveClick}>삭제</ActionButton>
     </PostActionButtonsBlock>
+    <RemoveModal
+      visible={modal}
+      onConfirm={onConfirm}
+      onCancel={onCancel}
+    />
+    </>
   );
 }
 
