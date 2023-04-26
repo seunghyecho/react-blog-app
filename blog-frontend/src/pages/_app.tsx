@@ -1,15 +1,20 @@
 import React, { useEffect, useState } from 'react';
+import Head from 'next/head';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { Provider } from 'react-redux';
 import { legacy_createStore as createStore, applyMiddleware } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import createSagaMiddleware from '@redux-saga/core';
-import rootReducer, { rootSaga } from '../modules';
+import { HelmetProvider } from 'react-helmet-async';
+import rootReducer, { rootSaga } from '@/modules';
 import { ThemeProvider } from 'styled-components';
-import { GlobalStyle } from '../lib/styles/globals';
-import { sizes } from '../lib/styles/theme';
-import HeaderContainer from '../containers/common/HeaderContainer';
-import { tempSetUser, check } from '../modules/user';
+import { GlobalStyle } from '@/lib/styles/globals';
+import { sizes } from '@/lib/styles/theme';
+import HeaderContainer from '@/containers/common/HeaderContainer';
+import { tempSetUser, check } from '@/modules/user';
+
+
+
 
 function MyApp({ Component, pageProps }) {
   /**
@@ -50,15 +55,20 @@ function MyApp({ Component, pageProps }) {
   }
 
   return (
-    <Provider store={store}>
-      <QueryClientProvider client={queryClient}>
-        <ThemeProvider theme={sizes}>
-          <GlobalStyle />
-          <HeaderContainer />
-          <Component {...pageProps} />
-        </ThemeProvider>
-      </QueryClientProvider>
-    </Provider>
+    <HelmetProvider>
+      <Provider store={store}>
+        <QueryClientProvider client={queryClient}>
+          <ThemeProvider theme={sizes}>
+            <GlobalStyle />
+            <Head>
+              <title>React Blog App</title>
+            </Head>
+            <HeaderContainer />
+            <Component {...pageProps} />
+          </ThemeProvider>
+        </QueryClientProvider>
+      </Provider>
+    </HelmetProvider>
   );
 }
 

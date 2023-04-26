@@ -1,8 +1,9 @@
 import styled from 'styled-components';
-import palette from '../../lib/styles/palette';
-import Responsive from '../common/Responsive';
-import Tags from '../common/Tags';
-import SubInfo from '../common/SubInfo';
+import Responsive from '@/components/common/Responsive';
+import Tags from '@/components/common/Tags';
+import SubInfo from '@/components/common/SubInfo';
+import palette from '@/lib/styles/palette';
+import { Helmet } from 'react-helmet-async';
 
 const PostViewerBlock = styled(Responsive)`
   margin-top: 4rem;
@@ -51,6 +52,13 @@ const PostViewer = ({ post, error, loading, actionButtons }) => {
   const { title, body, user, publishedDate, tags } = post;
   return (
     <PostViewerBlock>
+      /** 
+       * TODO 상세 버그 수정 후 확인 필요
+       */
+      <Helmet>
+        <title>{title} - React Blog Post</title>
+      </Helmet>
+
       <h2>{title}</h2>
       <SubInfo
         isMarginTop

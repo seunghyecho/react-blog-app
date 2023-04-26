@@ -1,13 +1,13 @@
 import React, { useCallback, useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
-import PageLayout from '../components/common/Layout';
-import News from '../components/Main/News';
-import Post from '../components/Main/Post';
-import About from '../components/Main/About';
-import Side from '../components/common/Layout/Side';
-import { fetchNews } from '../lib/api/news';
-import { Layout } from '../lib/styles/main.styled';
-import { FlexLayout } from '../lib/styles/common.styled';
+import PageLayout from '@/components/common/Layout';
+import News from '@/components/Main/News';
+import Post from '@/components/Main/Post';
+import About from '@/components/Main/About';
+import Side from '@/components/common/Layout/Side';
+import { fetchNews } from '@/lib/api/news';
+import { Layout } from '@/lib/styles/main.styled';
+import { FlexLayout } from '@/lib/styles/common.styled';
 
 function Main() {
   const [page] = useState(1);
