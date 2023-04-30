@@ -2,7 +2,7 @@ import Layout from "./SearchBar.styled";
 
 interface Props {
   query: string;
-  onChange: (e: React.KeyboardEvent<HTMLInputElement>) => void;
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 function SearchBar({ query, onChange }: Props) {
