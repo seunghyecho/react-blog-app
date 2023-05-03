@@ -1,4 +1,4 @@
-import { Category, Layout } from './Categories.styled';
+import { Category, Layout } from '@/components/Main/News/Categories/Categories.styled';
 
 const categories = [
   {

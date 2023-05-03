@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { media } from '../../../lib/styles/theme';
 
 interface Props {
   children?: React.ReactNode;
@@ -10,13 +9,17 @@ const Layout = styled.div`
   margin: 0 auto;
   width: 1024px;
 
-  ${media('desktop')`
-    width:768px;
-  `};
+  @media (max-width: 1024px) {
+    padding-left: 1rem;
+    padding-right: 1rem;
+    width: 100%;
+  }
 
-  ${media('tablet')`
-    width:100%;
-  `};
+  @media (max-width: 768px) {
+    padding-left: 1rem;
+    padding-right: 1rem;
+    width: 100%;
+  }
 `;
 
 function StyledLayout({ children }: Props) {

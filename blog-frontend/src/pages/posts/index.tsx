@@ -1,9 +1,15 @@
-import PostViewerContainer from '../../containers/post/PostViewerContainer';
-function Detail() {
-  // TODO 상세 페이지 오류
-  return (
-      <PostViewerContainer/>
-  );
-}
+import Responsive from "@/components/common/Responsive";
+import PaginationContainer from "@/containers/posts/PaginationContainer";
+import PostListContainer from "@/containers/posts/PostListContainer";
+import styled from "styled-components";
 
-export default Detail;
+const PostsBlock = styled(Responsive)``;
+function Posts(){
+    return(
+        <PostsBlock>
+            <PostListContainer />
+            <PaginationContainer/>
+        </PostsBlock>
+    )
+}
+export default Posts;

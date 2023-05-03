@@ -4,13 +4,12 @@ import qs from 'qs';
 import Link from 'next/link';
 import Button from '@/components/common/Button';
 
-
 const PaginationBlock = styled.div`
   width: 320px;
   margin: 0 auto;
   display: flex;
+  align-items: center;
   justify-content: space-between;
-  margin-bottom: 3rem;
 `;
 const PageNumber = styled.div``;
 

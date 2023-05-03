@@ -9,7 +9,7 @@ const PostListContainer = () => {
   const router = useRouter();
   const { username, tag, page } = router.query;
 
-  const { posts, error, loading, user } = useSelector(
+  const { posts, error, loading } = useSelector(
     ({ posts, loading, user }) => ({
       posts: posts.posts,
       error: posts.error,
@@ -28,7 +28,6 @@ const PostListContainer = () => {
       loading={loading}
       error={error}
       posts={posts}
-      showWriteButton={user}
     />
   );
 };

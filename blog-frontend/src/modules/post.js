@@ -1,9 +1,10 @@
 import { createAction, handleActions } from 'redux-actions';
+import { takeLatest } from 'redux-saga/effects';
 import createRequestSaga, {
   createRequestActionTypes,
-} from '../lib/createRequestSaga';
-import * as postsAPI from '../lib/api/posts';
-import { takeLatest } from 'redux-saga/effects';
+} from '@/lib/createRequestSaga';
+import * as postsAPI from '@/lib/api/posts';
+
 
 const [
   READ_POST,

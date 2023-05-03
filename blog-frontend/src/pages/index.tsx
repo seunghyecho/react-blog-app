@@ -6,7 +6,7 @@ import Post from '@/components/Main/Post';
 import About from '@/components/Main/About';
 import Side from '@/components/common/Layout/Side';
 import { fetchNews } from '@/lib/api/news';
-import { Layout } from '@/lib/styles/main.styled';
+import { WrapperStyled, TabStyled, ContentStyled } from '@/lib/styles/main.styled';
 import { FlexLayout } from '@/lib/styles/common.styled';
 
 function Main() {
@@ -26,14 +26,13 @@ function Main() {
   const handleSelect = useCallback(
     category =>
       setCategory(category)
-    , [category]);
+    , []);
 
   /**
    * TODO tab 개선 필요
    */
 
   const tabArr = [
-    
     {
       tab: (
         <li
@@ -75,10 +74,10 @@ function Main() {
   return (
     <PageLayout>
       <FlexLayout>
-        <Layout>
-          <ul>{tabArr.map(({ tab }) => tab)}</ul>
-          <div>{tabArr[activeIndex].content}</div>
-        </Layout>
+        <WrapperStyled>
+          <TabStyled>{tabArr.map(({ tab }) => tab)}</TabStyled>
+          <ContentStyled>{tabArr[activeIndex].content}</ContentStyled>
+        </WrapperStyled>
         <Side />
       </FlexLayout>
     </PageLayout>

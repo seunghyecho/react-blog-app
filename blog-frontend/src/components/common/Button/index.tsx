@@ -4,12 +4,13 @@ import palette from '@/lib/styles/palette';
 
 interface ButtonProp {
   type?: 'button' | 'submit' | 'reset';
-  label: string;
+  label?: string;
   className?: string;
   onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
   fullWidth?: boolean;
   cyan?: boolean;
   disabled?: boolean;
+  children?:React.ReactNode;
 }
 
 const StyledButton = styled.button<{ fullWidth?: boolean; cyan?: boolean }>`
@@ -52,7 +53,7 @@ const StyledButton = styled.button<{ fullWidth?: boolean; cyan?: boolean }>`
     `}
 `;
 
-function Button({ type, label, className, onClick, ...props }: ButtonProp) {
+function Button({ type, label, className, onClick, children, ...props }: ButtonProp) {
   return (
     <StyledButton
       type={type}
@@ -60,7 +61,7 @@ function Button({ type, label, className, onClick, ...props }: ButtonProp) {
       className={className}
       {...props}
     >
-      {label}
+      {label || children}
     </StyledButton>
   );
 }

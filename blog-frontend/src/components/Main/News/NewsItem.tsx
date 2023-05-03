@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { Layout, Content } from '@/components/Main/News/NewsItem.styled';
 import { NewsT } from '@/types/news';
 interface Props {
@@ -10,7 +11,7 @@ function NewsItem({ data }: Props) {
   return (
     <Layout key={url}>
       <Link href={url} target='_blank' className='thumbnail'>
-          <img src={urlToImage} alt='thumbnail' />
+          <Image src={urlToImage || ''} alt={author} />
       </Link>
       <Content>
         <h2>

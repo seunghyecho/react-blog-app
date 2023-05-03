@@ -19,6 +19,14 @@ export const GlobalStyle = createGlobalStyle`
     box-sizing: inherit;
   }
 
+  h1,
+  h2,
+  h3,
+  h4,
+  h5{
+    font-weight: 600;
+  }
+
   html {
     height: 100%;
   }
@@ -73,6 +81,7 @@ export const GlobalStyle = createGlobalStyle`
   input:-webkit-autofill:active {
     transition: background-color 5000s ease-in-out 0s;
     -webkit-transition: background-color 9999s ease-out;
+    box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.03);
     -webkit-box-shadow: 0 0 0px 1000px white inset !important;
   }
 

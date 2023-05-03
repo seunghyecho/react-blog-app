@@ -1,25 +1,32 @@
 import styled from 'styled-components';
+import palette from '@/lib/styles/palette';
 
-const Layout = styled.div`
+const WrapperStyled = styled.div`
   padding-right: 15px;
-  width: 100%;
+  width: 80%;
   box-sizing: border-box;
 
-  > ul {
-    margin-bottom: 4.5rem;
+  @media (max-width: 1024px) {
+    padding-right: 0;
+    width: 100%;
+  }
+`;
+
+const TabStyled = styled.ul`
     display: flex;
     justify-content: center;
     align-items: center;
     position: relative;
+    height: 6rem;
 
     &::before {
       content: "";
       display: block;
       position: absolute;
-      bottom: 0px;
+      bottom: 0;
       width: 100%;
       height: 1px;
-      background-color: #f1f1f1;
+      background-color:${palette.gray[1]};
       z-index: -1;
     }
 
@@ -29,19 +36,22 @@ const Layout = styled.div`
       align-items: center;
       padding: 10px 0;
       width: 100px;
-      height: 50px;
-      line-height: 50px;
+      height: 6rem;
+      line-height: 6rem;
       transition: all 0.25s ease-in-out 0s;
       font-weight: 600;
       box-sizing: border-box;
       cursor: pointer;
 
       &.active {
-        color: #619ffb;
-        border-bottom: 1px solid #619ffb;
+        color: ${palette.cyan[5]};
+        border-bottom: 1px solid ${palette.cyan[5]};
       }
     }
-  }
 `;
 
-export { Layout };
+const ContentStyled = styled.div`
+    margin-top: 3rem;
+`;
+
+export { WrapperStyled, TabStyled, ContentStyled};

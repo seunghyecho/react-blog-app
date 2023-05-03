@@ -1,7 +1,7 @@
 import React from 'react';
 import { useRouter } from 'next/router';
 import { useSelector } from 'react-redux';
-import Pagination from '../../components/posts/Pagination';
+import Pagination from '@/components/posts/Pagination';
 
 function PaginationContainer() {
   const router = useRouter();

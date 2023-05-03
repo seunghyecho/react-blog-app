@@ -1,11 +1,13 @@
-import Layout from "./SearchBar.styled";
+import Layout from "@/components/common/SearchBar/SearchBar.styled";
+import React from "react";
 
 interface Props {
   query: string;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onKeyup: (e: React.KeyboardEvent)=> void;
 }
 
-function SearchBar({ query, onChange }: Props) {
+function SearchBar({ query, onChange, onKeyup }: Props) {
   return (
     <Layout>
       <input
@@ -15,6 +17,7 @@ function SearchBar({ query, onChange }: Props) {
         placeholder="검색어를 입력하세요."
         value={query}
         onChange={onChange}
+        onKeyUp={onKeyup}
       />
     </Layout>
   );

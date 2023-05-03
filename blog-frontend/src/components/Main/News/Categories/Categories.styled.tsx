@@ -11,8 +11,9 @@ const Layout = styled.ul`
 
 const Category = styled.li<{ active: boolean; }>`
   margin: 0 1rem;
-  padding: 0.25rem 0;
   position: relative;
+  height: 3rem;
+  line-height: 3rem;
   cursor: pointer;
   white-space: pre;
   box-sizing: border-box;

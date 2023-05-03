@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import Responsive from '../../Responsive';
+import Responsive from '@/components/common/Responsive';
 
 const Position = styled.div`
   position: fixed;
@@ -8,14 +8,18 @@ const Position = styled.div`
   justify-content: space-between;
   width: 100%;
   height: 6rem;
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.08);
+  box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.03);
   background-color: #ffffff;
   z-index: 999;
 `;
 
 const Title = styled.h1`
-  font-weight: 600;
   text-transform: uppercase;
+  font-size: 1.5rem;
+
+  a{
+    font-style: inherit;
+  }
 `;
 
 const Utils = styled.ul`
@@ -40,7 +44,6 @@ const Wrapper = styled(Responsive)`
     font-size: 1.128rem;
     font-weight: 800;
     letter-spacing: 2px;
-
   }
 
   .right {

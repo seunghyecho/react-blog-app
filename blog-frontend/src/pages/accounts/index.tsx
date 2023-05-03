@@ -1,8 +1,9 @@
 import { useDispatch, useSelector } from 'react-redux';
-import AuthTemplate from '../../components/auth/AuthTemplate';
-import Button from '../../components/common/Button';
-import { logout } from '../../modules/user';
 import styled from 'styled-components';
+import AuthTemplate from '@/components/auth/AuthTemplate';
+import Button from '@/components/common/Button';
+import { logout } from '@/modules/user';
+
 
 const HeadStyled = styled.h1`
   position: relative;

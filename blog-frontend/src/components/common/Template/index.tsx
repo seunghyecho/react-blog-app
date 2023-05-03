@@ -1,9 +1,9 @@
-import React, { useCallback, useReducer, useRef, useState } from 'react';
-import TodoInsert from './TodoInsert';
-import TodoList from './TodoList';
-import { Layout, Content } from './Template.styled';
-import { TodoT } from '../../../types/todo';
-import TodoReducer from '../../../hooks/useTodos';
+import React, { useCallback, useReducer, useRef } from 'react';
+import TodoInsert from '@/components/common/Template/TodoInsert';
+import TodoList from '@/components/common/Template/TodoList';
+import { TemplateStyled } from '@/components/common/Template/Template.styled';
+import { TodoT } from '@/types/todo';
+import TodoReducer from '@/hooks/useTodos';
 
 interface Props {
   title: string;
@@ -49,7 +49,7 @@ function Template({ title, data }: Props) {
       // useReducer
       dispatch({ type: 'INSERT', newTodo });
       createId.current += 1;
-    }, [todos],
+    }, [],
   );
 
   const handleRemove = useCallback(
@@ -64,7 +64,7 @@ function Template({ title, data }: Props) {
 
       // useReducer
       dispatch({ type: 'REMOVE', id });
-    }, [todos]);
+    }, []);
 
   const handleToggle = useCallback(
     id => {
@@ -80,17 +80,17 @@ function Template({ title, data }: Props) {
 
       // useReducer
       dispatch({ type: 'TOGGLE', id });
-    }, [todos],
+    }, [],
   );
 
   return (
-    <Layout>
-      <h1>{title}</h1>
-      <Content>
+    <TemplateStyled>
+      <h2>{title}</h2>
+      <div>
         <TodoInsert handleInsert={handleInsert} />
         <TodoList todos={todos} handleRemove={handleRemove} handleToggle={handleToggle} />
-      </Content>
-    </Layout>
+      </div>
+    </TemplateStyled>
   );
 }
 

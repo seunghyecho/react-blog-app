@@ -1,23 +1,23 @@
 import styled from 'styled-components';
+import palette from '@/lib/styles/palette';
 
-const Layout = styled.div`
-  margin-top: 3.5rem;
+const TemplateStyled = styled.div`
   border-radius: 4px;
   overflow: hidden;
 
-  h1 {
+  @media (max-width: 1024px) {
+    display: none;
+  }
+
+  h2 {
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 4rem;
-    font-size: 1.5rem;
-    background-color: #619ffb;
-    color: #ffffff;
+    height: 3rem;
+    line-height: 3rem;
+    background-color:${palette.cyan[7]};
+    color: ${palette.gray[0]};
   }
-`;
-
-const Content = styled.div`
-  position: relative;
 `;
 
 const Form = styled.form`
@@ -25,26 +25,29 @@ const Form = styled.form`
   align-items: center;
   height: 3rem;
 
+  > *{
+    height: 100%;
+  }
+
   input {
     padding: 0 0.5rem;
-    height: 100%;
-    color: #dee2e6;
-    background-color: #495057;
+    width: 80%;
+    
+    color: ${palette.gray[3]};
+    background-color: ${palette.gray[7]};
   }
 
   button {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 100%;
-    height: 100%;
-    cursor: pointer;
-    color: #ffffff;
-    background-color: #868e96;
+    width: 20%;
+    color: ${palette.gray[0]};
+    background-color: ${palette.gray[6]};
     transition: 0.1s background-color ease-in;
 
     &:hover {
-      background-color: #adb5bd;
+      background-color: ${palette.gray[5]};
     }
   }
 `;
@@ -55,7 +58,7 @@ const ListItem = styled.div`
   align-items: center;
 
   &:nth-child(even) {
-    background-color: #f8f9fa;
+    background-color: ${palette.gray[0]};
   }
 
   p {
@@ -71,12 +74,12 @@ const CheckBox = styled.button`
 
   &.completed {
     svg {
-      color: #22b8cf;
+      color: ${palette.cyan[5]};
     }
   }
 
   &.completed + p {
-    color: #adb5bd;
+    color: ${palette.gray[5]};
     text-decoration: line-through;
   }
 `;
@@ -84,11 +87,16 @@ const CheckBox = styled.button`
 const RemoveBox = styled.button`
   display: inline-flex;
   align-items: center;
-  cursor: pointer;
 
   &:hover {
     color: #ff8787;
   }
 `;
 
-export { Layout, Content, Form, ListItem, CheckBox, RemoveBox };
+export { 
+  TemplateStyled, 
+  Form, 
+  ListItem,
+  CheckBox, 
+  RemoveBox 
+};
