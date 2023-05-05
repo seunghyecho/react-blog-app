@@ -1,6 +1,6 @@
-import { MdAdd } from 'react-icons/md';
-import { Form } from './Template.styled';
 import React, { useCallback, useState } from 'react';
+import { MdAdd } from 'react-icons/md';
+import { Form } from '@/components/common/Template/Template.styled';
 
 interface Props {
   handleInsert: (value:string) => void;
@@ -10,8 +10,7 @@ function TodoInsert({ handleInsert }: Props) {
   const [value, setValue] = useState('');
 
   const handleChange = useCallback(e => {
-    const target = e.target as HTMLInputElement;
-    setValue(target.value);
+    setValue(e.target.value);
   }, []);
 
   const handleSubmit = useCallback(e => {
@@ -19,6 +18,7 @@ function TodoInsert({ handleInsert }: Props) {
     setValue('');
 
     e.preventDefault();
+
   }, [handleInsert, value]);
 
 

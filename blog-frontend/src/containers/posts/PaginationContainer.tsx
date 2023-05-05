@@ -5,7 +5,7 @@ import Pagination from '@/components/posts/Pagination';
 
 function PaginationContainer() {
   const router = useRouter();
-  const { username, tag, page } = router.query;
+  const { tag, page } = router.query;
 
   const { lastPage, posts, loading } = useSelector(({ posts, loading }) => ({
     lastPage: posts.lastPage,
@@ -18,8 +18,7 @@ function PaginationContainer() {
   return (
     <Pagination
       tag={tag || ''}
-      username={username|| ''}
-      page={Number(page)}
+      page={Number(page) || 1}
       lastPage={lastPage}
     />
   );

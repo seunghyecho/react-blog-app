@@ -1,8 +1,7 @@
-import { List } from 'react-virtualized';
 import React, { useCallback } from 'react';
-import TodoListItem from './TodoListItem';
-import { TodoT } from '../../../types/todo';
-
+import { List } from 'react-virtualized';
+import TodoListItem from '@/components/common/Template/TodoListItem';
+import { TodoT } from '@/types/todo';
 
 interface Props {
   todos: Array<TodoT>;

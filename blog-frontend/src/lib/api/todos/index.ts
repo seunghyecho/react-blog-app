@@ -1,12 +1,10 @@
-import axios from 'axios';
+import client from '@/lib/api/client';
 
 /**
- * todo 리스트 조회 api
+ * 스케줄 조회 api
  */
-const fetchTodos = async (params: any) => {
-  return await axios.get('https://jsonplaceholder.typicode.com/todos', {
-    params,
-  });
+const fetchTodos = () => {
+  return client.get('https://jsonplaceholder.typicode.com/todos');
 };
 
 export { fetchTodos };

@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import PageLayout from '@/components/common/Layout';
 import SearchBar from '@/components/common/SearchBar';
-import PostListContainer from '@/containers/posts/PostListContainer';
 function Search() {
   const [query, setQuery] = useState('');
   const onKeyup = (e: React.KeyboardEvent) => {
@@ -16,7 +15,6 @@ function Search() {
         }}
         onKeyup={onKeyup}
       />
-      <PostListContainer />
     </PageLayout>
   );
 }

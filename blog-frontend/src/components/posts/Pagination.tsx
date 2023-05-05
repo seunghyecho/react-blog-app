@@ -13,23 +13,23 @@ const PaginationBlock = styled.div`
 `;
 const PageNumber = styled.div``;
 
-function buildLink({ username, tag, page }) {
-  const query = qs.stringify({ tag, page });
-  return username && `/?${query}`;
-}
-
-function Pagination({ page, lastPage, username, tag }) {
+function Pagination({ page, lastPage,tag }) {
+  function buildLink({ tag, page }) {
+    const query = qs.stringify({ tag, page });
+    return `/?${query}`;
+  }
+  
   return (
     <PaginationBlock>
       <Link
-        href={page === 1 ? '' : buildLink({ username, tag, page: page - 1 })}
+        href={page === 1 ? '' : buildLink({ tag, page: page - 1 })}
       >
         <Button label="이전" disabled={page === 1} />
       </Link>
       <PageNumber>{page}</PageNumber>
       <Link
         href={
-          page === lastPage ? '' : buildLink({ username, tag, page: page + 1 })
+          page === lastPage ? '' : buildLink({ tag, page: page + 1 })
         }
       >
         <Button label="다음" disabled={page === lastPage} />

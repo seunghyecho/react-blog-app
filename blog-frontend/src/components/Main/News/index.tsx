@@ -1,11 +1,11 @@
-import Categories from './Categories';
-import NewsItem from './NewsItem';
-import { NewsT } from '../../../types/news';
+import Categories from '@/components/Main/News/Categories';
+import NewsItem from '@/components/Main/News/NewsItem';
+import { NewsT } from '@/types/news';
 
 interface Props {
   data: Array<NewsT>;
-  category: any;
-  handleSelect: any;
+  category: string;
+  handleSelect: (category: string) => void;
 }
 
 function News({ data, category, handleSelect }: Props) {

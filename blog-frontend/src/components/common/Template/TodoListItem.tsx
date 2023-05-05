@@ -1,7 +1,7 @@
 import React from 'react';
 import { MdCheckBox, MdCheckBoxOutlineBlank, MdRemoveCircleOutline } from 'react-icons/md';
-import { ListItem, CheckBox, RemoveBox } from './Template.styled';
-import { TodoT } from '../../../types/todo';
+import { ListItem, CheckBox, RemoveBox } from '@/components/common/Template/Template.styled';
+import { TodoT } from '@/types/todo';
 
 interface Props {
   todo: TodoT;

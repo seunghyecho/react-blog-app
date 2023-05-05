@@ -52,9 +52,6 @@ const PostViewer = ({ post, error, loading, actionButtons }) => {
   const { title, body, user, publishedDate, tags } = post;
   return (
     <PostViewerBlock>
-      /** 
-       * TODO 상세 버그 수정 후 확인 필요
-       */
       <Helmet>
         <title>{title} - React Blog Post</title>
       </Helmet>
