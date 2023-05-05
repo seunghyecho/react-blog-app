@@ -4,7 +4,7 @@ import styled from 'styled-components';
 const NewsListBlock = styled.ul`
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
+  justify-content: start;
 `;
 
 const NewsItemBlock = styled.li`
@@ -12,11 +12,17 @@ const NewsItemBlock = styled.li`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  width: calc(100%/2);
-  
+  width: calc(100% / 3);
   border-radius: 4px;
   box-shadow: rgba(0, 0, 0, 0.04) 0px 4px 16px 0px;
   transition: box-shadow 0.25s ease-in 0s, transform 0.25s ease-in 0s;
+
+  @media (max-width: 1024px) {
+    width: calc(100% / 2);
+  }
+  @media (max-width: 768px) {
+    width: 100%;
+  }
 
   &:hover {
     transform: translateY(-8px);
