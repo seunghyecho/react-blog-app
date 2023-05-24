@@ -31,6 +31,8 @@ const sanitizeOption = {
 
 export const getPostById = async (ctx, next) => {
   const { id } = ctx.params;
+  console.log(id)
+
   if (!ObjectId.isValid(id)) {
     ctx.status = 400; // Bad Request
     return;
@@ -97,6 +99,7 @@ export const write = async (ctx) => {
   }
 };
 
+// html 을 없애고 내용이 너무 길으면 200자로 제한시키는 함수
 const removeHtmlAndShorten = (body) => {
   const filtered = sanitizeHtml(body, {
     allowedTags: [],
@@ -192,7 +195,6 @@ export const update = async (ctx) => {
   if (nextData.body) {
     nextData.body = sanitizeHtml(nextData.body, sanitizeOption);
   }
-
   try {
     const post = await Post.findByIdAndUpdate(id, nextData, {
       new: true, // 이 값을 설정하면 업데이트된 데이터를 반환합니다.
