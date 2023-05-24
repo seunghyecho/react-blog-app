@@ -5,10 +5,17 @@ import PageLayout from '@/components/common/Layout';
 import SearchBar from '@/components/common/SearchBar';
 import PostList from '@/components/posts/PostList';
 import { fetchPosts } from '@/lib/api/posts';
+import styled from 'styled-components';
+
+const Comment = styled.p`
+  margin: 1.5rem 0;
+`;
 
 function Search() {
   const router = useRouter();
   const [query, setQuery] = useState('');
+  
+  // TODO page를 전체로
   const [params, ]= useState({
     page:1,
     username:'',
@@ -19,8 +26,11 @@ function Search() {
     ...params,
   }));
 
-   const filterItems = (data, query) => {
-    
+   const filteredData = (data, query) => {
+    if(!query) {
+      data = [];
+    }
+
     query = query.toLowerCase();
 
     return data?.filter(item =>
@@ -30,7 +40,7 @@ function Search() {
     );
   }
 
-  const results = filterItems(data?.data, query);
+  const results = filteredData(data?.data, query);
 
   const handleChange = (e)=>{
     setQuery(e.target.value);
@@ -50,6 +60,9 @@ function Search() {
         query={query}
         onChange={handleChange}
       />
+      
+      <Comment>총 <strong>{results.length}</strong>개의 포스트를 찾았습니다.</Comment>
+
       <PostList
         loading={isLoading}
         error={isError}
