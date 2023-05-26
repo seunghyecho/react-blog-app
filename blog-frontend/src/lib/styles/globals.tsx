@@ -73,6 +73,7 @@ export const GlobalStyle = createGlobalStyle`
   input {
     border: none;
     outline: none;
+    box-sizing: border-box;
   }
 
   input:-webkit-autofill,

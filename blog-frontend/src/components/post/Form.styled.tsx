@@ -1,41 +1,11 @@
 import styled from 'styled-components';
-import Button from '../common/Button';
-
-const FormGroup = styled.div`
-  button {
-    width: 100%;
-    height: 35px;
-    line-height: 35px;
-    border-radius: 4px;
-    border: none;
-    color: white;
-    background: #619ffb;
-    font-size: 13px;
-  }
-
-  input {
-    padding: 0;
-    width: 100%;
-    box-sizing: border-box;
-    outline: none;
-    border-bottom: 1px solid #efefef;
-    height: 35px;
-    line-height: 35px;
-
-    &:focus,
-    &:active {
-      border-bottom: 2px solid #619ffb;
-    }
-  }
-
-`;
+import Button from '@/components/common/Button';
 
 const FormLabel = styled.label`
   text-transform: uppercase;
   font-size: 14px;
   color: #c1c1c1;
   white-space: nowrap;
-
 `;
 
 const FormButtonWrap = styled.div`
@@ -45,7 +15,9 @@ const FormButtonWrap = styled.div`
   margin-bottom: 3rem;
 `;
 
-const FormButton = styled(Button)``;
+const FormButton = styled(Button)`
+  font-weight: 600;
+`;
 
 const FormContent = styled.div`
   padding: 10px;
@@ -61,4 +33,4 @@ const FormContent = styled.div`
   }
 `;
 
-export { FormGroup, FormLabel, FormButtonWrap, FormButton, FormContent };
+export { FormLabel, FormButtonWrap, FormButton, FormContent };

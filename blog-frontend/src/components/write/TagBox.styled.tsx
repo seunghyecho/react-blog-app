@@ -1,45 +1,28 @@
 import styled from 'styled-components';
-import palette from '../../lib/styles/palette';
+import palette from '@/lib/styles/palette';
 
 const TagBoxBlock = styled.div`
+display: flex;
   width: 100%;
   border-top: 1px solid ${palette.gray[2]};
   padding-top: 2rem;
-
-  h4 {
-    color: ${palette.gray[8]};
-    margin-top: 0;
-    margin-bottom: 0.5rem;
-  }
 `;
 const TagForm = styled.form`
-  border-radius: 6px;
-  overflow: hidden;
   display: flex;
-  width: 256px;
-  border: 1px solid ${palette.gray[9]};
-
-  input, button {
-    ouline: none;
-    border: none;
-    font-size: 1rem;
-  }
+  max-width: 200px;
+  border: 1px solid ${palette.gray[2]};
+  border-radius: 4px;
+  overflow: hidden;
 
   input {
-    padding: 0.5rem;
-    flex: 1;
-    min-width: 0;
+    flex:1;
+    padding-left: .5rem;
   }
 
   button {
-    width: auto;
-    padding-right: 1rem;
-    padding-left: 1rem;
-    border: none;
+    padding: 0.75rem;
     background-color: ${palette.gray[8]};
     color: ${palette.gray[0]};
-    font-weight: 600;
-    border-radius: 0;
 
     &:hover {
       background-color: ${palette.gray[6]};
@@ -48,8 +31,12 @@ const TagForm = styled.form`
 `;
 
 const Tag = styled.div`
-  margin-right: 0.5rem;
-  color: ${palette.gray[6]};
+  margin-right: .5rem;
+  padding: 0.75rem;
+  border-radius: 4px;
+  color: ${palette.cyan[6]};
+  background-color: ${palette.gray[1]};
+  font-weight: 600;
 
   &:hover {
     opacity: 0.5;
@@ -58,7 +45,6 @@ const Tag = styled.div`
 
 const TagListBlock = styled.div`
   display: flex;
-  margin-top: 0.5rem;
 `;
 
 export { TagBoxBlock, TagForm, Tag, TagListBlock };

@@ -7,7 +7,7 @@ const ActionButtons = ({ onPublish, onCancel, isEdit }) => {
       <FormButton type='button' label='취소' onClick={onCancel} />
       <FormButton 
         type='button' 
-        label={isEdit? '게시물 수정': '게시물 등록'} 
+        label={isEdit? '수정': '등록'} 
         onClick={onPublish} 
         cyan={true} 
       />

@@ -4,22 +4,15 @@ import { TagBoxBlock, TagForm, Tag, TagListBlock } from './TagBox.styled';
 /**
  * TODO React.memo -> useMemo
  */
-const TagItem = React.memo(({ tag, onRemove }: { tag: string; onRemove: any; }) => {
-    return (
-      <Tag onClick={() => onRemove(tag)}>#{tag}</Tag>
-    );
-  }
-);
+const TagItem =({ tag, onRemove }) =>
+      <Tag onClick={() => onRemove(tag)}>#{tag}</Tag>;
 
-const TagList = React.memo(({ tags, onRemove }: { tags: Array<string>; onRemove: any; }) => {
-  return (
+const TagList = ({ tags, onRemove }) => 
     <TagListBlock>
       {tags.map((tag) => (
         <TagItem key={tag} tag={tag} onRemove={onRemove} />
       ))}
-    </TagListBlock>
-  );
-});
+    </TagListBlock>;
 
 function TagBox({ tags, onChangeTags }) {
   const [input, setInput] = useState('');
@@ -61,7 +54,7 @@ function TagBox({ tags, onChangeTags }) {
 
   return (
     <TagBoxBlock>
-      <h4>TAG</h4>
+      <TagList tags={localTags} onRemove={onRemove} />
       <TagForm>
         <input
           type='text'
@@ -71,7 +64,6 @@ function TagBox({ tags, onChangeTags }) {
         />
         <button type='submit' onClick={onSubmit}>추가</button>
       </TagForm>
-      <TagList tags={localTags} onRemove={onRemove} />
     </TagBoxBlock>
   );
 }
