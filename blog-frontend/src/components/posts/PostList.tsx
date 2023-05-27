@@ -1,5 +1,4 @@
 import React from 'react';
-import Link from 'next/link';
 import SubInfo from '@/components/common/SubInfo';
 import Tags from '@/components/common/Tags';
 import {
@@ -8,14 +7,18 @@ import {
   PostItemContent
 } from '@/components/posts/PostList.styled';
 import { postT } from '@/types/post';
+import Link from 'next/link';
+
 
 function ListItem({ post }) {
   const { title, body, user, publishedDate, tags, _id }: postT = post;
+  
   return (
     <PostItemBlock>
-      <Link href={`/posts/${_id}`}>
-        {title}
-      </Link>
+       <h2>
+        <Link href={`/posts/${_id}`}>{title}</Link>
+      </h2>
+    
       <SubInfo
         isMarginTop
         username={user?.username}

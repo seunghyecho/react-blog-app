@@ -19,7 +19,7 @@ function Header({ user }) {
   
   const onConfirm = ()=>{
     setModal(false);
-    router.push('/posts/create');
+    router.push('/create');
   }
   return (
     <>

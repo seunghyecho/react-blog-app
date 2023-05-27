@@ -3,17 +3,23 @@ import styled, { css } from 'styled-components';
 import palette from '@/lib/styles/palette';
 
 const SubInfoBlock = styled.div<{ isMarginTop: boolean }>`
+  margin-bottom: 1rem;
+  color: ${palette.gray[6]};
+
   ${props =>
     props.isMarginTop &&
     css`
       margin-top: 1rem;
     `}
-  color: ${palette.gray[6]};
 
   span + span:before {
     padding: 0 0.25rem;
     color: ${palette.gray[4]};
     content: '\\B7';
+  }
+
+  b{
+    color: ${palette.gray[8]};
   }
 `;
 
@@ -21,7 +27,7 @@ function SubInfo({ username, publishedDate, isMarginTop }) {
   return (
     <SubInfoBlock isMarginTop={isMarginTop}>
       <span>
-        <b>
+        <b> 
           <Link href={`/${username || ''}`}>
             {username || ''}
           </Link>

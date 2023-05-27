@@ -1,41 +1,24 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import RemoveModal from '@/components/post/RemoveModal';
-import palette from '@/lib/styles/palette';
+import Button from '@/components/common/Button';
 
-const PostActionButtonsBlock = styled.div`
+const PostButtonWrap = styled.div`
+  margin-top: 1rem;
+  margin-bottom: 3rem;
   display: flex;
-  justify-content: flex-end;
-  margin-bottom: 2rem;
-  margin-top: -1.5rem;
+  justify-content: space-between;
 `;
 
-const ActionButton = styled.button`
-  padding: 0.25rem 0 0.5rem;
-  border-radius: 4px;
-  color:${palette.gray[6]};
+const PostButton = styled(Button)`
   font-weight: 600;
-  border: none;
-  outline: none;
-  font-size: 0.875rem;
-  cursor: pointer;
-
-  &:hover{
-    background: ${palette.gray[1]};
-    color:${palette.cyan[7]};
-  }
-
-  & + &{
-    margin-left: 0.25rem;
-  }
 `;
-function PostActionButtons({onEdit,onRemove}) {
+function PostActionButtons({ onEdit, onRemove }) {
   const [modal, setModal] = useState(false);
 
   const onRemoveClick = ()=>{
     setModal(true);
   };
-
   const onCancel = ()=>{
     setModal(false);
   }
@@ -43,17 +26,18 @@ function PostActionButtons({onEdit,onRemove}) {
     setModal(false);
     onRemove();
   }
+  
   return (
     <>
-    <PostActionButtonsBlock>
-      <ActionButton onClick={onEdit}>수정</ActionButton>
-      <ActionButton onClick={onRemoveClick}>삭제</ActionButton>
-    </PostActionButtonsBlock>
-    <RemoveModal
-      visible={modal}
-      onConfirm={onConfirm}
-      onCancel={onCancel}
-    />
+      <PostButtonWrap>
+        <PostButton onClick={onRemoveClick}>삭제</PostButton>
+        <PostButton onClick={onEdit} cyan>수정</PostButton>
+      </PostButtonWrap>
+      <RemoveModal
+        visible={modal}
+        onConfirm={onConfirm}
+        onCancel={onCancel}
+      />
     </>
   );
 }

@@ -1,32 +1,21 @@
 import Link from 'next/link';
 import styled from 'styled-components';
-import palette from '@/lib/styles/palette';
+import { Tag } from '@/components/write/TagBox.styled';
 
-const TagsBlock = styled.div`
+const TagsBlock = styled(Tag)`
   margin-top: 0.5rem;
-
-  a {
-    margin-right: 0.5rem;
-    display: inline-block;
-    text-decoration: none;
-    color: ${palette.cyan[7]};
-    font-weight: 600;
-
-    &:hover {
-      color: ${palette.cyan[6]};
-    }
-  }
+  display: inline-block;
 `;
 
 function Tags({ tags }) {
   return (
-    <TagsBlock>
-      {tags.map(tag => (
-        <Link href={`/?tag=${tag}`} key={tag}>
-          #{tag}
-        </Link>
+    <>
+      {tags.map(t => (
+        <TagsBlock key={t}>
+          <Link href={`/?tag=${t}`} >#{t}</Link>
+        </TagsBlock>
       ))}
-    </TagsBlock>
+    </>
   );
 }
 
