@@ -3,8 +3,9 @@ import styled, { css } from 'styled-components';
 import palette from '@/lib/styles/palette';
 
 const SubInfoBlock = styled.div<{ isMarginTop: boolean }>`
-  margin-bottom: 1rem;
+  padding: 1rem 0;
   color: ${palette.gray[6]};
+  border-top: 1px solid ${palette.gray[2]};
 
   ${props =>
     props.isMarginTop &&
@@ -26,10 +27,10 @@ const SubInfoBlock = styled.div<{ isMarginTop: boolean }>`
 function SubInfo({ username, publishedDate, isMarginTop }) {
   return (
     <SubInfoBlock isMarginTop={isMarginTop}>
-      <span>
+      <span>by&nbsp;
         <b> 
           <Link href={`/${username || ''}`}>
-            {username || ''}
+             { username || ''}
           </Link>
         </b>
       </span>

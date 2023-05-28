@@ -2,30 +2,43 @@ import styled from 'styled-components';
 import palette from '@/lib/styles/palette';
 
 const PostListBlock = styled.ul`
-  margin-top: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
 `;
 
 const PostItemBlock = styled.li`
-  padding: 3rem 0;
+  padding: 1rem;
+  margin-bottom: 3rem;
+  width: calc(100%/2 - 5px);
+  border-radius: 4px;
+  box-shadow: rgba(0, 0, 0, 0.04) 0px 4px 16px 0px;
+  transition: box-shadow 0.25s ease-in 0s, transform 0.25s ease-in 0s;
 
-  &:first-child {
-    padding-top: 0;
+  @media (max-width: 1024px) {
+    width: calc(100% / 2);
+  }
+  @media (max-width: 768px) {
+    width: 100%;
   }
 
-  & + & {
-    border-top: 1px solid ${palette.gray[2]};
+  &:hover {
+    transform: translateY(-8px);
+    box-shadow: rgba(0, 0, 0, 0.08) 0px 12px 20px 0px;
   }
 
-  a {
-    font-weight: 600;
+  h1{
+    font-size: 1.75rem;
+    font-weight: bold;;
+  }
 
-    &:hover {
+  a:hover {
     color: ${palette.gray[6]};
-  }
   }
 `;
 
-const PostItemContent = styled.p`
+const PostItemContent = styled.div`
   margin: 2rem 0 0;
   max-height: 40px;
   line-height: 1.53;

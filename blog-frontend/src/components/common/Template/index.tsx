@@ -1,7 +1,7 @@
-import React, { useCallback, useReducer, useRef } from 'react';
+import React, { useCallback, useEffect, useReducer, useRef } from 'react';
 import TodoInsert from '@/components/common/Template/TodoInsert';
 import TodoList from '@/components/common/Template/TodoList';
-import { TemplateStyled } from '@/components/common/Template/Template.styled';
+import { Wrapper, TemplateBlock } from '@/components/common/Template/Template.styled';
 import { TodoT } from '@/types/todo';
 import TodoReducer from '@/hooks/useTodos';
 
@@ -11,6 +11,7 @@ interface Props {
 }
 
 function Template({ title, data }: Props) {
+  const targetRef = useRef(null);
   const [todos, dispatch] = useReducer(TodoReducer, data);
   const createId = useRef(31);
 
@@ -37,14 +38,30 @@ function Template({ title, data }: Props) {
     }, [],
   );
 
+  useEffect(()=>{
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  },[]);
+
+  const handleScroll = ()=>{
+    if(window.scrollY > 0){
+      targetRef.current.style.position = "fixed";
+      targetRef.current.style.top = "112px";
+    }
+  }
+
   return (
-    <TemplateStyled>
+    <Wrapper>
+    <TemplateBlock ref={targetRef}>
       <h2>{title}</h2>
       <div>
         <TodoInsert handleInsert={handleInsert} />
         <TodoList todos={todos} handleRemove={handleRemove} handleToggle={handleToggle} />
       </div>
-    </TemplateStyled>
+    </TemplateBlock>
+    </Wrapper>
   );
 }
 

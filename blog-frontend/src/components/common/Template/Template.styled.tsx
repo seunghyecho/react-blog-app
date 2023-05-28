@@ -1,7 +1,13 @@
 import styled from 'styled-components';
 import palette from '@/lib/styles/palette';
 
-const TemplateStyled = styled.div`
+const Wrapper = styled.div`
+  position: relative;
+  width: 30%;
+`;
+const TemplateBlock = styled.div`
+  width: 240px;
+  margin-left: 5rem;
   border-radius: 4px;
   overflow: hidden;
 
@@ -94,7 +100,8 @@ const RemoveBox = styled.button`
 `;
 
 export { 
-  TemplateStyled, 
+  Wrapper,
+  TemplateBlock, 
   Form, 
   ListItem,
   CheckBox, 

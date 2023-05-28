@@ -1,31 +1,29 @@
 import React from 'react';
-import SubInfo from '@/components/common/SubInfo';
+import Link from 'next/link';
 import Tags from '@/components/common/Tags';
+import SubInfo from '@/components/common/SubInfo';
+import { postT } from '@/types/post';
 import {
   PostListBlock,
   PostItemBlock,
   PostItemContent
 } from '@/components/posts/PostList.styled';
-import { postT } from '@/types/post';
-import Link from 'next/link';
-
 
 function ListItem({ post }) {
   const { title, body, user, publishedDate, tags, _id }: postT = post;
   
   return (
     <PostItemBlock>
-       <h2>
+      <h1>
         <Link href={`/posts/${_id}`}>{title}</Link>
-      </h2>
-    
+      </h1>
+      <Tags tags={tags} />
+      <PostItemContent dangerouslySetInnerHTML={{ __html: body }} />
       <SubInfo
         isMarginTop
         username={user?.username}
         publishedDate={new Date(publishedDate)}
       />
-      <Tags tags={tags} />
-      <PostItemContent dangerouslySetInnerHTML={{ __html: body }} />
     </PostItemBlock>
   );
 }

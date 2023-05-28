@@ -2,9 +2,7 @@ import styled from 'styled-components';
 import palette from '@/lib/styles/palette';
 
 const WrapperStyled = styled.div`
-  padding-right: 15px;
-  width: 80%;
-  box-sizing: border-box;
+  width: 70%;
 
   @media (max-width: 1024px) {
     padding-right: 0;

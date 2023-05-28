@@ -3,11 +3,20 @@ import styled from 'styled-components';
 import Button from '@/components/common/Button';
 
 const PaginationBlock = styled.div`
-  width: 320px;
+  width: 200px;
   margin: 0 auto;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  
+  button, p {
+    font-weight: 600;
+  }
+
+  p{
+    font-size: 1.5rem;
+  }
+  
 `;
 
 function Pagination({ page, setPage, lastPage }) {

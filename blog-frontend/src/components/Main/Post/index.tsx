@@ -11,7 +11,7 @@ function Post() {
     router.query.page ? Number(router.query.page) : 1
   );
 
-  const {data, isLoading, isError}= useQuery(['posts'],()=>fetchPosts({
+  const {data, isLoading, isError}= useQuery(['posts'],() => fetchPosts({
       page,
       username:'',
       tag:''

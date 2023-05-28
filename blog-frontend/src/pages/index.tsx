@@ -5,78 +5,63 @@ import News from '@/components/Main/News';
 import Post from '@/components/Main/Post';
 import About from '@/components/Main/About';
 import Side from '@/components/common/Layout/Side';
-import { fetchNews } from '@/lib/api/news';
 import { WrapperStyled, TabStyled, ContentStyled } from '@/lib/styles/main.styled';
 import { FlexLayout } from '@/lib/styles/common.styled';
+import { fetchNews } from '@/lib/api/news';
 
 function Main() {
-  const [page] = useState(1);
-  const [activeIndex, setActiveIndex] = useState(0);
-  const [category, setCategory] = useState('all');
+  const [page] = useState<number>(1);
+  const [activeIndex, setActiveIndex] = useState<number>(0);
+  const [category, setCategory] = useState<string>('all');
 
-  const newsData = useQuery(['news', { page, category }], () =>
+  const news = useQuery(['news', { page, category }], () =>
     fetchNews({
       params: { page: Number(page) },
       category: category === 'all' ? '' : category
     }))
   ;
 
-  const news = newsData.data?.data.articles || [];
+  const newsList = news.data?.data.articles || [];
 
   const handleSelect = useCallback(
-    category =>
+    (category:string) =>
       setCategory(category)
     , []);
 
-  /**
-   * TODO tab 개선 필요
-   */
-
-  const tabArr = [
-    {
-      tab: (
-        <li
-          key={0}
-          className={activeIndex === 0 ? 'active' : ''}
-          onClick={() => setActiveIndex(0)}
-        >
-          <h2>POST</h2>
-        </li>
-      ),
-      content: <Post />
-    },
-    {
-      tab: (
-        <li
-        key={1}
-          className={activeIndex === 1 ? 'active' : ''}
-          onClick={() => setActiveIndex(1)}
-        >
-          <h2>NEWS</h2>
-        </li>
-      ),
-      content: <News data={news} category={category} handleSelect={handleSelect} />
-    },
-    {
-      tab: (
-        <li
-        key={2}
-          className={activeIndex === 2 ? 'active' : ''}
-          onClick={() => setActiveIndex(2)}
-        >
-          <h2>ABOUT</h2>
-        </li>
-      ),
-      content: <About />
-    }
-  ];
+    const TABS = [
+      {
+        id:1,
+        name:'POST',
+        content: <Post />
+      },
+      {
+        id:2,
+        name:'NEWS',
+        content: <News data={newsList} category={category} handleSelect={handleSelect} />
+      },
+      {
+        id:3,
+        name:'ABOUT',
+        content: <About />
+      }
+    ]
 
   return (
     <PageLayout>
       <FlexLayout>
         <WrapperStyled>
-          <TabStyled>{tabArr.map(({ tab }) => tab)}</TabStyled>
-          <ContentStyled>{tabArr[activeIndex].content}</ContentStyled>
+          <TabStyled>
+            {TABS.map(({ id, name }) => (
+              <li
+                key={id}
+                className={activeIndex === (id - 1) ? 'active' : ''}
+                onClick={() => setActiveIndex(id - 1)}
+              >
+                <h2>{name}</h2>
+              </li>
+            ))}
+          </TabStyled>
+          <ContentStyled>{TABS[activeIndex].content}</ContentStyled>
         </WrapperStyled>
         <Side />
       </FlexLayout>
@@ -85,3 +70,5 @@ function Main() {
 }
 
 export default Main;
+
+

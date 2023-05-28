@@ -1,14 +1,12 @@
-/**
- * @type {import('next').NextConfig}
- */
+/** @type {import('next').NextConfig} */
 const path = require('path');
 
-const nextConfig = {
+module.exports = {
   reactStrictMode: true,
   swcMinify: true,
   distDir: 'build',
   compiler: {
-    styledComponents: true
+    styledComponents: true,
   },
   env: {
     NEXT_PUBLIC_API_KEY: process.env.NEXT_PUBLIC_API_KEY
@@ -21,13 +19,7 @@ const nextConfig = {
     };
     return config;
   },
-};
-
-
-
-module.exports = {
-  nextConfig,
-  async rewrites() {
+  rewrites: async () => {
     return [
       {
         source: '/:path*',

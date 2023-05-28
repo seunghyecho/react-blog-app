@@ -22,13 +22,13 @@ function TodoList({ todos, handleRemove, handleToggle }: Props) {
           style={style}
         />
       );
-    }, [todos, handleRemove, handleToggle],
+    }, [todos, handleRemove, handleToggle]
   );
 
   return(
     <List
       clssName="TodoList"
-      width={213}
+      width={240}
       height={230}
       rowCount={todos.length}
       rowHeight={50}
