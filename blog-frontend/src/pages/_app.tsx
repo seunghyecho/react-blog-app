@@ -13,9 +13,6 @@ import { sizes } from '@/lib/styles/theme';
 import HeaderContainer from '@/containers/common/HeaderContainer';
 import { tempSetUser, check } from '@/modules/user';
 
-
-
-
 function MyApp({ Component, pageProps }) {
   /**
    * TODO react-hydration-error
@@ -35,7 +32,7 @@ function MyApp({ Component, pageProps }) {
       store.dispatch(tempSetUser(JSON.parse(user)));
       store.dispatch(check());
     } catch (e) {
-      console.log('localStorage is not working');
+      console.log('app, localStorage is not working');
     }
   };
 

@@ -16,25 +16,23 @@ const fetchPosts = ({ page, username, tag }) => {
 /**
  * 게시글 상세 api
  */
-const fetchReadPost = (id:number) => {
-  return client.get(`/api/posts/${id}`)
-};
+const fetchReadPost = id => client.get(`/api/posts/${id}`);
 
 /**
  * 게시글 생성 api
  */
-const fetchCreatePosts = ({ title, body, tags }) =>{
+const fetchCreatePosts = ({ title, body, tags }) => {
   return client.post('/api/posts', { title, body, tags });
-}
+};
 
 /**
  * 게시글 수정 api
  */
 const fetchUpdatePost = ({ id, title, body, tags }) => {
   return client.patch(`api/posts/${id}`, {
-    id, 
-    title, 
-    body, 
+    id,
+    title,
+    body,
     tags
   });
 };
@@ -42,7 +40,7 @@ const fetchUpdatePost = ({ id, title, body, tags }) => {
 /**
  * 게시글 삭제 api
  */
-const fetchDeletePost = (id:number) => {
+const fetchDeletePost = id => {
   return client.delete(`api/posts/${id}`);
 };
 

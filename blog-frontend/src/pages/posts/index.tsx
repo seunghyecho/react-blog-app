@@ -1,15 +1,9 @@
-import Responsive from "@/components/common/Responsive";
-import PaginationContainer from "@/containers/posts/PaginationContainer";
-import PostListContainer from "@/containers/posts/PostListContainer";
-import styled from "styled-components";
+import PostViewerContainer from "@/containers/post/PostViewerContainer";
 
-const PostsBlock = styled(Responsive)``;
 function Posts(){
+    const id = window.localStorage.getItem('_id')
     return(
-        <PostsBlock>
-            <PostListContainer />
-            <PaginationContainer/>
-        </PostsBlock>
+        <PostViewerContainer postId={id}/>
     )
 }
 export default Posts;

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Link from 'next/link';
 import Tags from '@/components/common/Tags';
 import SubInfo from '@/components/common/SubInfo';
@@ -8,14 +8,24 @@ import {
   PostItemBlock,
   PostItemContent
 } from '@/components/posts/PostList.styled';
+import { useRouter } from 'next/router';
 
 function ListItem({ post }) {
+  const router = useRouter();
   const { title, body, user, publishedDate, tags, _id }: postT = post;
+
+  const handleMoveDetailPage = ()=>{
+    if (!router.isReady) return;
+    if (_id) {
+      router.replace(`/posts`);
+      window.localStorage.setItem('_id', _id);
+    }
+  }
   
   return (
     <PostItemBlock>
       <h1>
-        <Link href={`/posts/${_id}`}>{title}</Link>
+        <div onClick={handleMoveDetailPage}>{title}</div>
       </h1>
       <Tags tags={tags} />
       <PostItemContent dangerouslySetInnerHTML={{ __html: body }} />

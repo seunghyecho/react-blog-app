@@ -1,5 +1,5 @@
 import React from 'react'
-import Modal from '../common/Modal'
+import Modal from '@/components/common/Modal'
 
 function RemoveModal({ visible, onConfirm, onCancel }) {
   return (
