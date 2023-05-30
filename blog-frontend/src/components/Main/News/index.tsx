@@ -1,6 +1,6 @@
-import Categories from '@/components/Main/News/Categories';
-import NewsItem from '@/components/Main/News/NewsItem';
-import { NewsListBlock } from '@/components/Main/News/News.styled';
+import Categories from '@/components/main/News/Categories';
+import NewsItem from '@/components/main/News/NewsItem';
+import { NewsListBlock } from '@/components/main/News/News.styled';
 import { NewsT } from '@/types/news';
 interface Props {
   data: Array<NewsT>;
