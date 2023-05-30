@@ -1,43 +1,20 @@
-import React, { useCallback } from 'react';
-import { List } from 'react-virtualized';
+import React from 'react';
 import TodoListItem from '@/components/common/Template/TodoListItem';
-import { TodoT } from '@/types/todo';
 
-interface Props {
-  todos: Array<TodoT>;
-  handleRemove: (id: number) => void;
-  handleToggle: (id: number) => void;
-}
-
-function TodoList({ todos, handleRemove, handleToggle }: Props) {
-  const rowRenderer = useCallback(
-    ({ index, key, style }) => {
-      const todo = todos[index];
-      return (
-        <TodoListItem
-          key={key}
+function TodoList({ todos, handleRemove, handleToggle }) {
+  return (
+    <ul>
+      {todos.map((todo)=>{
+        return (
+          <TodoListItem
+          key={todo.id}
           todo={todo}
           handleRemove={handleRemove}
           handleToggle={handleToggle}
-          style={style}
-        />
-      );
-    }, [todos, handleRemove, handleToggle]
-  );
-
-  return(
-    <List
-      clssName="TodoList"
-      width={240}
-      height={230}
-      rowCount={todos.length}
-      rowHeight={50}
-      rowRenderer={rowRenderer}
-      list={todos}
-      style={{outline:'none'}}
-    />
-  )
-
-}
+          />
+        )
+      })}
+  </ul>
+  )}
 
 export default React.memo(TodoList);

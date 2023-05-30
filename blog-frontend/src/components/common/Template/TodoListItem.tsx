@@ -1,27 +1,18 @@
 import React from 'react';
 import { MdCheckBox, MdCheckBoxOutlineBlank, MdRemoveCircleOutline } from 'react-icons/md';
 import { ListItem, CheckBox, RemoveBox } from '@/components/common/Template/Template.styled';
-import { TodoT } from '@/types/todo';
 
-interface Props {
-  todo: TodoT;
-  handleRemove: (id: number) => void;
-  handleToggle: (id: number) => void;
-  style:any;
-}
-
-function TodoListItem({ todo, handleRemove, handleToggle,style }: Props) {
-  const { id, title, completed } = todo;
-
+function TodoListItem({ todo, handleRemove, handleToggle }) {
+  const { id, text, completed } = todo;
   return (
-    <ListItem className="TodoListItem-virtualized" style={style}>
+    <ListItem>
       <CheckBox
         className={completed && 'completed'}
-        onClick={() => handleToggle(id)}
+        onClick={() => {console.log("TodoListItem",typeof id);handleToggle(id)}}
       >
         {completed ? <MdCheckBox /> : <MdCheckBoxOutlineBlank />}
       </CheckBox>
-      <p>{title}</p>
+      <p>{text}</p>
       <RemoveBox onClick={() => handleRemove(id)}><MdRemoveCircleOutline /></RemoveBox>
     </ListItem>
   );

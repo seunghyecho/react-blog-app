@@ -1,34 +1,23 @@
-import React, { useCallback, useState } from 'react';
+import React, { useState } from 'react';
 import { MdAdd } from 'react-icons/md';
 import { Form } from '@/components/common/Template/Template.styled';
 
-interface Props {
-  handleInsert: (value:string) => void;
-}
+function TodoInsert({ handleInsert }) {
+  const [text, setText] = useState('');
 
-function TodoInsert({ handleInsert }: Props) {
-  const [value, setValue] = useState('');
-
-  const handleChange = useCallback(e => {
-    setValue(e.target.value);
-  }, []);
-
-  const handleSubmit = useCallback(e => {
-    handleInsert(value);
-    setValue('');
-
+  const handleSubmit = e => {
     e.preventDefault();
-
-  }, [handleInsert, value]);
-
+    setText('');
+    handleInsert(text);
+  }
 
   return (
     <Form onSubmit={handleSubmit}>
       <input
         type='text'
         placeholder='할 일을 입력하세요.'
-        value={value}
-        onChange={handleChange}
+        value={text}
+        onChange={(e)=> setText(e.target.value)}
       />
       <button type='submit'><MdAdd /></button>
     </Form>

@@ -1,42 +1,48 @@
-import React, { useCallback, useEffect, useReducer, useRef } from 'react';
+import React, { useCallback, useEffect, useRef } from 'react';
 import TodoInsert from '@/components/common/Template/TodoInsert';
 import TodoList from '@/components/common/Template/TodoList';
 import { Wrapper, TemplateBlock } from '@/components/common/Template/Template.styled';
-import { TodoT } from '@/types/todo';
-import TodoReducer from '@/hooks/useTodos';
 
-interface Props {
-  title: string;
-  data: Array<TodoT>;
-}
-
-function Template({ title, data }: Props) {
+function Template({ title, todos, setTodos }) {
   const targetRef = useRef(null);
-  const [todos, dispatch] = useReducer(TodoReducer, data);
-  const createId = useRef(31);
+  const createId = useRef(3);
 
-  const handleInsert = useCallback(
-    title => {
-      const newTodo = {
-        id: createId.current,
-        title,
-        completed: false,
-      };
-      dispatch({ type: 'INSERT', newTodo });
-      createId.current += 1;
-    }, [],
-  );
+  const handleInsert = useCallback((text:string) => {
+      const newTodo = [
+        ...todos,
+        {
+          id: createId.current++,
+          text,
+          completed:false,
+        }
+      ];
+      setTodos(newTodo);
+    },[todos]);
 
-  const handleRemove = useCallback(
-    id => {
-      dispatch({ type: 'REMOVE', id });
-    }, []);
+  const handleRemove = useCallback((id:number) => {
+      const newTodo = [...todos]
+      .filter(todo =>
+        todo.id !== id);
+      setTodos(newTodo);
+    },[todos]);
 
-  const handleToggle = useCallback(
-    id => {
-      dispatch({ type: 'TOGGLE', id });
-    }, [],
-  );
+  const handleToggle = useCallback((id:number) => {
+      const newTodo = [...todos];
+      newTodo.map((todo) => {
+        if (todo.id === id) {
+          todo.completed = !todo.completed;
+        }
+        return todo;
+      })
+      setTodos(newTodo);
+
+      // const ss = todos.map((todo) => {
+      //   return todo.id === id ? { ...todo, completed: !todo.completed } : todo
+      // })
+      
+      // setTodos(ss);
+
+    },[todos]);
 
   useEffect(()=>{
     window.addEventListener('scroll', handleScroll);
@@ -54,13 +60,11 @@ function Template({ title, data }: Props) {
 
   return (
     <Wrapper>
-    <TemplateBlock ref={targetRef}>
-      <h2>{title}</h2>
-      <div>
+      <TemplateBlock ref={targetRef}>
+        <h2>{title}</h2>
         <TodoInsert handleInsert={handleInsert} />
         <TodoList todos={todos} handleRemove={handleRemove} handleToggle={handleToggle} />
-      </div>
-    </TemplateBlock>
+      </TemplateBlock>
     </Wrapper>
   );
 }

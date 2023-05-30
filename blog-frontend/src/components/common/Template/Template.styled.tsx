@@ -58,7 +58,7 @@ const Form = styled.form`
   }
 `;
 
-const ListItem = styled.div`
+const ListItem = styled.li`
   display: flex;
   padding: 1rem;
   align-items: center;

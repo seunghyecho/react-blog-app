@@ -1,15 +1,22 @@
+import { useState } from 'react';
 import Template from '@/components/common/Template';
-import { useQuery } from '@tanstack/react-query';
-import { fetchTodos } from '@/lib/api/todos';
 
 function Side() {
-  const { data, isLoading } = useQuery(['todos'], () => fetchTodos());
-  const todos = data?.data || [];
-
-  if(isLoading) return;
-
+  const [todos, setTodos] = useState([
+    {
+      id:1,
+      text:'완료한 나의 할일은?',
+      completed:true,
+    },
+    {
+      id:2,
+      text:'해야할 나의 할일은?',
+      completed:false,
+    }
+  ]);
+  console.log(todos)
   return (
-      <Template title='SCHEDULES' data={todos} />
+      <Template title='SCHEDULES' todos={todos} setTodos={setTodos}/>
   );
 }
 
