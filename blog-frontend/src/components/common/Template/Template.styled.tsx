@@ -26,7 +26,7 @@ const TemplateBlock = styled.div`
   }
 `;
 
-const Form = styled.form`
+const TemplateForm = styled.form`
   display: flex;
   align-items: center;
   height: 3rem;
@@ -102,7 +102,7 @@ const RemoveBox = styled.button`
 export { 
   Wrapper,
   TemplateBlock, 
-  Form, 
+  TemplateForm, 
   ListItem,
   CheckBox, 
   RemoveBox 

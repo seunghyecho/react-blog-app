@@ -35,13 +35,6 @@ function Template({ title, todos, setTodos }) {
         return todo;
       })
       setTodos(newTodo);
-
-      // const ss = todos.map((todo) => {
-      //   return todo.id === id ? { ...todo, completed: !todo.completed } : todo
-      // })
-      
-      // setTodos(ss);
-
     },[todos]);
 
   useEffect(()=>{
@@ -63,7 +56,11 @@ function Template({ title, todos, setTodos }) {
       <TemplateBlock ref={targetRef}>
         <h2>{title}</h2>
         <TodoInsert handleInsert={handleInsert} />
-        <TodoList todos={todos} handleRemove={handleRemove} handleToggle={handleToggle} />
+        <TodoList 
+          todos={todos} 
+          handleRemove={handleRemove} 
+          handleToggle={handleToggle} 
+        />
       </TemplateBlock>
     </Wrapper>
   );

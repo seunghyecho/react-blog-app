@@ -8,7 +8,7 @@ function TodoListItem({ todo, handleRemove, handleToggle }) {
     <ListItem>
       <CheckBox
         className={completed && 'completed'}
-        onClick={() => {console.log("TodoListItem",typeof id);handleToggle(id)}}
+        onClick={() => handleToggle(id)}
       >
         {completed ? <MdCheckBox /> : <MdCheckBoxOutlineBlank />}
       </CheckBox>

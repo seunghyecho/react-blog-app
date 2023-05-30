@@ -14,7 +14,6 @@ function Side() {
       completed:false,
     }
   ]);
-  console.log(todos)
   return (
       <Template title='SCHEDULES' todos={todos} setTodos={setTodos}/>
   );
