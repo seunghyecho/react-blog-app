@@ -30,7 +30,13 @@ const Wrapper = styled.div`
   }
 `;
 
-function TitleBodyBox({ title, body, onChangeField }) {
+interface Props{
+  title:string; 
+  setTitle:any; 
+  body:any; 
+  setBody:any;
+}
+function TitleBodyBox({ title, setTitle, body, setBody }:Props) {
   const modules = {
     toolbar: [
       [{ header: '1' }, { header: '2' }, { font: [] }],
@@ -68,13 +74,6 @@ function TitleBodyBox({ title, body, onChangeField }) {
     'video',
   ]
 
-  const onChangeTitle = (event) => {
-    onChangeField({ key: 'title', value: event.currentTarget.value });
-  };
-
-  const onChangeBody = (event) => {
-    onChangeField({ key: 'body', value: event });
-  };
 
   return (
     <>
@@ -82,14 +81,14 @@ function TitleBodyBox({ title, body, onChangeField }) {
         <input
           type='text'
           placeholder='제목을 입력하세요.'
-          value={title}
-          onChange={onChangeTitle}
+          defaultValue={title}
+          onChange={(e)=> setTitle(e.currentTarget.value)}
         />
         <QuillNoSSRWrapper
           theme='bubble'
           placeholder='내용을 입력하세요.'
-          value={body}
-          onChange={onChangeBody}
+          defaultValue={body}
+          onChange={(e)=>setBody(e)}
           modules={modules}
           formats={formats}
         />

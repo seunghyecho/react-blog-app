@@ -1,27 +1,36 @@
-import { useRouter } from 'next/router';
 import React, { useEffect } from 'react';
+import { useRouter } from 'next/router';
 import { useDispatch, useSelector } from 'react-redux';
-import { useMutation } from '@tanstack/react-query';
+import { useMutation, useQuery } from '@tanstack/react-query';
 import PostViewer from '@/components/post/PostViewer';
 import PostActionButtons from '@/components/post/PostActionButtons';
-import { readPost, unloadPost } from '@/modules/post';
 import { setOriginalPost } from '@/modules/write';
-import { fetchDeletePost } from '@/lib/api/posts';
+import { fetchDeletePost, fetchReadPost } from '@/lib/api/posts';
+import { readPost, unloadPost } from '@/modules/post';
 
-const PostViewerContainer = () => {
+const PostViewerContainer = ({ postId }) => {
   const dispatch = useDispatch();
   const router = useRouter();
-  const { postId } = router.query;
-  
-  const { post, error, loading, user } = useSelector(({ post, loading, user }) => ({
-    post: post.post,
-    error: post.error,
-    loading: loading['post/READ_POST'],
-    user: user.user,
-  }));
+  const {data, isLoading, isError}= useQuery(['detail'], ()=>fetchReadPost(postId))
+
+  const { user } = useSelector(
+    ({ user }) => ({
+      user: user.user,
+    }),
+  );
+
+  const post = data?.data;
+
+  useEffect(() => {
+    dispatch(readPost(postId));
+    // 언마운트될 때 리덕스에서 포스트 데이터 없애기
+    return () => {
+      dispatch(unloadPost());
+    };
+  }, [dispatch, postId]);
 
   const deleteMutate = useMutation(
-    () => fetchDeletePost(Number(postId)),
+    () => fetchDeletePost((postId)),
     {
       onSuccess: () => {
         router.push('/');
@@ -32,16 +41,9 @@ const PostViewerContainer = () => {
     }
   );
 
-  useEffect(() => {
-    dispatch(readPost(postId));
-    return () => {
-      dispatch(unloadPost());
-    };
-  }, [dispatch, postId]);
-
   const onEdit = () =>{
     dispatch(setOriginalPost(post));
-    router.push('/write');
+    router.push('/create');
   }
 
   const onRemove = () =>{
@@ -49,13 +51,13 @@ const PostViewerContainer = () => {
     deleteMutate.mutate();
   }
   
-  const ownPost = (user && user._id) == (post && post.user._id);
+  const ownPost = (user && user?._id) == (post && post?.user?._id);
 
   return (
     <PostViewer 
       post={post} 
-      loading={loading} 
-      error={error} 
+      loading={isLoading} 
+      error={isError} 
       actionButtons={ownPost && <PostActionButtons onEdit={onEdit} onRemove={onRemove}/>}
     />
   );

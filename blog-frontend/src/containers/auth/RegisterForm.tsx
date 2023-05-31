@@ -72,19 +72,17 @@ const RegisterForm = () => {
   }, [auth, authError, dispatch]);
 
   useEffect(() => {
-    console.log(user, '===============');
-
     if (user) {
       console.log('check API 성공');
       console.log(user);
       router.push('/');
       try {
-        localStorage.setItem('user', JSON.stringify(user));
+        window.localStorage.setItem('user', JSON.stringify(user));
       } catch (e) {
-        console.log('localStorage is not working');
+        console.log('register, localStorage is not working');
       }
     }
-  }, [user]);
+  }, [router, user]);
 
   return (
     <AuthForm

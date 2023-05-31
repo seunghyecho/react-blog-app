@@ -1,20 +1,18 @@
 import { createAction, handleActions } from 'redux-actions';
-import { takeLatest } from 'redux-saga/effects';
 import createRequestSaga, {
   createRequestActionTypes,
-} from '@/lib/createRequestSaga';
-import * as postsAPI from '@/lib/api/posts';
-
+} from '../lib/createRequestSaga';
+import * as postsAPI from '../lib/api/posts';
+import { takeLatest } from 'redux-saga/effects';
 
 const INITIALIZE = 'write/INITIALIZE'; // 모든 내용 초기화
 const CHANGE_FIELD = 'write/CHANGE_FIELD'; // 특정 key 값 바꾸기
-const SET_ORIGINAL_POST = 'write/SET_ORIGINAL_POST';
 const [
   WRITE_POST,
   WRITE_POST_SUCCESS,
   WRITE_POST_FAILURE,
 ] = createRequestActionTypes('write/WRITE_POST'); // 포스트 작성
-
+const SET_ORIGINAL_POST = 'write/SET_ORIGINAL_POST';
 const [
   UPDATE_POST,
   UPDATE_POST_SUCCESS,
@@ -32,18 +30,23 @@ export const writePost = createAction(WRITE_POST, ({ title, body, tags }) => ({
   tags,
 }));
 export const setOriginalPost = createAction(SET_ORIGINAL_POST, post => post);
-
-export const updatePost = createAction(UPDATE_POST,({ id, title, body, tags })=>({
-  id, title, body, tags
-}));
+export const updatePost = createAction(
+  UPDATE_POST,
+  ({ id, title, body, tags }) => ({
+    id,
+    title,
+    body,
+    tags,
+  }),
+);
 
 // saga 생성
-const writePostSaga = createRequestSaga(WRITE_POST, postsAPI.fetchCreatePosts);
-const updatePostSaga = createRequestSaga(UPDATE_POST, postsAPI.fetchUpdatePost);
+const writePostSaga = createRequestSaga(WRITE_POST, postsAPI.writePost);
+const updatePostSaga = createRequestSaga(UPDATE_POST, postsAPI.updatePost);
 
 export function* writeSaga() {
   yield takeLatest(WRITE_POST, writePostSaga);
-  yield takeLatest(UPDATE_POST, updatePostSaga)
+  yield takeLatest(UPDATE_POST, updatePostSaga);
 }
 
 const initialState = {
@@ -52,7 +55,7 @@ const initialState = {
   tags: [],
   post: null,
   postError: null,
-  originalPostId:null,
+  originalPostId: null,
 };
 
 const write = handleActions(
@@ -78,23 +81,21 @@ const write = handleActions(
       ...state,
       postError,
     }),
-    [SET_ORIGINAL_POST]:(state, { payload: post }) => ({
+    [SET_ORIGINAL_POST]: (state, { payload: post }) => ({
       ...state,
-      title:post.title,
-      body:post.body,
-      tags:post.tags,
-      originalPostId:post._id,
+      title: post.title,
+      body: post.body,
+      tags: post.tags,
+      originalPostId: post._id,
     }),
-    // 포스트 수정 성공
-    [UPDATE_POST_SUCCESS]:(state, { payload: post})=>({
+    [UPDATE_POST_SUCCESS]: (state, { payload: post }) => ({
       ...state,
       post,
     }),
-    // 포스트 수정 실패
-    [UPDATE_POST_FAILURE]:(state, {payload: postError})=>({
+    [UPDATE_POST_FAILURE]: (state, { payload: postError }) => ({
       ...state,
       postError,
-    })
+    }),
   },
   initialState,
 );

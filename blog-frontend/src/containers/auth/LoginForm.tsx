@@ -53,12 +53,12 @@ const LoginForm = () => {
     if (user) {
       router.push('/');
       try {
-        localStorage.setItem('user', JSON.stringify(user));
+        window.localStorage.setItem('user', JSON.stringify(user));
       } catch (e) {
-        console.log('localStorage is not working');
+        console.log('login, localStorage is not working');
       }
     }
-  }, [user]);
+  }, [router, user]);
 
   return (
     <AuthForm

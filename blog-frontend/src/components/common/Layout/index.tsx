@@ -5,7 +5,6 @@ interface Props {
 }
 
 const Layout = styled.div`
-  padding-bottom: 10em;
   margin: 0 auto;
   width: 1024px;
 

@@ -20,6 +20,7 @@ function Header({ user }) {
   const onConfirm = ()=>{
     setModal(false);
     router.push('/create');
+    window.localStorage.removeItem('_id');
   }
   return (
     <>
