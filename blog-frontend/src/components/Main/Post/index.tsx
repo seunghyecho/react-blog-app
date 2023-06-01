@@ -1,22 +1,24 @@
 import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import { useQuery } from '@tanstack/react-query';
+import Pagination from '@/components/posts/Pagination';
 import PostListContainer from '@/containers/posts/PostListContainer';
-import PaginationContainer from '@/containers/posts/PaginationContainer';
 import { fetchPosts } from '@/lib/api/posts';
+
 
 function Post() {
   const router = useRouter();
-  const [page, setPage]= useState<number>(
+  const [page, setPage]= useState(
     router.query.page ? Number(router.query.page) : 1
   );
 
-  const {data, isLoading, isError}= useQuery(['posts'],() => fetchPosts({
+  const { data, isLoading, isError }= useQuery(['posts',page],() => fetchPosts({
       page,
       username:'',
       tag:''
   }));
 
+  const posts = data?.data || '';
   const lastPage = data?.headers['last-page'];
 
   useEffect(()=>{
@@ -30,13 +32,14 @@ function Post() {
   return (
     <>
       <PostListContainer 
-        posts={data?.data} 
+        posts={posts} 
         isLoading={isLoading} 
         isError={isError}
       />
-      <PaginationContainer 
-        page={page} 
-        setPage={setPage} 
+     
+      <Pagination
+        page={page}
+        setPage={setPage}
         lastPage={Number(lastPage)}
       />
     </>

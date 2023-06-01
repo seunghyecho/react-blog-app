@@ -13,8 +13,8 @@ interface prop{
 }
 function Form({ data, postId }:prop) {
   const router = useRouter();
-  const [title, setTitle]= useState('');
-  const [body, setBody]= useState('');
+  const [title, setTitle]= useState( postId? data?.data.title : '' );
+  const [body, setBody]= useState(postId?  data?.data.body : '');
   const [tags, setTags]= useState([]);
   
   const createMutation = useMutation(fetchCreatePost);
@@ -40,6 +40,7 @@ function Form({ data, postId }:prop) {
           console.log('수정 오류',err)
         }
       })
+      return;
     }
     /**
      * 등록
@@ -81,8 +82,8 @@ function Form({ data, postId }:prop) {
       </Helmet>
 
       <TitleBodyBox
-        title={postId ? post.title : title}
-        body={postId ? post.body : body}
+        title={title}
+        body={body}
         setTitle={setTitle}
         setBody={setBody}
       />

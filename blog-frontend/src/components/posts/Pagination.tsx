@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { SetStateAction } from 'react';
 import styled from 'styled-components';
 import Button from '@/components/common/Button';
 
@@ -19,7 +19,12 @@ const PaginationBlock = styled.div`
   
 `;
 
-function Pagination({ page, setPage, lastPage }) {
+interface Props {
+  page:number; 
+  setPage:React.Dispatch<React.SetStateAction<number>>; 
+  lastPage:number;
+}
+function Pagination({ page, setPage, lastPage }:Props) {
   const handleChangePage = (newPage:number)=>{
     setPage(newPage);
   }
