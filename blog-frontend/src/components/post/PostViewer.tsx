@@ -1,10 +1,8 @@
 import styled from 'styled-components';
 import { Helmet } from 'react-helmet-async';
-import Responsive from '@/components/common/Responsive';
 import Tags from '@/components/common/Tags';
 import SubInfo from '@/components/common/SubInfo';
 
-const PostViewerBlock = styled(Responsive)``;
 const PostViewerContent = styled.div`
   margin: 2rem 0 0;
   min-height: 150px;
@@ -22,9 +20,9 @@ const PostViewer = ({ post, error, loading, actionButtons }) => {
   // 에러 발생 시
   if (error) {
     if (error.response && error.response.status === 404) {
-      return <PostViewerBlock>존재하지 않는 포스트입니다.</PostViewerBlock>;
+      return <>존재하지 않는 포스트입니다.</>;
     }
-    return <PostViewerBlock>오류 발생!</PostViewerBlock>;
+    return <>오류 발생!</>;
   }
 
   // 로딩중이거나, 아직 포스트 데이터가 없을 시
@@ -34,7 +32,7 @@ const PostViewer = ({ post, error, loading, actionButtons }) => {
 
   const { title, body, user, publishedDate, tags } = post;
   return (
-    <PostViewerBlock>
+    <>
       <Helmet>
         <title>{title}</title>
       </Helmet>
@@ -50,7 +48,7 @@ const PostViewer = ({ post, error, loading, actionButtons }) => {
         <PostViewerContent dangerouslySetInnerHTML={{ __html: body }} />
         {actionButtons}
       </Wrapper>
-    </PostViewerBlock>
+    </>
   );
 };
 

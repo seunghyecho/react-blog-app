@@ -1,6 +1,7 @@
 import React, { useCallback, useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
-import PageLayout from '@/components/common/Layout';
+import styled from 'styled-components';
+import Responsive from '@/components/common/Responsive';
 import News from '@/components/Main/News';
 import Post from '@/components/Main/Post';
 import About from '@/components/Main/About';
@@ -8,6 +9,10 @@ import Side from '@/components/common/Layout/Side';
 import { WrapperStyled, TabStyled, ContentStyled } from '@/lib/styles/main.styled';
 import { FlexLayout } from '@/lib/styles/common.styled';
 import { fetchNews } from '@/lib/api/news';
+
+const MainBlock = styled(Responsive)`
+  padding-bottom: 10rem;
+`;
 
 function Main() {
   const [page] = useState<number>(1);
@@ -47,7 +52,7 @@ function Main() {
     ]
 
   return (
-    <PageLayout>
+    <MainBlock>
       <FlexLayout>
         <WrapperStyled>
           <TabStyled>
@@ -65,9 +70,10 @@ function Main() {
         </WrapperStyled>
         <Side />
       </FlexLayout>
-    </PageLayout>
+    </MainBlock>
   );
 }
+
 
 export default Main;
 

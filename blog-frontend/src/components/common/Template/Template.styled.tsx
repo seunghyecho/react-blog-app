@@ -4,6 +4,11 @@ import palette from '@/lib/styles/palette';
 const Wrapper = styled.div`
   position: relative;
   width: 30%;
+
+  @media (max-width: 1024px) {
+    width: unset;
+  }
+
 `;
 const TemplateBlock = styled.div`
   width: 240px;

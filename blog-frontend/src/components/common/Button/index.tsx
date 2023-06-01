@@ -15,7 +15,7 @@ interface ButtonProp {
 
 const StyledButton = styled.button<{ fullWidth?: boolean; cyan?: boolean }>`
   padding: 0.75rem;
-  border-radius: 3px;
+  border-radius: 4px;
   border: 1px solid ${palette.gray[0]};
   color: ${palette.gray[0]};
   font-size: 1.125rem;

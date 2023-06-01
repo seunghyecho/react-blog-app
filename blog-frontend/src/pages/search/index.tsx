@@ -1,14 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import { useQuery } from '@tanstack/react-query';
-import PageLayout from '@/components/common/Layout';
+import styled from 'styled-components';
+import Responsive from '@/components/common/Responsive';
 import SearchBar from '@/components/common/SearchBar';
 import PostList from '@/components/posts/PostList';
 import { fetchPosts } from '@/lib/api/posts';
-import styled from 'styled-components';
 
-const Comment = styled.p`
-  margin: 1.5rem 0;
+const SearchBlock = styled(Responsive)`
+  padding-bottom: 10rem;
+
+  p{
+    margin: 1.5rem 0;
+  }
 `;
 
 function Search() {
@@ -55,20 +59,20 @@ function Search() {
   },[]);
 
   return (
-    <PageLayout>
+    <SearchBlock>
       <SearchBar
         query={query}
         onChange={handleChange}
       />
       
-      <Comment>총 <strong>{results.length}</strong>개의 포스트를 찾았습니다.</Comment>
+      <p>총 <strong>{results.length}</strong>개의 포스트를 찾았습니다.</p>
 
       <PostList
         loading={isLoading}
         error={isError}
         posts={results}
       />
-    </PageLayout>
+    </SearchBlock>
   );
 }
 export default Search;
