@@ -1,14 +1,9 @@
-import React, { useEffect } from 'react';
-import Link from 'next/link';
+import React from 'react';
+import { useRouter } from 'next/router';
 import Tags from '@/components/common/Tags';
 import SubInfo from '@/components/common/SubInfo';
+import { PostListBlock, PostItemBlock, PostItemContent } from '@/components/posts/PostList.styled';
 import { postT } from '@/types/post';
-import {
-  PostListBlock,
-  PostItemBlock,
-  PostItemContent
-} from '@/components/posts/PostList.styled';
-import { useRouter } from 'next/router';
 
 function ListItem({ post }) {
   const router = useRouter();

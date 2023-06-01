@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import AuthForm from '../../components/auth/AuthForm';
-import { changeField, initializeForm, login } from '../../modules/auth';
 import { useRouter } from 'next/router';
-import { check } from '../../modules/user';
+import AuthForm from '@/components/auth/AuthForm';
+import { changeField, initializeForm, login } from '@/modules/auth';
+import { check } from '@/modules/user';
 
-const LoginForm = () => {
+function LoginForm(){
   const router = useRouter();
   const dispatch = useDispatch();
   const [error, setError] = useState(null);

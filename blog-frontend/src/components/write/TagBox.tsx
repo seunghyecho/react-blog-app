@@ -1,15 +1,23 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { TagBoxBlock, TagForm, Tag, TagListBlock } from '@/components/write/TagBox.styled';
 
-const TagItem =({ tag, onRemove }) =>
-  <Tag onClick={() => onRemove(tag)}>#{tag}</Tag>;
+function TagItem({ tag, onRemove }){
+  return(
+    <Tag onClick={() => onRemove(tag)}>#{tag}</Tag>
+  )
+}
+  
 
-const TagList = ({ tags, onRemove }) => 
-  <TagListBlock>
-    {tags.map((tag) => (
-      <TagItem key={tag} tag={tag} onRemove={onRemove} />
-    ))}
-  </TagListBlock>;
+function TagList({ tags, onRemove }){
+  return(
+    <TagListBlock>
+      {tags.map((tag) => (
+        <TagItem key={tag} tag={tag} onRemove={onRemove} />
+      ))}
+    </TagListBlock>
+  )
+} 
+  
 
 function TagBox({ tags, onChangeTags }) {
   const [input, setInput] = useState('');

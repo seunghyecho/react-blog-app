@@ -1,7 +1,7 @@
 import React from 'react';
 import { FormButton, FormButtonWrap } from '@/components/post/Form.styled';
 
-const ActionButtons = ({ onPublish, onCancel, isEdit }) => {
+function ActionButtons({ onPublish, onCancel, isEdit }){ 
   return (
     <FormButtonWrap>
       <FormButton type='button' label='취소' onClick={onCancel} />

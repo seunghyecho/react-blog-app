@@ -1,7 +1,7 @@
 import React from 'react';
 import PostList from '@/components/posts/PostList';
 
-const PostListContainer = ({ posts,isLoading, isError }) => {
+function PostListContainer({ posts,isLoading, isError }){
   return (
     <PostList
       loading={isLoading}

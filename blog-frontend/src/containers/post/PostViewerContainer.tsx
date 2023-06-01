@@ -8,7 +8,7 @@ import { setOriginalPost } from '@/modules/write';
 import { fetchDeletePost, fetchReadPost } from '@/lib/api/posts';
 import { readPost, unloadPost } from '@/modules/post';
 
-const PostViewerContainer = ({ postId }) => {
+function PostViewerContainer({ postId }){
   const dispatch = useDispatch();
   const router = useRouter();
   const {data, isLoading, isError}= useQuery(['detail'], ()=>fetchReadPost(postId))

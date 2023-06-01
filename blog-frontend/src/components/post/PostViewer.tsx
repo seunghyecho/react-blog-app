@@ -16,7 +16,7 @@ const Wrapper = styled.div`
   }
 `;
 
-const PostViewer = ({ post, error, loading, actionButtons }) => {
+function PostViewer ({ post, error, loading, actionButtons }) {
   // 에러 발생 시
   if (error) {
     if (error.response && error.response.status === 404) {

@@ -1,11 +1,11 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import AuthForm from '../../components/auth/AuthForm';
-import { changeField, initializeForm, register } from '../../modules/auth';
-import { check } from '../../modules/user';
 import { useRouter } from 'next/router';
+import AuthForm from '@/components/auth/AuthForm';
+import { changeField, initializeForm, register } from '@/modules/auth';
+import { check } from '@/modules/user';
 
-const RegisterForm = () => {
+function RegisterForm(){
   const router = useRouter();
   const dispatch = useDispatch();
   const [error, setError] = useState(null);
@@ -16,7 +16,7 @@ const RegisterForm = () => {
     user: user.user
   }));
 
-  const onChange = e => {
+  const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { value, name } = e.target;
     dispatch(changeField({
       form: 'register',
@@ -25,7 +25,7 @@ const RegisterForm = () => {
     }));
   };
 
-  const onSubmit = e => {
+  const onSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     const { username, password, passwordConfirm } = form;
     // 하나라도 비어 있을 경우

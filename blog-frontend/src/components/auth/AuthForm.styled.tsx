@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import palette from '../../lib/styles/palette';
+import palette from '@/lib/styles/palette';
 
 const AuthFormBlock = styled.div`
   h3 {
