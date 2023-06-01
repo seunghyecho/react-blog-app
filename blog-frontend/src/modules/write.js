@@ -1,8 +1,8 @@
 import { createAction, handleActions } from 'redux-actions';
 import createRequestSaga, {
   createRequestActionTypes,
-} from '../lib/createRequestSaga';
-import * as postsAPI from '../lib/api/posts';
+} from '@/lib/createRequestSaga';
+import * as postsAPI from '@/lib/api/posts';
 import { takeLatest } from 'redux-saga/effects';
 
 const INITIALIZE = 'write/INITIALIZE'; // 모든 내용 초기화
@@ -41,8 +41,8 @@ export const updatePost = createAction(
 );
 
 // saga 생성
-const writePostSaga = createRequestSaga(WRITE_POST, postsAPI.writePost);
-const updatePostSaga = createRequestSaga(UPDATE_POST, postsAPI.updatePost);
+const writePostSaga = createRequestSaga(WRITE_POST, postsAPI.fetchCreatePost);
+const updatePostSaga = createRequestSaga(UPDATE_POST, postsAPI.fetchUpdatePost);
 
 export function* writeSaga() {
   yield takeLatest(WRITE_POST, writePostSaga);
