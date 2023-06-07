@@ -13,6 +13,8 @@ export const GlobalStyle = createGlobalStyle`
     font-family: 나눔스퀘어, 'NanumSquare', sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    background: ${({theme})=> theme.bgColor};
+    color: ${({theme})=> theme.textColor};
   }
 
   * {
@@ -34,14 +36,6 @@ export const GlobalStyle = createGlobalStyle`
   ul,
   li {
     list-style: none;
-  }
-
-  .primary_red {
-    color: #ef402f;
-  }
-
-  .primary_blue {
-    color: #619ffb;
   }
 
   a {
@@ -74,6 +68,7 @@ export const GlobalStyle = createGlobalStyle`
     border: none;
     outline: none;
     box-sizing: border-box;
+    background: none;
   }
 
   input:-webkit-autofill,
@@ -89,8 +84,10 @@ export const GlobalStyle = createGlobalStyle`
   strong{
     font-weight: 600;
   }
+
   b{
     font-weight: 600;
   }
+ 
 
 `;

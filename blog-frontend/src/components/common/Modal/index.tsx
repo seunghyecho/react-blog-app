@@ -25,9 +25,11 @@ box-shadow: 0 0 8px rgba(0,0,0,0.125);
 h2{
     margin-top: 0;
     margin-bottom: 1rem;
+    color:#202124;
 }
 p{
     margin-bottom: 3rem;
+    color:#202124;
 }
 `;
 

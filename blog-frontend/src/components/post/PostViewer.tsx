@@ -10,9 +10,10 @@ const PostViewerContent = styled.div`
 
 const Wrapper = styled.div`
   margin-top: 4rem;
+
   h1{
     font-size: 2.75rem;
-      font-weight: bold;;
+    font-weight: bold;;
   }
 `;
 

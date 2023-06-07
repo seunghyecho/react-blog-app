@@ -4,12 +4,14 @@ import AuthTemplate from '@/components/auth/AuthTemplate';
 import Button from '@/components/common/Button';
 import { logout } from '@/modules/user';
 
-
 const HeadStyled = styled.h1`
+  margin: 1rem 0;
   position: relative;
   display: inline-flex;
   font-weight: 600;
   text-align: center;
+  font-size:1.5rem;
+  color:#202124;
 
   &:before {
     content: "";
@@ -31,9 +33,11 @@ function Accounts() {
       dispatch(logout());
     }
   };
+
+  const { username } = user || '';
   return (
     <AuthTemplate>
-      <HeadStyled>{user?.username} 님</HeadStyled>
+      <HeadStyled>{username} 님</HeadStyled>
       <Button label='로그아웃' onClick={onLogout} fullWidth />
     </AuthTemplate>
   );

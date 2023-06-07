@@ -5,7 +5,7 @@ import Responsive from '@/components/common/Responsive';
 import News from '@/components/Main/News';
 import Post from '@/components/Main/Post';
 import About from '@/components/Main/About';
-import Side from '@/components/common/Layout/Side';
+import Side from '@/components/common/Side';
 import { WrapperStyled, TabStyled, ContentStyled } from '@/lib/styles/main.styled';
 import { FlexLayout } from '@/lib/styles/common.styled';
 import { fetchNews } from '@/lib/api/news';

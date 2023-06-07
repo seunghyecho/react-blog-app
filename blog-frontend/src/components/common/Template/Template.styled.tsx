@@ -4,6 +4,7 @@ import palette from '@/lib/styles/palette';
 const Wrapper = styled.div`
   position: relative;
   width: 30%;
+  color:#868e96;
 
   @media (max-width: 1024px) {
     width: unset;

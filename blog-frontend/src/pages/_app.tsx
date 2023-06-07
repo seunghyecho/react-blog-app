@@ -1,19 +1,26 @@
 import React, { useEffect, useState } from 'react';
-import Head from 'next/head';
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { Provider } from 'react-redux';
-import { legacy_createStore as createStore, applyMiddleware } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import createSagaMiddleware from '@redux-saga/core';
+import { legacy_createStore as createStore, applyMiddleware } from 'redux';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { HelmetProvider } from 'react-helmet-async';
-import rootReducer, { rootSaga } from '@/modules';
 import { ThemeProvider } from 'styled-components';
-import { GlobalStyle } from '@/lib/styles/globals';
-import { sizes } from '@/lib/styles/theme';
-import HeaderContainer from '@/containers/common/HeaderContainer';
+import rootReducer, { rootSaga } from '@/modules';
 import { tempSetUser, check } from '@/modules/user';
+import { GlobalStyle } from '@/lib/styles/globals';
+import { darkTheme, lightTheme } from "@/lib/styles/theme";
+import Header from '@/components/common/Header';
 
 function MyApp({ Component, pageProps }) {
+  /**
+   *  다크모드 상태 및 버튼 이벤트
+   */
+  const [isDarkMode, setIsDarkMode]= useState(false);
+  const toggleDarkMode = () => {
+    setIsDarkMode((prev) => !prev);
+  };
+
   /**
    * TODO react-hydration-error
    */
@@ -55,12 +62,9 @@ function MyApp({ Component, pageProps }) {
     <HelmetProvider>
       <Provider store={store}>
         <QueryClientProvider client={queryClient}>
-          <ThemeProvider theme={sizes}>
-            <GlobalStyle />
-            <Head>
-              <title>React Blog App</title>
-            </Head>
-            <HeaderContainer />
+          <ThemeProvider theme={isDarkMode ? darkTheme : lightTheme}>
+            <GlobalStyle/>
+            <Header isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode}/>
             <Component {...pageProps} />
           </ThemeProvider>
         </QueryClientProvider>
