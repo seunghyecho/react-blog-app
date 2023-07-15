@@ -1,13 +1,13 @@
 import { createAction, handleActions } from 'redux-actions';
 import createRequestSaga, {
   createRequestActionTypes
-} from '@/lib/createRequestSaga';
-import * as postsAPI from '@/lib/api/posts';
+} from 'lib/createRequestSaga';
+import * as postsAPI from 'lib/api/posts';
 import { takeLatest } from 'redux-saga/effects';
 
 const [
-  LIST_POSTS, 
-  LIST_POSTS_SUCCESS, 
+  LIST_POSTS,
+  LIST_POSTS_SUCCESS,
   LIST_POSTS_FAILURE
 ] = createRequestActionTypes('posts/LIST_POSTS');
 

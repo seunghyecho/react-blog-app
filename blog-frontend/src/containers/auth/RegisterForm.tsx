@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useRouter } from 'next/router';
-import AuthForm from '@/components/auth/AuthForm';
-import { changeField, initializeForm, register } from '@/modules/auth';
-import { check } from '@/modules/user';
+import AuthForm from 'components/auth/AuthForm';
+import { changeField, initializeForm, register } from 'modules/auth';
+import { check } from 'modules/user';
 
 function RegisterForm(){
   const router = useRouter();

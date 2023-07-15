@@ -1,8 +1,8 @@
 import React, { useRef, useState } from "react";
 import Link from "next/link";
 import styled from "styled-components";
-import Button from "@/components/common/Button";
-import palette from "@/lib/styles/palette";
+import Button from "components/common/Button";
+import palette from "lib/styles/palette";
 
 const Wrapper = styled.div`
     width: 100%;

@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import { FcEngineering, FcIdea, FcPodiumWithSpeaker } from "react-icons/fc";
-import palette from "@/lib/styles/palette";
+import { FcEngineering, FcPodiumWithSpeaker } from "react-icons/fc";
+import palette from "lib/styles/palette";
 
 const AboutBlock = styled.div`
   > * {

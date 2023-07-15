@@ -1,7 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
-import Button from '@/components/common/Button';
-import { AuthFormBlock, Footer, StyledInput, ErrorMessage } from '@/components/auth/AuthForm.styled';
+import Button from 'components/common/Button';
+import { AuthFormBlock, Footer, StyledInput, ErrorMessage } from 'components/auth/AuthForm.styled';
 
 interface Props {
   type: string;

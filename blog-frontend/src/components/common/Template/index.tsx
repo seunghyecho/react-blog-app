@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useRef } from 'react';
-import TodoInsert from '@/components/common/Template/TodoInsert';
-import TodoList from '@/components/common/Template/TodoList';
-import { Wrapper, TemplateBlock } from '@/components/common/Template/Template.styled';
+import TodoInsert from 'components/common/Template/TodoInsert';
+import TodoList from 'components/common/Template/TodoList';
+import { Wrapper, TemplateBlock } from 'components/common/Template/Template.styled';
 
 function Template({ title, todos, setTodos }) {
   const targetRef = useRef(null);

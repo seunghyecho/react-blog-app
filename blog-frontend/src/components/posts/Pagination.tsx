@@ -1,6 +1,6 @@
 import React, { SetStateAction } from 'react';
 import styled from 'styled-components';
-import Button from '@/components/common/Button';
+import Button from 'components/common/Button';
 
 const PaginationBlock = styled.div`
   width: 200px;

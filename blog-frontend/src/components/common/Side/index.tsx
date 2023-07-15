@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import Template from '@/components/common/Template';
+import Template from 'components/common/Template';
 
 function Side() {
   const [todos, setTodos] = useState([

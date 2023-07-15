@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { Helmet } from 'react-helmet-async';
-import Tags from '@/components/common/Tags';
-import SubInfo from '@/components/common/SubInfo';
+import Tags from 'components/common/Tags';
+import SubInfo from 'components/common/SubInfo';
 
 const PostViewerContent = styled.div`
   margin: 2rem 0 0;

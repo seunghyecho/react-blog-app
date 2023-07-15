@@ -3,8 +3,8 @@ import styled from 'styled-components';
 import { useState } from 'react';
 import { useRouter } from 'next/router';
 import { BiEditAlt, BiSearchAlt, BiUser } from 'react-icons/Bi';
-import Modal from '@/components/common/Modal';
-import palette from '@/lib/styles/palette';
+import Modal from 'components/common/Modal';
+import palette from 'lib/styles/palette';
 
 const Utils = styled.ul`
   display: flex;

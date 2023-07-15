@@ -1,4 +1,4 @@
-import palette from '@/lib/styles/palette';
+import palette from 'lib/styles/palette';
 import styled from 'styled-components';
 
 const NewsListBlock = styled.ul`

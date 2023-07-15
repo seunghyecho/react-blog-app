@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import Link from 'next/link';
-import palette from '@/lib/styles/palette';
+import palette from 'lib/styles/palette';
 
 const AuthTemplateBlock = styled.div`
   position: absolute;

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { MdAdd } from 'react-icons/md';
-import { TemplateForm } from '@/components/common/Template/Template.styled';
+import { TemplateForm } from 'components/common/Template/Template.styled';
 
 function TodoInsert({ handleInsert }) {
   const [text, setText] = useState('');

@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useState } from 'react';
-import { TagBoxBlock, TagForm, Tag, TagListBlock } from '@/components/write/TagBox.styled';
+import { TagBoxBlock, TagForm, Tag, TagListBlock } from 'components/write/TagBox.styled';
 
 function TagItem({ tag, onRemove }){
   return(

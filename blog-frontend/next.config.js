@@ -14,8 +14,8 @@ module.exports = {
   webpack: config => {
     config.resolve.alias = {
       ...config.resolve.alias,
-      '@': path.join(__dirname, 'src'),
-      '@assets': path.join(__dirname, 'public/assets'),
+      '@': path.resolve(__dirname, 'src/*'),
+      '@assets': path.resolve(__dirname, 'public/assets'),
     };
     return config;
   },

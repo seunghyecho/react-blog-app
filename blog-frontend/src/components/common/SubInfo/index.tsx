@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import styled, { css } from 'styled-components';
-import palette from '@/lib/styles/palette';
+import palette from 'lib/styles/palette';
 
 const SubInfoBlock = styled.div<{ isMarginTop: boolean }>`
   padding: 1rem 0;

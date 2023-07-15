@@ -1,5 +1,5 @@
 import React from 'react';
-import TodoListItem from '@/components/common/Template/TodoListItem';
+import TodoListItem from 'components/common/Template/TodoListItem';
 
 function TodoList({ todos, handleRemove, handleToggle }) {
   return (

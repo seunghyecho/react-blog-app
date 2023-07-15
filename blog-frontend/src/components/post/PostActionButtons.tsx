@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import RemoveModal from '@/components/post/RemoveModal';
-import Button from '@/components/common/Button';
+import RemoveModal from 'components/post/RemoveModal';
+import Button from 'components/common/Button';
 
 const PostButtonWrap = styled.div`
   margin-top: 1rem;

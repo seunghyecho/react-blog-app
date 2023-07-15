@@ -1,5 +1,5 @@
 import React from 'react';
-import PostList from '@/components/posts/PostList';
+import PostList from 'components/posts/PostList';
 
 function PostListContainer({ posts,isLoading, isError }){
   return (

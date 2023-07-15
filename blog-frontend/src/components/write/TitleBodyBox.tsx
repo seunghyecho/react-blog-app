@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import dynamic from 'next/dynamic';
-import palette from '@/lib/styles/palette';
+import palette from 'lib/styles/palette';
 import 'react-quill/dist/quill.bubble.css';
 
 const QuillNoSSRWrapper = dynamic(() => import('react-quill'), {

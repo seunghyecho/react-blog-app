@@ -6,11 +6,11 @@ import { legacy_createStore as createStore, applyMiddleware } from 'redux';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { HelmetProvider } from 'react-helmet-async';
 import { ThemeProvider } from 'styled-components';
-import rootReducer, { rootSaga } from '@/modules';
-import { tempSetUser, check } from '@/modules/user';
-import { GlobalStyle } from '@/lib/styles/globals';
-import { darkTheme, lightTheme } from "@/lib/styles/theme";
-import Header from '@/components/common/Header';
+import rootReducer, { rootSaga } from '../modules';
+import { tempSetUser, check } from 'modules/user';
+import { GlobalStyle } from 'lib/styles/globals';
+import { darkTheme, lightTheme } from "lib/styles/theme";
+import Header from 'components/common/Header';
 
 function MyApp({ Component, pageProps }) {
   /**

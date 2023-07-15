@@ -1,6 +1,6 @@
 import Link from 'next/link';
-import { NewsItemBlock } from '@/components/Main/News/News.styled';
-import { NewsT } from '@/types/news';
+import { NewsItemBlock } from 'components/Main/News/News.styled';
+import { NewsT } from 'types/news';
 interface Props {
   data: NewsT;
 }

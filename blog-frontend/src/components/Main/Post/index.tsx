@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import { useQuery } from '@tanstack/react-query';
-import Pagination from '@/components/posts/Pagination';
-import PostListContainer from '@/containers/posts/PostListContainer';
-import { fetchPosts } from '@/lib/api/posts';
+import Pagination from 'components/posts/Pagination';
+import PostListContainer from 'containers/posts/PostListContainer';
+import { fetchPosts } from 'lib/api/posts';
 
 
 function Post() {

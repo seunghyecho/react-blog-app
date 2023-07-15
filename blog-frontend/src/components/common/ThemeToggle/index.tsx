@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { BiMoon, BiSun } from "react-icons/Bi";
-import palette from "@/lib/styles/palette";
+import palette from "lib/styles/palette";
 
 const ToggleWrapper = styled.button<{mode?:boolean;}>`
   display: flex;

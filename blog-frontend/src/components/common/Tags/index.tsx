@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import styled from 'styled-components';
-import { Tag } from '@/components/write/TagBox.styled';
+import { Tag } from 'components/write/TagBox.styled';
 
 const Wrapper = styled.div`
   height: 3rem;

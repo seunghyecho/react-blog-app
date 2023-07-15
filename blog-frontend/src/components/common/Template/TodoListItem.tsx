@@ -1,6 +1,6 @@
 import React from 'react';
 import { MdCheckBox, MdCheckBoxOutlineBlank, MdRemoveCircleOutline } from 'react-icons/md';
-import { ListItem, CheckBox, RemoveBox } from '@/components/common/Template/Template.styled';
+import { ListItem, CheckBox, RemoveBox } from 'components/common/Template/Template.styled';
 
 function TodoListItem({ todo, handleRemove, handleToggle }) {
   const { id, text, completed } = todo;
