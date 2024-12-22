@@ -11,10 +11,10 @@ import api from './api/index.js';
 import jwtMiddleware from './lib/jwtMiddleware.js';
 
 // 비구조화 할당을 통하여 process.env 내부 값에 대한 레퍼런스 만들기
-// const { PORT, MONGO_URI } = process.env;
+const { PORT, MONGO_URI } = process.env;
 
 mongoose
-  .connect('mongodb://root:rkawk1213@localhost:27017/admin', {
+  .connect(MONGO_URI, {
     dbName: 'blog',
     useNewUrlParser: true,
   })
