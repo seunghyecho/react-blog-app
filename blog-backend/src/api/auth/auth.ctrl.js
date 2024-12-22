@@ -1,5 +1,5 @@
 import Joi from '@hapi/joi';
-import User from '../../models/user';
+import User from '../../models/user.js';
 
 /*
   POST /api/auth/register

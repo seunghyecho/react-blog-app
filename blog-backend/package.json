@@ -3,12 +3,12 @@
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
+  "type": "module",
   "dependencies": {
     "@hapi/joi": "^17.1.1",
     "bcrypt": "^5.1.0",
     "dotenv": "^16.0.3",
     "eslint-config-prettier": "^8.8.0",
-    "esm": "^3.2.25",
     "jsonwebtoken": "^9.0.0",
     "koa": "^2.14.2",
     "koa-bodyparser": "^4.4.0",
@@ -25,7 +25,7 @@
     "nodemon": "^2.0.22"
   },
   "scripts": {
-    "start": "node -r esm src",
-    "start:dev": "nodemon --watch src/ -r esm src/index.js"
+    "start": "node src/index.js",
+    "start:dev": "nodemon --watch src/ src/index.js"
   }
 }
