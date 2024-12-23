@@ -15,7 +15,7 @@ const AuthFormBlock = styled.div`
 
   p::before {
     display: inline;
-    content: "⚠ ";
+    content: '⚠ ';
   }
 
   label {
@@ -26,10 +26,14 @@ const AuthFormBlock = styled.div`
     margin-top: 20px;
     font-weight: 200;
   }
+
+  form > * {
+    margin: 20px auto;
+  }
 `;
 
 const StyledInput = styled.input`
-  padding: 0.5rem;
+  padding: 0.5rem 0;
   display: block;
   width: 100%;
   box-sizing: border-box;
@@ -37,6 +41,7 @@ const StyledInput = styled.input`
   border-bottom: 1px solid ${palette.gray[5]};
   font-size: 1rem;
   outline: none;
+  background-color: transparent;
 
   &:focus {
     border-bottom: 1px solid ${palette.gray[7]};
@@ -46,20 +51,19 @@ const StyledInput = styled.input`
     margin-top: 1rem;
   }
 
-
-  &[type="button"],
-  &[type="submit"] {
+  &[type='button'],
+  &[type='submit'] {
     border: none;
     background-color: #619ffb;
     color: #ffffff;
   }
 
-  &[type="submit"]:hover {
+  &[type='submit']:hover {
     background: #253752;
   }
 
-  &[type="button"]:active,
-  &[type="submit"]:active {
+  &[type='button']:active,
+  &[type='submit']:active {
     transition: 0.3s all;
     transform: translateY(3px);
     border: 1px solid transparent;
@@ -71,7 +75,7 @@ const StyledInput = styled.input`
     color: #619ffb;
   }
 
-  &[type="button"]:hover {
+  &[type='button']:hover {
     transition: 0.3s all;
   }
 `;
@@ -96,4 +100,4 @@ const ErrorMessage = styled.div`
   margin-top: 1rem;
 `;
 
-export { AuthFormBlock, StyledInput, Footer,ErrorMessage };
+export { AuthFormBlock, StyledInput, Footer, ErrorMessage };

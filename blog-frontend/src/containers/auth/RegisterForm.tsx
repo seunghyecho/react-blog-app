@@ -5,7 +5,7 @@ import AuthForm from 'components/auth/AuthForm';
 import { changeField, initializeForm, register } from 'modules/auth';
 import { check } from 'modules/user';
 
-function RegisterForm(){
+function RegisterForm() {
   const router = useRouter();
   const dispatch = useDispatch();
   const [error, setError] = useState(null);
@@ -18,11 +18,13 @@ function RegisterForm(){
 
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { value, name } = e.target;
-    dispatch(changeField({
-      form: 'register',
-      key: name,
-      value
-    }));
+    dispatch(
+      changeField({
+        form: 'register',
+        key: name,
+        value
+      })
+    );
   };
 
   const onSubmit = (e: React.FormEvent) => {
@@ -37,7 +39,9 @@ function RegisterForm(){
     if (password !== passwordConfirm) {
       setError('비밀번호가 일치하지 않습니다.');
       dispatch(changeField({ form: 'register', key: 'password', value: '' }));
-      dispatch(changeField({ form: 'register', key: 'passwordConfirm', value: '' }));
+      dispatch(
+        changeField({ form: 'register', key: 'passwordConfirm', value: '' })
+      );
       return;
     }
     console.log(register({ username, password }), '------------');
@@ -66,7 +70,7 @@ function RegisterForm(){
     if (auth) {
       console.log('회원가입 성공!');
       console.log(auth);
-      dispatch(check()); //회원가입 성공 후 check 호출해 현재 사용자가 로그인 상태인지 확인함.
+      // dispatch(check()); //회원가입 성공 후 check 호출해 현재 사용자가 로그인 상태인지 확인함.
       return;
     }
   }, [auth, authError, dispatch]);
@@ -86,12 +90,12 @@ function RegisterForm(){
 
   return (
     <AuthForm
-      type='register'
+      type="register"
       form={form}
       onChange={onChange}
       onSubmit={onSubmit}
       error={error}
     />
   );
-};
+}
 export default RegisterForm;

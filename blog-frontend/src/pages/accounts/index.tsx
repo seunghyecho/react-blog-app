@@ -1,8 +1,10 @@
-import { useDispatch, useSelector } from 'react-redux';
+import { useRouter } from 'next/router';
 import styled from 'styled-components';
-import AuthTemplate from 'components/auth/AuthTemplate';
+
+import * as authAPI from 'lib/api/auth';
+
 import Button from 'components/common/Button';
-import { logout } from 'modules/user';
+import AuthTemplate from 'components/auth/AuthTemplate';
 
 const HeadStyled = styled.h1`
   margin: 1rem 0;
@@ -10,11 +12,11 @@ const HeadStyled = styled.h1`
   display: inline-flex;
   font-weight: 600;
   text-align: center;
-  font-size:1.5rem;
-  color:#202124;
+  font-size: 1.5rem;
+  color: #202124;
 
   &:before {
-    content: "";
+    content: '';
     position: absolute;
     width: 100%;
     height: 100%;
@@ -24,21 +26,24 @@ const HeadStyled = styled.h1`
 `;
 
 function Accounts() {
-  const dispatch = useDispatch();
-  const { user } = useSelector(({ user }) => ({ user: user.user }));
-
+  const router = useRouter();
+  const username = sessionStorage.getItem('username');
   const onLogout = () => {
     const check = window.confirm('로그아웃 하시겠습니까?');
     if (check) {
-      dispatch(logout());
+      // dispatch(logout());
+
+      authAPI.logout().then(res => {
+        sessionStorage.clear();
+        return router.push('/');
+      });
     }
   };
 
-  const { username } = user || '';
   return (
     <AuthTemplate>
       <HeadStyled>{username} 님</HeadStyled>
-      <Button label='로그아웃' onClick={onLogout} fullWidth />
+      <Button label="로그아웃" onClick={onLogout} fullWidth />
     </AuthTemplate>
   );
 }

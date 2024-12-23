@@ -6,7 +6,7 @@ const AuthTemplateBlock = styled.div`
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%);
+  transform: translate(-50%, -50%);
 `;
 
 const WhiteBox = styled.div`
@@ -22,10 +22,10 @@ const WhiteBox = styled.div`
     padding-bottom: 2rem;
     display: block;
 
-    a{
+    a {
       font-weight: 800;
       letter-spacing: 0.2rem;
-      color:#202124;
+      color: #202124;
     }
   }
 `;
@@ -34,10 +34,8 @@ const AuthTemplate = ({ children }) => {
   return (
     <AuthTemplateBlock>
       <WhiteBox>
-        <div className='top'>
-          <Link href='/'>
-            BLOG
-          </Link>
+        <div className="top">
+          <Link href="/">BLOG</Link>
         </div>
         {children}
       </WhiteBox>

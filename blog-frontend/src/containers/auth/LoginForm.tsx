@@ -1,15 +1,20 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useRouter } from 'next/router';
-import AuthForm from 'components/auth/AuthForm';
 import { changeField, initializeForm, login } from 'modules/auth';
-import { check } from 'modules/user';
 
-function LoginForm(){
+import * as authAPI from 'lib/api/auth';
+
+import AuthForm from 'components/auth/AuthForm';
+
+function LoginForm() {
   const router = useRouter();
   const dispatch = useDispatch();
+
+  const [auth, setAuth] = useState(null);
   const [error, setError] = useState(null);
-  const { form, auth, authError, user } = useSelector(({ auth, user }) => ({
+
+  const { form, authError, user } = useSelector(({ auth, user }) => ({
     form: auth.login,
     auth: auth.auth,
     authError: auth.authError,
@@ -18,56 +23,52 @@ function LoginForm(){
 
   const onChange = e => {
     const { value, name } = e.target;
-    dispatch(changeField({
-      form: 'login',
-      key: name,
-      value
-    }));
+    dispatch(
+      changeField({
+        form: 'login',
+        key: name,
+        value
+      })
+    );
   };
 
-  const onSubmit = e => {
+  const onSubmit = (e: any) => {
     e.preventDefault();
     const { username, password } = form;
-    dispatch(login({ username, password }));
+
+    authAPI
+      .login({ username, password })
+      .then(res => {
+        console.log('로그인 성공! 1');
+
+        if (res.data.username)
+          sessionStorage.setItem('username', res.data.username);
+
+        setAuth(true);
+      })
+      .catch(err => {
+        setError('로그인 실패!');
+        return;
+      });
   };
 
-  // 컴포넌트 처음 렌더링 시 form 초기화
   useEffect(() => {
-    dispatch(initializeForm('login'));
-  }, [dispatch]);
-
-  useEffect(() => {
-    if (authError) {
-      console.log('로그인 실패!');
-      console.log(authError);
-      setError('로그인 실패!');
-      return;
-    }
     if (auth) {
-      console.log('로그인 성공!');
-      dispatch(check());
+      console.log('로그인 성공! 2');
+      authAPI.check().then(res => {
+        router.push('/');
+      });
     }
-  }, [auth, authError, dispatch]);
-
-  useEffect(() => {
-    if (user) {
-      router.push('/');
-      try {
-        window.localStorage.setItem('user', JSON.stringify(user));
-      } catch (e) {
-        console.log('login, localStorage is not working');
-      }
-    }
-  }, [router, user]);
+  }, [auth]);
 
   return (
     <AuthForm
-      type='login'
+      type="login"
       form={form}
       onChange={onChange}
       onSubmit={onSubmit}
       error={error}
     />
   );
-};
+}
 export default LoginForm;

@@ -10,7 +10,7 @@ const HeaderBlock = styled.header`
   line-height: 6rem;
   box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.03);
 
-  .title{
+  .title {
     font-size: 1.5rem;
     font-weight: 800;
     letter-spacing: 2px;
@@ -27,23 +27,24 @@ const Spacer = styled.div`
   height: 6rem;
 `;
 
-function Header({isDarkMode, toggleDarkMode}) {
-  const { user } = useSelector(({ user }) => ({ user: user.user }));
-  const { username } = user || '';
+function Header({ isDarkMode, toggleDarkMode }) {
+  // const { user } = useSelector(({ user }) => ({ user: user.user }));
+  // const { username } = user || '';
+
+  const username = sessionStorage.getItem('username');
 
   return (
-  <HeaderBlock>
-    <Wrapper>
-      <ThemeToggle toggle={toggleDarkMode} mode={isDarkMode}/>
-      
-      <Link href='/' className='title'>
-        {user? `@${username}` : '@'} Blog
-      </Link>
-      <HeaderUtils user={user}/>
-      
-    </Wrapper>  
-    <Spacer />
-  </HeaderBlock>
+    <HeaderBlock>
+      <Wrapper>
+        <ThemeToggle toggle={toggleDarkMode} mode={isDarkMode} />
+
+        <Link href="/" className="title">
+          {username ? `@${username}` : '@'} Blog
+        </Link>
+        <HeaderUtils user={username} />
+      </Wrapper>
+      <Spacer />
+    </HeaderBlock>
   );
 }
 
