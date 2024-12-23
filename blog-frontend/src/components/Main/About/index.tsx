@@ -1,16 +1,16 @@
-import styled from "styled-components";
-import { FcEngineering, FcPodiumWithSpeaker } from "react-icons/fc";
-import palette from "lib/styles/palette";
+import styled from 'styled-components';
+import { FcEngineering, FcPodiumWithSpeaker } from 'react-icons/fc';
+import palette from 'lib/styles/palette';
 
 const AboutBlock = styled.div`
   > * {
     margin: 2rem 0;
   }
 
-  strong{
-    color:#202124;
+  strong {
+    color: #202124;
   }
-  
+
   h1 {
     padding: 2rem 0 1rem;
     font-size: 1.5rem;
@@ -36,14 +36,14 @@ const AboutBlock = styled.div`
   div > ul {
     margin: 2rem 0;
 
-    li{
+    li {
       margin: 2rem 0;
       &:before {
         padding: 0 0.25rem;
-        content: '\\B7';
+        content: '\B7';
       }
 
-      p{
+      p {
         margin: 1rem 0;
         padding: 0 0.25rem;
         line-height: 1.5rem;
@@ -65,19 +65,18 @@ function About() {
         </blockquote>
 
         <div>
-          <FcEngineering/> 기술 스택 & 사용 툴
+          <FcEngineering /> 기술 스택 & 사용 툴
           <ul>
             <li>
-                HTML, CSS, ReactJS(Next), TypeScript, React Query, MongoDB, Postman
+              HTML, CSS, React.js(Next), TypeScript, React Query,
+              MongoDB(Compass), Postman
             </li>
           </ul>
         </div>
         <div>
-          <FcPodiumWithSpeaker/> 작업 환경
+          <FcPodiumWithSpeaker /> 작업 환경
           <ul>
-            <li>
-                macOS 13.3.1, Node.js v19.5.0, VS Code
-            </li>
+            <li>macOS 13.3.1, Node.js v19.5.0, VS Code</li>
           </ul>
         </div>
         {/* 
@@ -120,32 +119,82 @@ function About() {
 
       <div id="frontendEngineer">
         <h1>Work Experience</h1>
-        <h2>FLES Inc</h2>
-        <blockquote>
-          <p>
-            <strong>Web Publisher(2021.02 ~ 2022.02)</strong>
-          </p>
-          <br/>
-          <p>
-            <strong>Frontend Engineer(2022.02 ~ 2023.05)</strong>
-          </p>
-
-        </blockquote>
-
         <div>
-          <FcEngineering/> 기술 스택 & 사용 툴
-          <ul>
-            <li>HTML, CSS, TypeScript, ReactJS(Next), React Query, MUI, Storybook, Git, Slack, Confluence, Jira</li>
-          </ul>
-        </div>
+          <div className="inc">
+            <h2>Geosoft Inc</h2>
+            <blockquote>
+              <p>
+                <strong>Frontend Engineer(2024.05 ~ current)</strong>
+              </p>
+            </blockquote>
 
-        <div>
-          <FcPodiumWithSpeaker/> 작업 환경
-          <ul>
-            <li>
-                macOSs, Node.js, WebStorm
-            </li>
-          </ul>
+            <div>
+              <FcEngineering /> 기술 스택 & 사용 툴
+              <ul>
+                <li>HTML, CSS, TypeScript, React.js, Graphql</li>
+                <li>GitHub, Slack, Confluence, Jira</li>
+              </ul>
+            </div>
+
+            <div>
+              <FcPodiumWithSpeaker /> 작업 환경
+              <ul>
+                <li>window, Node.js, VS Code</li>
+              </ul>
+            </div>
+          </div>
+
+          <div className="inc">
+            <h2>Dorosee Inc</h2>
+            <blockquote>
+              <p>
+                <strong>Frontend Engineer(2023.07 ~ 2024.05)</strong>
+              </p>
+            </blockquote>
+
+            <div>
+              <FcEngineering /> 기술 스택 & 사용 툴
+              <ul>
+                <li>HTML, CSS, TypeScript, React.js, Postman</li>
+                <li>GitHub, Discode, Confluence, Jira</li>
+              </ul>
+            </div>
+
+            <div>
+              <FcPodiumWithSpeaker /> 작업 환경
+              <ul>
+                <li>window, Node.js, VS Code</li>
+              </ul>
+            </div>
+          </div>
+
+          <div className="inc">
+            <h2>FLES Inc</h2>
+            <blockquote>
+              <p>
+                <strong>Web Publisher(2021.02 ~ 2022.02)</strong>
+              </p>
+              <br />
+              <p>
+                <strong>Frontend Engineer(2022.02 ~ 2023.05)</strong>
+              </p>
+            </blockquote>
+
+            <div>
+              <FcEngineering /> 기술 스택 & 사용 툴
+              <ul>
+                <li>HTML, CSS, TypeScript, React.js(Next), React Query, MUI</li>
+                <li>Storybook, GitHub, Slack, Confluence, Jira</li>
+              </ul>
+            </div>
+
+            <div>
+              <FcPodiumWithSpeaker /> 작업 환경
+              <ul>
+                <li>macOSs, Node.js, WebStorm</li>
+              </ul>
+            </div>
+          </div>
         </div>
       </div>
     </AboutBlock>
