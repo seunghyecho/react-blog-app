@@ -11,11 +11,11 @@ class MyDocument extends Document {
       <Html>
         <Head>
           <link
-            rel='stylesheet'
-            type='text/css'
-            href='https://cdn.jsdelivr.net/gh/moonspam/NanumSquare@1.0/nanumsquare.css'
+            rel="stylesheet"
+            type="text/css"
+            href="https://cdn.jsdelivr.net/gh/moonspam/NanumSquare@1.0/nanumsquare.css"
           />
-          <title>React Blog App</title>
+          <title>블로그 | 생-성</title>
         </Head>
         <body>
           <Main />

@@ -6,19 +6,21 @@ import { legacy_createStore as createStore, applyMiddleware } from 'redux';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { HelmetProvider } from 'react-helmet-async';
 import { ThemeProvider } from 'styled-components';
+
 import rootReducer, { rootSaga } from '../modules';
 import { tempSetUser, check } from 'modules/user';
 import { GlobalStyle } from 'lib/styles/globals';
-import { darkTheme, lightTheme } from "lib/styles/theme";
+import { darkTheme, lightTheme } from 'lib/styles/theme';
+
 import Header from 'components/common/Header';
 
 function MyApp({ Component, pageProps }) {
   /**
    *  다크모드 상태 및 버튼 이벤트
    */
-  const [isDarkMode, setIsDarkMode]= useState(false);
+  const [isDarkMode, setIsDarkMode] = useState(false);
   const toggleDarkMode = () => {
-    setIsDarkMode((prev) => !prev);
+    setIsDarkMode(prev => !prev);
   };
 
   /**
@@ -63,8 +65,8 @@ function MyApp({ Component, pageProps }) {
       <Provider store={store}>
         <QueryClientProvider client={queryClient}>
           <ThemeProvider theme={isDarkMode ? darkTheme : lightTheme}>
-            <GlobalStyle/>
-            <Header isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode}/>
+            <GlobalStyle />
+            <Header isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode} />
             <Component {...pageProps} />
           </ThemeProvider>
         </QueryClientProvider>
