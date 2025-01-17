@@ -21,8 +21,8 @@ jobs: # Job 설정
       - name: Cache node modules # node modules 캐싱
         uses: actions/cache@v3
         with:
-          path: node_modules
-          key: ${{ runner.OS }}-build-${{ hashFiles('**/package.json') }}
+          path: blog-frontend/node_modules
+          key: ${{ runner.OS }}-build-${{ hashFiles('blog-frontend/package.json') }}
           restore-keys: |
             ${{ runner.OS }}-build-
             ${{ runner.OS }}-
