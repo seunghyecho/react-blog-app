@@ -10,7 +10,7 @@ jobs: # Job 설정
     runs-on: ubuntu-20.04 # Job 가상환경 인스턴스
     defaults:
       run:
-        working-directory: ../blog-frontend
+        working-directory: blog-frontend
     steps:
       - name: checkout source code # 레포지토리 체크아웃
         uses: actions/checkout@v3
