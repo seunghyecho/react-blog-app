@@ -16,7 +16,7 @@ jobs: # Job 설정
         uses: actions/cache@v3
         with:
           path: blog-frontend/node_modules
-          key: ${{ runner.OS }}-build-${{ hashFiles('package-lock.json') }}
+          key: ${{ runner.OS }}-build-${{ hashFiles('blog-frontend/package-lock.json') }}
           restore-keys: |
             ${{ runner.OS }}-build-
             ${{ runner.OS }}-
