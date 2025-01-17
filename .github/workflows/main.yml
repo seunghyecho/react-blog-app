@@ -38,4 +38,4 @@ jobs: # Job 설정
         run: npm run build
         working-directory: blog-frontend
 
-      - run: echo ${{ github.workspace }}
+      # - run: echo ${{ github.workspace }}
