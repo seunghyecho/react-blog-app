@@ -12,11 +12,17 @@ jobs: # Job 설정
       - name: checkout source code # 레포지토리 체크아웃
         uses: actions/checkout@v3
 
+      - name: Debug file paths # 파일 경로 디버깅
+        run: |
+          pwd
+          ls -al
+          ls -al blog-frontend
+
       - name: Cache node modules # node modules 캐싱
         uses: actions/cache@v3
         with:
-          path: blog-frontend/node_modules
-          key: ${{ runner.OS }}-build-${{ hashFiles('blog-frontend/package-lock.json') }}
+          path: node_modules
+          key: ${{ runner.OS }}-build-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
             ${{ runner.OS }}-build-
             ${{ runner.OS }}-
