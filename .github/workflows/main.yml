@@ -1,4 +1,4 @@
-name: my workflow # WorkfLow 이름
+name: React Cache Build # WorkfLow 이름
 on:
   push: # main branch에서 push 이벤트가 일어났을 때만 실행
     branches:
@@ -6,7 +6,6 @@ on:
 
 jobs: # Job 설정
   build: # Job ID
-    name: hello github action # Job 이름
     runs-on: ubuntu-20.04 # Job 가상환경 인스턴스
 
     steps:
@@ -14,7 +13,7 @@ jobs: # Job 설정
         uses: actions/checkout@v3
 
       - name: Cache node modules # node modules 캐싱
-        uses: actions/cache@v1
+        uses: actions/cache@v3
         with:
           path: blog-frontend/node_modules
           key: ${{ runner.OS }}-build-${{ hashFiles('**/package-lock.json') }}
