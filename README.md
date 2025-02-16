@@ -6,6 +6,8 @@
   - npm run dev
 - 서버 실행 : blog-backend 로 디렉토리 이동 후
   - npm run start:dev
+- 빌드 :
+  - npm run build
 
 ### 기술 스택
 
