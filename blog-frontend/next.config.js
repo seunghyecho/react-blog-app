@@ -2,11 +2,12 @@
 const path = require('path');
 
 module.exports = {
+  output: 'standalone',
   reactStrictMode: true,
   swcMinify: true,
   distDir: 'build',
   compiler: {
-    styledComponents: true,
+    styledComponents: true
   },
   env: {
     NEXT_PUBLIC_API_KEY: process.env.NEXT_PUBLIC_API_KEY
@@ -15,7 +16,7 @@ module.exports = {
     config.resolve.alias = {
       ...config.resolve.alias,
       '@': path.resolve(__dirname, 'src'),
-      '@assets': path.resolve(__dirname, 'public/assets'),
+      '@assets': path.resolve(__dirname, 'public/assets')
     };
     return config;
   },
@@ -24,7 +25,7 @@ module.exports = {
       {
         source: '/:path*',
         destination: `http://localhost:4000/:path*`
-      },
-    ]
-  },
-}
+      }
+    ];
+  }
+};
