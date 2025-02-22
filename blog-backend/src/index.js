@@ -15,7 +15,7 @@ dotenv.config();
 const { PORT, MONGO_URI } = process.env;
 
 mongoose
-  .connect('mongodb://root:rkawk1213@localhost:27017/admin', {
+  .connect(MONGO_URI, {
     dbName: 'blog',
     useNewUrlParser: true,
   })
@@ -51,7 +51,7 @@ app.use(router.routes()).use(router.allowedMethods());
 // });
 
 // PORT 가 지정되어있지 않다면 4000 을 사용
-const port = 4000;
+const port = PORT || 4000;
 app.listen(port, () => {
   console.log('Listening to port %d', port);
 });
